@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://barrica.vercel.app/sitemap-index.xml
+Sitemap: https://barricasindustriais.com/sitemap-index.xml

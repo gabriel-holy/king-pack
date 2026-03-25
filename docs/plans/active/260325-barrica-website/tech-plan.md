@@ -10,13 +10,25 @@
 |--------|-----------|---------------|
 | Framework | Astro v4+ | SSG nativo, zero JS por padrão, SEO excelente, deploy estático |
 | Styling | Tailwind CSS v3+ | Utility-first, sem conflito com Astro, fácil manutenção pelo dev/dono |
-| Deploy | Vercel ou Netlify (estático) | Zero backend, free tier suficiente para site institucional |
+| Deploy | Vercel (estático) | Domínio `barricasindustriais.com` já configurado |
 | Imagens | Astro `<Image>` nativo | Otimização automática (WebP, lazy loading, sizes) |
 | Ícones | `astro-icon` + Heroicons/Phosphor | SVGs inline, zero HTTP request extra |
-| Fontes | Variable font via Google Fonts / CDN | Inter ou Geist — leitura técnica excelente |
+| Fontes | Space Grotesk (headings) + Inter (body) via Google Fonts | Identidade "Grafite Técnico" — ver `visual-guide.md` |
 | Analytics | Fathom ou Plausible (opcional) | Privacy-first, sem cookie banner |
+| Domínio | `barricasindustriais.com` | Já comprado e configurado na Vercel |
 
 **Sem backend. Sem banco de dados. Sem autenticação. Sem formulário com processamento.**
+
+### Identidade Visual — "Grafite Técnico"
+
+Documentação completa em `visual-guide.md`. Resumo:
+
+- **Fundo escuro:** `#242424` (base), `#1a1a1a` (deep), `#2e2e2e` (surface)
+- **Acento azul:** `#4dabf7` — apenas em CTAs, links e destaques
+- **Texto:** `#f0f0f0` (primário), `#888888` (muted)
+- **Tipografia:** Space Grotesk 600-700 para títulos, Inter 400-500 para corpo
+- **Zero gradientes, zero shadows** — profundidade via alternância de fundos
+- **Seções alternam** entre `#242424` e `#2e2e2e` para criar ritmo
 
 ---
 
@@ -257,7 +269,7 @@ Estas regras são **não-negociáveis** em todos os tickets de implementação:
 | Arquivo | Tipo | Descrição |
 |---------|------|-----------|
 | `astro.config.mjs` | Config | Astro + Tailwind + Sitemap config |
-| `tailwind.config.mjs` | Config | Cores da marca, tipografia, extensões |
+| `tailwind.config.mjs` | Config | Grafite Técnico: cores, tipografia, espaçamento (ver `visual-guide.md` §6) |
 | `src/data/company.ts` | Data | Dados da empresa (placeholders) |
 | `src/data/products.ts` | Data | Specs dos produtos (placeholders) |
 | `src/data/testimonials.ts` | Data | Depoimentos (placeholders) |

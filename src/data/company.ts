@@ -1,21 +1,30 @@
 export const company = {
-  name: "Barricas & Baldes",
-  description:
-    "Fábrica de barricas de papelão e baldes plásticos em Americana-SP. Mais de 20 anos atendendo indústrias de tintas, vernizes, químicos e agroquímicos.",
+  name: "Fábrica de Barricas e Baldes",
+  tagline: "Embalagens industriais que sua produção exige",
+  city: "Americana, SP",
   address: {
-    street: "Rua Exemplo, 123", // TODO: endereço real
+    street: "Rua Exemplo, 123",
     neighborhood: "Distrito Industrial",
     city: "Americana",
     state: "SP",
     zip: "13465-000",
     country: "BR",
   },
+  cnpj: "XX.XXX.XXX/XXXX-XX",
   phone: "(19) 99258-0247",
   whatsapp: "5519992580247",
-  whatsappMessage: "Olá! Vim pelo site e gostaria de solicitar um orçamento de barricas.",
-  email: "contato@barricas.com.br", // TODO: e-mail real
-  hours: "Segunda a Sexta, 8h às 17h",
-};
+  whatsappMessage:
+    "Olá! Vi o site e gostaria de saber mais sobre as embalagens.",
+  email: "contato@barricasindustriais.com.br",
+  hours: "Segunda a Sexta, 8h às 18h",
+  foundedYear: 2004,
+  metrics: {
+    yearsInMarket: 22,
+    activeClients: 500,
+    deliveryHours: 48,
+    defectRate: "0%",
+  },
+} as const;
 
 export function buildWhatsAppUrl(message?: string): string {
   const text = encodeURIComponent(message ?? company.whatsappMessage);

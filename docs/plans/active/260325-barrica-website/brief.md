@@ -77,7 +77,7 @@ A fábrica fabrica barricas de papelão e baldes plásticos para indústrias de 
 ## Constraints
 
 - **Stack:** Astro v4+ com Tailwind CSS v3+
-- **Deploy:** Estático (Netlify/Vercel) — sem backend próprio
+- **Deploy:** Vercel (estático) — domínio `barricasindustriais.com` já comprado e configurado
 - **Conteúdo:** Todos os textos e números são placeholders realistas — estrutura pronta para substituição
 - **Conversão:** 100% via botões de WhatsApp — sem formulário backend, sem processamento server-side
 - **Imagens:** Usar Unsplash/stock industrial como placeholder, com comentários indicando o tipo de foto necessária

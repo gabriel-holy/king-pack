@@ -1,29 +1,42 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import WhatsAppButton from "../components/WhatsAppButton.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import WhatsAppCTA from "../components/shared/WhatsAppCTA.astro";
 ---
 
-<Layout
-  title="Barricas de Papelão | Embalagens Industriais"
-  description="Barricas de papelão de 20L a 200L para tintas, vernizes e produtos químicos. Tampa prensada, fundo reforçado, revestimento interno opcional."
+<BaseLayout
+  title="Barricas de Papelão Industrial — Specs Técnicas e Orçamento"
+  description="Barricas de papelão para indústria: capacidades 20-200L, resistência 500kg empilhamento, prazo 10 dias. Fale via WhatsApp."
 >
   <!-- Hero -->
-  <section class="bg-brand-900 py-16 text-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h1 class="text-4xl font-bold">Barricas de Papelão</h1>
-      <p class="mt-4 max-w-2xl text-lg text-brand-200">
+  <section class="bg-bg-deep py-16">
+    <div class="mx-auto max-w-content px-6">
+      <p class="font-body text-xs font-medium uppercase tracking-widest text-accent">
+        Produto
+      </p>
+      <h1 class="mt-4 font-heading text-4xl font-bold tracking-tight text-text-primary">
+        Barricas de Papelão
+      </h1>
+      <p class="mt-4 max-w-text font-body text-lg text-text-muted">
         Embalagens de papelão reforçado de 20L a 200L. Projetadas para armazenamento e transporte de tintas, vernizes, resinas e produtos químicos.
       </p>
+      <WhatsAppCTA
+        message="Olá! Tenho interesse em barricas de papelão. Pode me enviar mais informações?"
+        label="Solicitar amostra grátis — WhatsApp"
+        size="md"
+        class="mt-8"
+      />
     </div>
   </section>
 
   <!-- Specs Table -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold">Especificações Técnicas</h2>
+  <section class="bg-bg py-16">
+    <div class="mx-auto max-w-content px-6">
+      <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
+        Especificações Técnicas
+      </h2>
       <div class="mt-8 overflow-x-auto">
-        <table class="w-full text-left text-sm">
-          <thead class="border-b border-gray-200 text-gray-500">
+        <table class="w-full text-left font-body text-sm">
+          <thead class="border-b border-border-subtle text-text-muted">
             <tr>
               <th class="pb-3 pr-6 font-medium">Modelo</th>
               <th class="pb-3 pr-6 font-medium">Capacidade</th>
@@ -32,35 +45,34 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
               <th class="pb-3 font-medium">Revestimento</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-100">
-            <!-- TODO: substituir por specs reais -->
+          <tbody class="divide-y divide-border-subtle">
             <tr>
-              <td class="py-3 pr-6 font-medium">BP-20</td>
-              <td class="py-3 pr-6">20L</td>
-              <td class="py-3 pr-6">290 x 380 mm</td>
-              <td class="py-3 pr-6">3mm dupla</td>
-              <td class="py-3">Opcional (PE)</td>
+              <td class="py-3 pr-6 font-medium text-text-primary">BP-20</td>
+              <td class="py-3 pr-6 text-text-muted">20L</td>
+              <td class="py-3 pr-6 text-text-muted">290 x 380 mm</td>
+              <td class="py-3 pr-6 text-text-muted">3mm dupla</td>
+              <td class="py-3 text-text-muted">Opcional (PE)</td>
             </tr>
             <tr>
-              <td class="py-3 pr-6 font-medium">BP-50</td>
-              <td class="py-3 pr-6">50L</td>
-              <td class="py-3 pr-6">370 x 520 mm</td>
-              <td class="py-3 pr-6">4mm dupla</td>
-              <td class="py-3">Opcional (PE)</td>
+              <td class="py-3 pr-6 font-medium text-text-primary">BP-50</td>
+              <td class="py-3 pr-6 text-text-muted">50L</td>
+              <td class="py-3 pr-6 text-text-muted">370 x 520 mm</td>
+              <td class="py-3 pr-6 text-text-muted">4mm dupla</td>
+              <td class="py-3 text-text-muted">Opcional (PE)</td>
             </tr>
             <tr>
-              <td class="py-3 pr-6 font-medium">BP-100</td>
-              <td class="py-3 pr-6">100L</td>
-              <td class="py-3 pr-6">450 x 650 mm</td>
-              <td class="py-3 pr-6">5mm tripla</td>
-              <td class="py-3">Opcional (PE/Alumínio)</td>
+              <td class="py-3 pr-6 font-medium text-text-primary">BP-100</td>
+              <td class="py-3 pr-6 text-text-muted">100L</td>
+              <td class="py-3 pr-6 text-text-muted">450 x 650 mm</td>
+              <td class="py-3 pr-6 text-text-muted">5mm tripla</td>
+              <td class="py-3 text-text-muted">Opcional (PE/Alumínio)</td>
             </tr>
             <tr>
-              <td class="py-3 pr-6 font-medium">BP-200</td>
-              <td class="py-3 pr-6">200L</td>
-              <td class="py-3 pr-6">580 x 880 mm</td>
-              <td class="py-3 pr-6">6mm tripla</td>
-              <td class="py-3">Opcional (PE/Alumínio)</td>
+              <td class="py-3 pr-6 font-medium text-text-primary">BP-200</td>
+              <td class="py-3 pr-6 text-text-muted">200L</td>
+              <td class="py-3 pr-6 text-text-muted">580 x 880 mm</td>
+              <td class="py-3 pr-6 text-text-muted">6mm tripla</td>
+              <td class="py-3 text-text-muted">Opcional (PE/Alumínio)</td>
             </tr>
           </tbody>
         </table>
@@ -69,32 +81,84 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
   </section>
 
   <!-- Applications -->
-  <section class="bg-gray-50 py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold">Aplicações</h2>
+  <section class="bg-surface py-16">
+    <div class="mx-auto max-w-content px-6">
+      <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
+        Aplicações por Setor
+      </h2>
       <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-xl bg-white p-6 shadow-sm">
-          <h3 class="font-bold">Tintas e Vernizes</h3>
-          <p class="mt-2 text-sm text-gray-600">Barricas com revestimento interno para tintas à base de água e solvente.</p>
+        <div class="rounded-lg border border-border-subtle bg-bg p-6">
+          <h3 class="font-heading text-lg font-semibold text-text-primary">Tintas e Vernizes</h3>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            Barricas com revestimento interno para tintas à base de água e solvente.
+          </p>
         </div>
-        <div class="rounded-xl bg-white p-6 shadow-sm">
-          <h3 class="font-bold">Produtos Químicos</h3>
-          <p class="mt-2 text-sm text-gray-600">Resistência a produtos com pH variado. Revestimento de alumínio disponível.</p>
+        <div class="rounded-lg border border-border-subtle bg-bg p-6">
+          <h3 class="font-heading text-lg font-semibold text-text-primary">Produtos Químicos</h3>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            Resistência a produtos com pH variado. Revestimento de alumínio disponível.
+          </p>
         </div>
-        <div class="rounded-xl bg-white p-6 shadow-sm">
-          <h3 class="font-bold">Agroquímicos</h3>
-          <p class="mt-2 text-sm text-gray-600">Embalagens aprovadas para defensivos e fertilizantes líquidos.</p>
+        <div class="rounded-lg border border-border-subtle bg-bg p-6">
+          <h3 class="font-heading text-lg font-semibold text-text-primary">Agroquímicos</h3>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            Embalagens para defensivos e fertilizantes líquidos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Objection Eliminator -->
+  <section class="bg-bg py-16">
+    <div class="mx-auto max-w-content px-6">
+      <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
+        Medo de trocar de fornecedor?
+      </h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-3">
+        <div class="rounded-lg border border-border-subtle bg-surface p-6">
+          <p class="font-heading text-lg font-semibold text-accent">Amostra grátis</p>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            Teste na sua linha antes de fechar. Sem compromisso.
+          </p>
+        </div>
+        <div class="rounded-lg border border-border-subtle bg-surface p-6">
+          <p class="font-heading text-lg font-semibold text-accent">3 passos</p>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            Solicita, testa, aprova. Processo simples e direto.
+          </p>
+        </div>
+        <div class="rounded-lg border border-border-subtle bg-surface p-6">
+          <p class="font-heading text-lg font-semibold text-accent">Prazo garantido</p>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            10 dias úteis de produção. Entrega para todo o estado de SP.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="bg-brand-800 py-16 text-white">
-    <div class="mx-auto max-w-4xl px-4 text-center">
-      <h2 class="text-3xl font-bold">Precisa de barricas sob medida?</h2>
-      <p class="mt-4 text-brand-200">Informe volume, quantidade e aplicação. Respondemos em até 2 horas.</p>
-      <WhatsAppButton message="Olá! Gostaria de saber mais sobre as barricas de papelão." label="Pedir Orçamento pelo WhatsApp" size="lg" class="mt-8" />
+  <section class="bg-bg-deep py-16">
+    <div class="mx-auto max-w-text px-6 text-center">
+      <h2 class="font-heading text-3xl font-semibold tracking-snug text-text-primary">
+        Precisa de barricas sob medida?
+      </h2>
+      <p class="mt-4 font-body text-text-muted">
+        Informe volume, quantidade e aplicação. Respondemos em até 2 horas.
+      </p>
+      <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <WhatsAppCTA
+          message="Olá! Tenho interesse em barricas de papelão. Pode me enviar mais informações?"
+          label="Pedir Orçamento — WhatsApp"
+          size="lg"
+        />
+        <WhatsAppCTA
+          message="Olá! Tenho uma dúvida técnica sobre compatibilidade dos produtos."
+          label="Dúvida técnica — WhatsApp"
+          size="md"
+        />
+      </div>
     </div>
   </section>
-</Layout>
+</BaseLayout>

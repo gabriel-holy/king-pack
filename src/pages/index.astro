@@ -1,22 +1,31 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import WhatsAppButton from "../components/WhatsAppButton.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import WhatsAppCTA from "../components/shared/WhatsAppCTA.astro";
 ---
 
-<Layout title="Fábrica de Barricas e Baldes | Embalagens Industriais em Americana-SP">
+<BaseLayout
+  title="Barricas de Papelão e Baldes Plásticos — Fábrica em Americana SP"
+  description="Fabricante industrial de barricas de papelão e baldes plásticos para indústrias de tintas, grafiato e químicos. Americana, SP."
+>
   <!-- Hero -->
-  <section class="bg-brand-900 py-20 text-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="bg-bg-deep py-20">
+    <div class="mx-auto max-w-content px-6">
       <div class="max-w-3xl">
-        <h1 class="text-4xl font-bold leading-tight sm:text-5xl">
+        <p class="font-body text-xs font-medium uppercase tracking-widest text-accent">
+          Fabricante Industrial — Americana, SP
+        </p>
+        <h1 class="mt-4 font-heading text-4xl font-bold leading-tight tracking-tight text-text-primary sm:text-[clamp(2.25rem,5vw,3.75rem)]">
           Embalagens industriais que sua produção exige
         </h1>
-        <p class="mt-6 text-lg text-brand-200">
-          Barricas de papelão e baldes plásticos para indústrias de tintas, vernizes, químicos e agroquímicos. Mais de 20 anos em Americana-SP.
+        <p class="mt-6 font-body text-lg text-text-muted">
+          Barricas de papelão e baldes plásticos para indústrias de tintas, vernizes, químicos e agroquímicos. 22 anos em Americana-SP.
         </p>
         <div class="mt-8 flex flex-wrap gap-4">
-          <WhatsAppButton label="Solicitar Orçamento via WhatsApp" size="md" />
-          <a href="/barricas" class="rounded-lg border border-white/30 px-6 py-3 font-semibold text-white hover:bg-white/10">
+          <WhatsAppCTA label="Solicitar Orçamento via WhatsApp" size="md" />
+          <a
+            href="/barricas"
+            class="inline-flex min-h-[44px] items-center rounded-md border border-border-subtle px-6 py-3 font-heading text-sm font-semibold text-text-primary transition-colors hover:bg-surface"
+          >
             Ver Produtos
           </a>
         </div>
@@ -24,91 +33,163 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
     </div>
   </section>
 
-  <!-- Social Proof Numbers -->
-  <section class="border-b border-gray-100 bg-white py-12">
-    <div class="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 sm:px-6 md:grid-cols-4 lg:px-8">
-      <!-- TODO: substituir por números reais -->
+  <!-- Trust Bar -->
+  <section class="border-y border-border-subtle bg-surface py-6">
+    <div class="mx-auto max-w-content px-6">
+      <p class="text-center font-body text-sm text-text-muted">
+        Atendemos indústrias de:
+        <span class="text-text-primary">Tintas</span> ·
+        <span class="text-text-primary">Grafiato</span> ·
+        <span class="text-text-primary">Vernizes</span> ·
+        <span class="text-text-primary">Químicos</span> ·
+        <span class="text-text-primary">Agroquímicos</span> ·
+        <span class="text-text-primary">Construção Civil</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Metrics -->
+  <section class="bg-bg py-12">
+    <div class="mx-auto grid max-w-content grid-cols-2 gap-8 px-6 md:grid-cols-4">
       <div class="text-center">
-        <p class="text-3xl font-bold text-brand-700">20+</p>
-        <p class="mt-1 text-sm text-gray-600">Anos de mercado</p>
+        <p class="font-heading text-xl font-bold text-accent">22+</p>
+        <p class="mt-1 font-body text-sm text-text-muted">Anos de mercado</p>
       </div>
       <div class="text-center">
-        <p class="text-3xl font-bold text-brand-700">500+</p>
-        <p class="mt-1 text-sm text-gray-600">Clientes atendidos</p>
+        <p class="font-heading text-xl font-bold text-accent">500+</p>
+        <p class="mt-1 font-body text-sm text-text-muted">Clientes atendidos</p>
       </div>
       <div class="text-center">
-        <p class="text-3xl font-bold text-brand-700">1M+</p>
-        <p class="mt-1 text-sm text-gray-600">Embalagens/ano</p>
+        <p class="font-heading text-xl font-bold text-accent">48h</p>
+        <p class="mt-1 font-body text-sm text-text-muted">Prazo de entrega</p>
       </div>
       <div class="text-center">
-        <p class="text-3xl font-bold text-brand-700">98%</p>
-        <p class="mt-1 text-sm text-gray-600">Taxa de recompra</p>
+        <p class="font-heading text-xl font-bold text-accent">0%</p>
+        <p class="mt-1 font-body text-sm text-text-muted">Ocorrências em transporte</p>
       </div>
     </div>
   </section>
 
   <!-- Products -->
-  <section class="py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-center text-3xl font-bold">Nossos Produtos</h2>
-      <p class="mx-auto mt-4 max-w-2xl text-center text-gray-600">
+  <section class="bg-surface py-16">
+    <div class="mx-auto max-w-content px-6">
+      <h2 class="text-center font-heading text-3xl font-semibold tracking-snug text-text-primary">
+        Nossos Produtos
+      </h2>
+      <p class="mx-auto mt-4 max-w-text text-center font-body text-text-muted">
         Embalagens projetadas para suportar as exigências da sua linha de produção.
       </p>
       <div class="mt-12 grid gap-8 md:grid-cols-2">
-        <!-- Barricas -->
-        <a href="/barricas" class="group rounded-2xl border border-gray-200 p-8 transition hover:border-brand-300 hover:shadow-lg">
-          <div class="mb-4 h-48 rounded-xl bg-gray-100">
-            <!-- TODO: foto real de barrica -->
+        <a href="/barricas" class="group rounded-lg border border-border-subtle bg-bg p-8 transition-colors hover:border-accent">
+          <div class="mb-4 flex h-48 items-center justify-center rounded-lg bg-surface-2">
+            <span class="font-body text-sm text-text-muted">Foto: barrica de papelão em galpão industrial</span>
           </div>
-          <h3 class="text-xl font-bold group-hover:text-brand-700">Barricas de Papelão</h3>
-          <p class="mt-2 text-gray-600">
-            De 20L a 200L. Tampa prensada, fundo reforçado, revestimento interno opcional. Ideais para tintas, vernizes e produtos químicos.
+          <h3 class="font-heading text-xl font-semibold text-text-primary group-hover:text-accent">
+            Barricas de Papelão
+          </h3>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            De 20L a 200L. Tampa prensada, fundo reforçado, revestimento interno opcional. Para tintas, vernizes e produtos químicos.
           </p>
-          <span class="mt-4 inline-block text-sm font-semibold text-brand-600">Ver especificações &rarr;</span>
+          <span class="mt-4 inline-block font-body text-sm font-medium text-accent">
+            Ver especificações &rarr;
+          </span>
         </a>
 
-        <!-- Baldes -->
-        <a href="/baldes" class="group rounded-2xl border border-gray-200 p-8 transition hover:border-brand-300 hover:shadow-lg">
-          <div class="mb-4 h-48 rounded-xl bg-gray-100">
-            <!-- TODO: foto real de balde -->
+        <a href="/baldes" class="group rounded-lg border border-border-subtle bg-bg p-8 transition-colors hover:border-accent">
+          <div class="mb-4 flex h-48 items-center justify-center rounded-lg bg-surface-2">
+            <span class="font-body text-sm text-text-muted">Foto: baldes plásticos industriais empilhados</span>
           </div>
-          <h3 class="text-xl font-bold group-hover:text-brand-700">Baldes Plásticos</h3>
-          <p class="mt-2 text-gray-600">
+          <h3 class="font-heading text-xl font-semibold text-text-primary group-hover:text-accent">
+            Baldes Plásticos
+          </h3>
+          <p class="mt-2 font-body text-sm text-text-muted">
             De 3,6L a 20L. Polipropileno ou polietileno, com alça metálica ou plástica. Para tintas, massas, grafiatos e químicos.
           </p>
-          <span class="mt-4 inline-block text-sm font-semibold text-brand-600">Ver especificações &rarr;</span>
+          <span class="mt-4 inline-block font-body text-sm font-medium text-accent">
+            Ver especificações &rarr;
+          </span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Why Us -->
-  <section class="bg-gray-50 py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-center text-3xl font-bold">Por que nos escolher</h2>
-      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-xl bg-white p-6 shadow-sm">
-          <h3 class="font-bold text-brand-800">Entrega no prazo</h3>
-          <p class="mt-2 text-sm text-gray-600">Produção própria em Americana-SP com logística ágil para todo o estado de São Paulo.</p>
+  <!-- How It Works -->
+  <section class="bg-bg py-16">
+    <div class="mx-auto max-w-content px-6">
+      <h2 class="text-center font-heading text-3xl font-semibold tracking-snug text-text-primary">
+        Como Funciona
+      </h2>
+      <div class="mt-12 grid gap-8 sm:grid-cols-3">
+        <div class="text-center">
+          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-surface font-heading text-xl font-bold text-accent">
+            1
+          </div>
+          <h3 class="mt-4 font-heading text-lg font-semibold text-text-primary">Solicite uma amostra</h3>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            Fale no WhatsApp, informe o produto e volume. Sem compromisso.
+          </p>
         </div>
-        <div class="rounded-xl bg-white p-6 shadow-sm">
-          <h3 class="font-bold text-brand-800">Lote sob medida</h3>
-          <p class="mt-2 text-sm text-gray-600">Lotes a partir de 100 unidades. Personalização de dimensões e acabamento.</p>
+        <div class="text-center">
+          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-surface font-heading text-xl font-bold text-accent">
+            2
+          </div>
+          <h3 class="mt-4 font-heading text-lg font-semibold text-text-primary">Receba em até 48h</h3>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            Enviamos amostra grátis para você testar na sua linha de produção.
+          </p>
         </div>
-        <div class="rounded-xl bg-white p-6 shadow-sm">
-          <h3 class="font-bold text-brand-800">Qualidade comprovada</h3>
-          <p class="mt-2 text-sm text-gray-600">Mais de 20 anos atendendo indústrias exigentes. Taxa de recompra acima de 98%.</p>
+        <div class="text-center">
+          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-surface font-heading text-xl font-bold text-accent">
+            3
+          </div>
+          <h3 class="mt-4 font-heading text-lg font-semibold text-text-primary">Aprovou? Primeiro pedido</h3>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            Produção sob medida com prazo garantido. Lotes a partir de 200 unidades.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="bg-brand-800 py-16 text-white">
-    <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold">Precisa de embalagens industriais?</h2>
-      <p class="mt-4 text-brand-200">Fale direto com quem fabrica. Resposta rápida pelo WhatsApp.</p>
-      <WhatsAppButton label="Solicitar Orçamento pelo WhatsApp" size="lg" class="mt-8" />
+  <!-- Testimonials -->
+  <section class="bg-surface py-16">
+    <div class="mx-auto max-w-content px-6">
+      <h2 class="text-center font-heading text-3xl font-semibold tracking-snug text-text-primary">
+        O que nossos clientes dizem
+      </h2>
+      <div class="mt-12 grid gap-8 md:grid-cols-2">
+        <div class="rounded-lg border border-border-subtle bg-bg p-8">
+          <p class="font-body text-sm leading-relaxed text-text-muted">
+            "Trocamos de fornecedor há 3 anos e desde então zero ocorrências de barrica danificada no transporte. A fábrica entrega no prazo e a qualidade é consistente lote a lote."
+          </p>
+          <div class="mt-6">
+            <p class="font-heading text-sm font-semibold text-text-primary">Carlos Mendes</p>
+            <p class="font-body text-xs text-text-muted">Gerente de Compras — Tintas Progresso, Campinas SP</p>
+          </div>
+        </div>
+        <div class="rounded-lg border border-border-subtle bg-bg p-8">
+          <p class="font-body text-sm leading-relaxed text-text-muted">
+            "Precisávamos de baldes que aguentassem o grafiato sem deformar. Testamos a amostra grátis e em 1 semana já fizemos o primeiro pedido de 2.000 unidades."
+          </p>
+          <div class="mt-6">
+            <p class="font-heading text-sm font-semibold text-text-primary">Fernanda Oliveira</p>
+            <p class="font-body text-xs text-text-muted">Gerente de Produção — Revestimentos MaxTex, Sumaré SP</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-</Layout>
+
+  <!-- Final CTA -->
+  <section class="bg-bg-deep py-16">
+    <div class="mx-auto max-w-text px-6 text-center">
+      <h2 class="font-heading text-3xl font-semibold tracking-snug text-text-primary">
+        Pronto para trocar de fornecedor sem risco?
+      </h2>
+      <p class="mt-4 font-body text-text-muted">
+        Solicite uma amostra grátis. Sem compromisso, sem burocracia.
+      </p>
+      <WhatsAppCTA label="Solicitar amostra grátis — WhatsApp" size="lg" class="mt-8" />
+    </div>
+  </section>
+</BaseLayout>

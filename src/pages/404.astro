@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import WhatsAppCTA from "../components/shared/WhatsAppCTA.astro";
+---
+
+<BaseLayout
+  title="Página não encontrada — Fábrica de Barricas e Baldes"
+  description="A página que você procura não existe. Conheça nossos produtos ou fale diretamente no WhatsApp."
+>
+  <section class="flex min-h-[60vh] items-center justify-center bg-bg py-20">
+    <div class="mx-auto max-w-text px-6 text-center">
+      <p class="font-body text-xs font-medium uppercase tracking-widest text-accent">
+        Erro 404
+      </p>
+      <h1 class="mt-4 font-heading text-4xl font-bold tracking-tight text-text-primary">
+        Página não encontrada
+      </h1>
+      <p class="mt-4 font-body text-lg text-text-muted">
+        A página que você procura não existe ou foi movida. Mas a gente pode te ajudar.
+      </p>
+
+      <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <WhatsAppCTA
+          message="Olá! Tentei acessar uma página do site que não existe. Pode me ajudar?"
+          label="Falar no WhatsApp"
+          size="md"
+        />
+        <a
+          href="/barricas"
+          class="inline-flex min-h-[44px] items-center rounded-md border border-border-subtle px-6 py-3 font-heading text-sm font-semibold text-text-primary transition-colors hover:bg-surface"
+        >
+          Ver Barricas
+        </a>
+        <a
+          href="/baldes"
+          class="inline-flex min-h-[44px] items-center rounded-md border border-border-subtle px-6 py-3 font-heading text-sm font-semibold text-text-primary transition-colors hover:bg-surface"
+        >
+          Ver Baldes
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

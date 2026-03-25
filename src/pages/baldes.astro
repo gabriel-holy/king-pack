@@ -1,29 +1,42 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import WhatsAppButton from "../components/WhatsAppButton.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import WhatsAppCTA from "../components/shared/WhatsAppCTA.astro";
 ---
 
-<Layout
-  title="Baldes Plásticos | Embalagens Industriais"
-  description="Baldes plásticos de 3,6L a 20L em polipropileno e polietileno. Para tintas, massas, grafiatos e produtos químicos."
+<BaseLayout
+  title="Baldes Plásticos Industriais — Specs Técnicas e Orçamento"
+  description="Baldes plásticos para tintas, químicos e agroquímicos: capacidades 3,6-20L, lote mínimo 200 unidades. Fale via WhatsApp."
 >
   <!-- Hero -->
-  <section class="bg-brand-900 py-16 text-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h1 class="text-4xl font-bold">Baldes Plásticos</h1>
-      <p class="mt-4 max-w-2xl text-lg text-brand-200">
+  <section class="bg-bg-deep py-16">
+    <div class="mx-auto max-w-content px-6">
+      <p class="font-body text-xs font-medium uppercase tracking-widest text-accent">
+        Produto
+      </p>
+      <h1 class="mt-4 font-heading text-4xl font-bold tracking-tight text-text-primary">
+        Baldes Plásticos
+      </h1>
+      <p class="mt-4 max-w-text font-body text-lg text-text-muted">
         Baldes de 3,6L a 20L em polipropileno e polietileno. Alça metálica ou plástica. Para tintas, massas, grafiatos e químicos.
       </p>
+      <WhatsAppCTA
+        message="Olá! Tenho interesse em baldes plásticos industriais. Pode me ajudar?"
+        label="Solicitar amostra grátis — WhatsApp"
+        size="md"
+        class="mt-8"
+      />
     </div>
   </section>
 
   <!-- Specs Table -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold">Especificações Técnicas</h2>
+  <section class="bg-bg py-16">
+    <div class="mx-auto max-w-content px-6">
+      <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
+        Especificações Técnicas
+      </h2>
       <div class="mt-8 overflow-x-auto">
-        <table class="w-full text-left text-sm">
-          <thead class="border-b border-gray-200 text-gray-500">
+        <table class="w-full text-left font-body text-sm">
+          <thead class="border-b border-border-subtle text-text-muted">
             <tr>
               <th class="pb-3 pr-6 font-medium">Modelo</th>
               <th class="pb-3 pr-6 font-medium">Capacidade</th>
@@ -32,42 +45,41 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
               <th class="pb-3 font-medium">Tampa</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-100">
-            <!-- TODO: substituir por specs reais -->
+          <tbody class="divide-y divide-border-subtle">
             <tr>
-              <td class="py-3 pr-6 font-medium">BL-3.6</td>
-              <td class="py-3 pr-6">3,6L</td>
-              <td class="py-3 pr-6">Polipropileno</td>
-              <td class="py-3 pr-6">Plástica</td>
-              <td class="py-3">Pressão</td>
+              <td class="py-3 pr-6 font-medium text-text-primary">BL-3.6</td>
+              <td class="py-3 pr-6 text-text-muted">3,6L</td>
+              <td class="py-3 pr-6 text-text-muted">Polipropileno</td>
+              <td class="py-3 pr-6 text-text-muted">Plástica</td>
+              <td class="py-3 text-text-muted">Pressão</td>
             </tr>
             <tr>
-              <td class="py-3 pr-6 font-medium">BL-5</td>
-              <td class="py-3 pr-6">5L</td>
-              <td class="py-3 pr-6">Polipropileno</td>
-              <td class="py-3 pr-6">Metálica</td>
-              <td class="py-3">Pressão</td>
+              <td class="py-3 pr-6 font-medium text-text-primary">BL-5</td>
+              <td class="py-3 pr-6 text-text-muted">5L</td>
+              <td class="py-3 pr-6 text-text-muted">Polipropileno</td>
+              <td class="py-3 pr-6 text-text-muted">Metálica</td>
+              <td class="py-3 text-text-muted">Pressão</td>
             </tr>
             <tr>
-              <td class="py-3 pr-6 font-medium">BL-10</td>
-              <td class="py-3 pr-6">10L</td>
-              <td class="py-3 pr-6">Polietileno</td>
-              <td class="py-3 pr-6">Metálica</td>
-              <td class="py-3">Rosca</td>
+              <td class="py-3 pr-6 font-medium text-text-primary">BL-10</td>
+              <td class="py-3 pr-6 text-text-muted">10L</td>
+              <td class="py-3 pr-6 text-text-muted">Polietileno</td>
+              <td class="py-3 pr-6 text-text-muted">Metálica</td>
+              <td class="py-3 text-text-muted">Rosca</td>
             </tr>
             <tr>
-              <td class="py-3 pr-6 font-medium">BL-18</td>
-              <td class="py-3 pr-6">18L</td>
-              <td class="py-3 pr-6">Polietileno</td>
-              <td class="py-3 pr-6">Metálica</td>
-              <td class="py-3">Pressão</td>
+              <td class="py-3 pr-6 font-medium text-text-primary">BL-18</td>
+              <td class="py-3 pr-6 text-text-muted">18L</td>
+              <td class="py-3 pr-6 text-text-muted">Polietileno</td>
+              <td class="py-3 pr-6 text-text-muted">Metálica</td>
+              <td class="py-3 text-text-muted">Pressão</td>
             </tr>
             <tr>
-              <td class="py-3 pr-6 font-medium">BL-20</td>
-              <td class="py-3 pr-6">20L</td>
-              <td class="py-3 pr-6">Polietileno</td>
-              <td class="py-3 pr-6">Metálica</td>
-              <td class="py-3">Pressão / Rosca</td>
+              <td class="py-3 pr-6 font-medium text-text-primary">BL-20</td>
+              <td class="py-3 pr-6 text-text-muted">20L</td>
+              <td class="py-3 pr-6 text-text-muted">Polietileno</td>
+              <td class="py-3 pr-6 text-text-muted">Metálica</td>
+              <td class="py-3 text-text-muted">Pressão / Rosca</td>
             </tr>
           </tbody>
         </table>
@@ -76,32 +88,55 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
   </section>
 
   <!-- Applications -->
-  <section class="bg-gray-50 py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold">Aplicações</h2>
+  <section class="bg-surface py-16">
+    <div class="mx-auto max-w-content px-6">
+      <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
+        Aplicações por Setor
+      </h2>
       <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-xl bg-white p-6 shadow-sm">
-          <h3 class="font-bold">Tintas e Massas</h3>
-          <p class="mt-2 text-sm text-gray-600">Baldes com vedação hermética para tintas látex, acrílicas e massas corridas.</p>
+        <div class="rounded-lg border border-border-subtle bg-bg p-6">
+          <h3 class="font-heading text-lg font-semibold text-text-primary">Tintas e Massas</h3>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            Baldes com vedação hermética para tintas látex, acrílicas e massas corridas.
+          </p>
         </div>
-        <div class="rounded-xl bg-white p-6 shadow-sm">
-          <h3 class="font-bold">Grafiatos e Texturas</h3>
-          <p class="mt-2 text-sm text-gray-600">Resistência a materiais abrasivos. Tampa de pressão para fácil abertura na obra.</p>
+        <div class="rounded-lg border border-border-subtle bg-bg p-6">
+          <h3 class="font-heading text-lg font-semibold text-text-primary">Grafiatos e Texturas</h3>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            Resistência a materiais abrasivos. Tampa de pressão para fácil abertura na obra.
+          </p>
         </div>
-        <div class="rounded-xl bg-white p-6 shadow-sm">
-          <h3 class="font-bold">Químicos Industriais</h3>
-          <p class="mt-2 text-sm text-gray-600">Polietileno de alta densidade para produtos com pH extremo.</p>
+        <div class="rounded-lg border border-border-subtle bg-bg p-6">
+          <h3 class="font-heading text-lg font-semibold text-text-primary">Químicos Industriais</h3>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            Polietileno de alta densidade para produtos com pH extremo.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="bg-brand-800 py-16 text-white">
-    <div class="mx-auto max-w-4xl px-4 text-center">
-      <h2 class="text-3xl font-bold">Precisa de baldes para sua produção?</h2>
-      <p class="mt-4 text-brand-200">Volume, material e tipo de tampa sob medida. Orçamento rápido.</p>
-      <WhatsAppButton message="Olá! Gostaria de saber mais sobre os baldes plásticos." label="Pedir Orçamento pelo WhatsApp" size="lg" class="mt-8" />
+  <section class="bg-bg-deep py-16">
+    <div class="mx-auto max-w-text px-6 text-center">
+      <h2 class="font-heading text-3xl font-semibold tracking-snug text-text-primary">
+        Precisa de baldes para sua produção?
+      </h2>
+      <p class="mt-4 font-body text-text-muted">
+        Volume, material e tipo de tampa sob medida. Orçamento rápido.
+      </p>
+      <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <WhatsAppCTA
+          message="Olá! Tenho interesse em baldes plásticos industriais. Pode me ajudar?"
+          label="Pedir Orçamento — WhatsApp"
+          size="lg"
+        />
+        <WhatsAppCTA
+          message="Olá! Tenho uma dúvida técnica sobre compatibilidade dos produtos."
+          label="Dúvida técnica — WhatsApp"
+          size="md"
+        />
+      </div>
     </div>
   </section>
-</Layout>
+</BaseLayout>

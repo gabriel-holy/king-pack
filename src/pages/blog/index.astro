@@ -65,7 +65,7 @@ const blogSchema = {
           >
             <div class="mb-3 flex flex-wrap gap-2">
               {post.data.tags.slice(0, 2).map((tag: string) => (
-                <span class="rounded-sm bg-[rgba(77,171,247,0.10)] px-2 py-0.5 font-body text-xs font-medium text-accent">
+                <span class="max-w-full truncate rounded-sm bg-[rgba(77,171,247,0.10)] px-2 py-0.5 font-body text-xs font-medium text-accent">
                   {tag}
                 </span>
               ))}

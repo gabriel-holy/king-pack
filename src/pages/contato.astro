@@ -1,7 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import WhatsAppCTA from "../components/shared/WhatsAppCTA.astro";
+import FAQSection from "../components/shared/FAQSection.astro";
 import { company } from "../data/company";
+
+const faqItems = [
+  { question: "Qual o pedido mínimo?", answer: "A partir de 200 unidades por modelo para barricas de papelão e baldes plásticos. Para volumes menores, consulte disponibilidade." },
+  { question: "Vocês entregam fora de SP?", answer: "Sim! Atendemos todo o Brasil. Em SP a entrega é em até 48h. Para outros estados, o prazo depende da região — consulte no WhatsApp." },
+  { question: "A amostra é realmente grátis?", answer: "Sim, 100% grátis e sem compromisso. Enviamos a amostra para você testar na sua linha de produção real antes de fechar qualquer pedido." },
+  { question: "Prazo de entrega para pedidos recorrentes?", answer: "Para clientes recorrentes, mantemos estoque programado com entrega em 48h dentro de SP. Pedidos novos saem em 7 a 10 dias úteis." },
+  { question: "Posso personalizar cores ou impressão?", answer: "Sim! Oferecemos personalização de cores para baldes plásticos e impressão na capa kraft das barricas. Consulte quantidades mínimas para personalização." },
+  { question: "Quais produtos são compatíveis com as embalagens?", answer: "Nossas embalagens atendem tintas à base de água, grafiato, texturas, produtos de limpeza, agroquímicos e muito mais. Para produtos à base de solvente ou com pH extremo, consulte nosso técnico." },
+];
 
 const siteUrl = "https://barricasindustriais.com";
 
@@ -17,7 +27,7 @@ const contactPageSchema = {
   mainEntity: {
     "@type": "LocalBusiness",
     name: company.name,
-    telephone: company.phone,
+    telephone: `+${company.whatsapp}`,
     address: {
       "@type": "PostalAddress",
       streetAddress: `${company.address.street} - ${company.address.neighborhood}`,
@@ -37,9 +47,18 @@ const breadcrumbSchema = {
   ],
 };
 
+const faqSchema = {
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+
 const structuredData = {
   "@context": "https://schema.org",
-  "@graph": [contactPageSchema, breadcrumbSchema],
+  "@graph": [contactPageSchema, breadcrumbSchema, faqSchema],
 };
 ---
 
@@ -80,10 +99,11 @@ const structuredData = {
           Sem robô, sem fila. Você fala direto com quem decide.
         </p>
         <WhatsAppCTA
-          message="Olá! Vi o site da King Pack e quero falar sobre embalagens para minha produção."
+          message="Olá! Vi a página de contato da King Pack e quero falar sobre embalagens para minha produção."
           label="Chamar no WhatsApp agora"
           size="lg"
           class="mt-6 w-full justify-center"
+          showStatus={true}
         />
       </div>
     </div>
@@ -125,7 +145,7 @@ const structuredData = {
           </div>
         </div>
 
-        <!-- Dados da Empresa -->
+        <!-- Dados da Empresa + Mapa -->
         <div>
           <h2 class="font-heading text-xl font-semibold text-text-primary">
             Dados da Empresa
@@ -140,8 +160,22 @@ const structuredData = {
               <dd class="mt-1 text-text-primary">{company.hours}</dd>
             </div>
           </dl>
+          <div class="mt-6 overflow-hidden rounded-lg border border-border-subtle">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.5!2d-47.3322!3d-22.7394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDQ0JzIxLjgiUyA0N8KwMTknNTUuOSJX!5e0!3m2!1spt-BR!2sbr!4v1"
+              width="100%"
+              height="250"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Localização King Pack - Americana, SP"
+            ></iframe>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <FAQSection items={faqItems} />
 </BaseLayout>

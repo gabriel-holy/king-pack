@@ -119,9 +119,11 @@ Se voce busca reduzir a pegada ambiental da sua operacao sem comprometer desempe
 
 ## Fontes
 
-- [ANAP](https://anap.org.br/) — Associacao Nacional dos Aparistas de Papel. Relatorio Anual 2024.
+- [ANAP](https://anap.org.br/relatorio-anual-2024/) — Associacao Nacional dos Aparistas de Papel. Relatorio Anual 2024.
 - [ANAP/MaxiQuim](https://anap.org.br/category/noticias/) — Pesquisa de Monitoramento da Reciclagem de Papel no Brasil, 2024.
-- [CEMPRE](https://cempre.org.br/) — Compromisso Empresarial para Reciclagem. Fichas tecnicas de materiais.
+- [IBA](https://iba.org/en/publications/) — Industria Brasileira de Arvores. Indice de Reciclagem de Papelao Ondulado.
+- [CEMPRE](https://cempre.org.br/guia-de-reciclagem/) — Compromisso Empresarial para Reciclagem. Fichas tecnicas de materiais.
 - [Fibrestar Drums](https://fibrestar.co.uk/sustainability-2/) — Comparativo de pegada ambiental de embalagens industriais.
+- [GEP](https://www.gep.com/blog/mind/green-packaging-three-alternatives-redefining-industrial-drums) — Global Environmental Performance. Analise de ciclo de vida de embalagens.
 - [Lei 12.305/2010](https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12305.htm) — Politica Nacional de Residuos Solidos (PNRS).
 - [Decreto 12.688/2025](https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12688.htm) — Regulamentacao da logistica reversa de embalagens.

@@ -22,7 +22,7 @@ export const company = {
     yearsInMarket: 22,
     activeClients: 500,
     deliveryHours: 48,
-    defectRate: "0%",
+    defectRate: "< 0,3%",
   },
 } as const;
 

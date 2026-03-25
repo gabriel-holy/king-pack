@@ -3,6 +3,7 @@ interface Props {
   value: number;
   suffix?: string;
   duration?: number;
+  decimals?: number;
   class?: string;
 }
 
@@ -10,8 +11,11 @@ const {
   value,
   suffix = "",
   duration = 1200,
+  decimals = 0,
   class: className = "",
 } = Astro.props;
+
+const displayValue = decimals > 0 ? value.toFixed(decimals).replace('.', ',') : String(value);
 ---
 
 <span
@@ -20,9 +24,10 @@ const {
   data-countup-value={value}
   data-countup-suffix={suffix}
   data-countup-duration={duration}
+  data-countup-decimals={decimals}
   style="font-variant-numeric: tabular-nums;"
 >
-  {value}{suffix}
+  {displayValue}{suffix}
 </span>
 
 <script>
@@ -44,6 +49,7 @@ const {
           const target = Number(el.dataset.countupValue) || 0;
           const suffix = el.dataset.countupSuffix || '';
           const duration = Number(el.dataset.countupDuration) || 1200;
+          const decimals = Number(el.dataset.countupDecimals) || 0;
           const start = performance.now();
 
           el.textContent = `0${suffix}`;
@@ -52,12 +58,19 @@ const {
             return 1 - Math.pow(1 - t, 4);
           }
 
+          function formatValue(val: number): string {
+            if (decimals > 0) {
+              return val.toFixed(decimals).replace('.', ',');
+            }
+            return String(Math.round(val));
+          }
+
           function tick(now: number): void {
             const elapsed = now - start;
             const progress = Math.min(elapsed / duration, 1);
             const easedProgress = easeOutQuart(progress);
-            const current = Math.round(easedProgress * target);
-            el.textContent = `${current}${suffix}`;
+            const current = easedProgress * target;
+            el.textContent = `${formatValue(current)}${suffix}`;
 
             if (progress < 1) {
               requestAnimationFrame(tick);

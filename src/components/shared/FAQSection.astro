@@ -1,0 +1,46 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  items: FAQItem[];
+}
+
+const { title = "Perguntas Frequentes", items } = Astro.props;
+---
+
+<section class="bg-bg py-16">
+  <div class="mx-auto max-w-content px-6">
+    <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
+      {title}
+    </h2>
+    <div class="mt-8 divide-y divide-border-subtle rounded-lg border border-border-subtle">
+      {items.map((item) => (
+        <details class="group">
+          <summary class="flex cursor-pointer items-center justify-between px-6 py-4 font-body text-sm font-medium text-text-primary transition-colors hover:bg-surface/50">
+            {item.question}
+            <svg
+              class="ml-4 h-4 w-4 shrink-0 text-text-muted transition-transform group-open:rotate-180"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-4 font-body text-sm text-text-muted leading-relaxed">
+            {item.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

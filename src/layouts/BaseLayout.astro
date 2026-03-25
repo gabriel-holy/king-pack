@@ -48,10 +48,11 @@ const { title, description, ogImage, type, structuredData, noindex, articleMeta 
     />
   </head>
   <body class="min-h-screen bg-bg font-body text-text-primary antialiased">
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
     <div id="scroll-progress" aria-hidden="true"></div>
     <Header />
 
-    <main>
+    <main id="main-content">
       <slot />
     </main>
 

@@ -145,6 +145,6 @@ Se você fabrica tinta e quer entender como otimizar seus custos de embalagem, f
 ## Fontes
 
 - [ABRAFATI](https://abrafati.com.br/dados-do-setor/) (Associação Brasileira dos Fabricantes de Tintas) — Relatório Anual e Projeções 2024/2025
-- MoneyReport — Análise do Mercado de Tintas e Revestimentos no Brasil
+- [MoneyReport — Análise do Mercado de Tintas e Revestimentos no Brasil](https://www.moneyreport.com.br/economia/brasil-e-o-4%E1%B5%92-maior-produtor-de-tintas-com-faturamento-de-r-40-bi/)
 - [CartaCapital — Reportagem Especial: Indústria de Tintas](https://www.cartacapital.com.br/do-micro-ao-macro/industria-brasileira-de-tintas-bate-recorde-em-2024-com-crescimento-de-6/)
 - [INEOS — HDPE Chemical Resistance Guide](https://www.ineos.com/globalassets/ineos-group/businesses/ineos-olefins-and-polymers-usa/products/technical-information--patents/ineos-hdpe-chemical-resistance-guide.pdf)

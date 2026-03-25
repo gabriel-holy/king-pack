@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/home/Hero.astro";
-import TrustBar from "../components/home/TrustBar.astro";
-import MetricsStrip from "../components/home/MetricsStrip.astro";
+import TrustMetrics from "../components/home/TrustMetrics.astro";
+import PainPoints from "../components/home/PainPoints.astro";
 import ProductCards from "../components/home/ProductCards.astro";
 import HowItWorks from "../components/home/HowItWorks.astro";
 import Testimonials from "../components/home/Testimonials.astro";
 import FinalCTA from "../components/home/FinalCTA.astro";
+import InlineTestimonial from "../components/shared/InlineTestimonial.astro";
 import { company } from "../data/company";
 import { testimonials } from "../data/testimonials";
 
@@ -24,7 +25,7 @@ const localBusinessSchema = {
     postalCode: company.address.zip,
     addressCountry: company.address.country,
   },
-  telephone: company.phone,
+  telephone: `+${company.whatsapp}`,
   url: siteUrl,
   openingHours: "Mo-Fr 08:00-18:00",
   foundingDate: String(company.foundedYear),
@@ -89,8 +90,9 @@ const structuredData = {
   structuredData={structuredData}
 >
   <Hero />
-  <TrustBar />
-  <MetricsStrip />
+  <InlineTestimonial testimonial={testimonials[0]} />
+  <TrustMetrics />
+  <PainPoints />
   <ProductCards />
   <HowItWorks />
   <Testimonials />

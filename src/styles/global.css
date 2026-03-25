@@ -17,7 +17,7 @@
     --color-accent-bg: rgba(77, 171, 247, 0.10);
     --color-accent-border: rgba(77, 171, 247, 0.20);
     --color-text-primary: #f0f0f0;
-    --color-text-muted: #888888;
+    --color-text-muted: #a0a0a0;
 
     --radius-sm: 3px;
     --radius-md: 6px;
@@ -45,6 +45,25 @@
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
   }
+}
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 99999;
+  padding: 0.5rem 1rem;
+  background: var(--color-accent);
+  color: var(--color-bg-deep);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+.skip-link:focus {
+  left: 1rem;
 }
 
 /* Efeito 1 — Fade Up */

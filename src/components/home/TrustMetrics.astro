@@ -1,0 +1,50 @@
+---
+import { company } from "../../data/company";
+import CountUp from "../shared/CountUp.astro";
+
+const sectors = [
+  "Tintas",
+  "Grafiato",
+  "Texturas",
+  "Construção Civil",
+  "Agroquímicos",
+  "Produtos de Limpeza",
+];
+
+const metrics = [
+  { value: company.metrics.yearsInMarket, suffix: "+", label: "Anos de fabricação ininterrupta" },
+  { value: company.metrics.activeClients, suffix: "+", label: "Indústrias atendidas em SP" },
+  { value: company.metrics.deliveryHours, suffix: "h", label: "Horas da fábrica até sua porta" },
+  { value: 99.7, suffix: "%", label: "Entregas sem avaria", isDecimal: true },
+];
+---
+
+<section class="border-y border-border-subtle bg-surface py-10">
+  <div class="mx-auto max-w-content px-6">
+    <p class="text-center font-body text-sm text-text-muted">
+      500+ indústrias já usam nossas embalagens:
+      {sectors.map((sector, i) => (
+        <>
+          <span class="text-text-primary">{sector}</span>
+          {i < sectors.length - 1 && " · "}
+        </>
+      ))}
+    </p>
+
+    <div class="mt-8 flex flex-wrap justify-center md:flex-nowrap" data-stagger-parent>
+      {metrics.map((metric, i) => (
+        <>
+          <div class="flex w-1/2 flex-col items-center px-4 py-3 text-center md:w-1/4 md:py-0" data-fade-up>
+            <p class="font-heading text-2xl font-bold text-accent">
+              <CountUp value={metric.value} suffix={metric.suffix} decimals={'isDecimal' in metric && metric.isDecimal ? 1 : 0} />
+            </p>
+            <p class="mt-1 font-body text-xs text-text-muted">{metric.label}</p>
+          </div>
+          {i < metrics.length - 1 && (
+            <div class="hidden w-px self-stretch bg-border-subtle md:block" aria-hidden="true" />
+          )}
+        </>
+      ))}
+    </div>
+  </div>
+</section>

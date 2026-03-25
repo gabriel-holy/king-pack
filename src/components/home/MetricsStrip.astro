@@ -6,7 +6,7 @@ const metrics = [
   { value: company.metrics.yearsInMarket, suffix: "+", label: "Anos de fabricação ininterrupta" },
   { value: company.metrics.activeClients, suffix: "+", label: "Indústrias atendidas em SP" },
   { value: company.metrics.deliveryHours, suffix: "h", label: "Horas da fábrica até sua porta" },
-  { value: 0, suffix: "%", label: "Perdas no transporte" },
+  { value: 99.7, suffix: "%", label: "Entregas sem avaria", isDecimal: true },
 ];
 ---
 
@@ -16,7 +16,7 @@ const metrics = [
       <>
         <div class="flex w-1/2 flex-col items-center px-4 py-3 text-center md:w-1/4 md:py-0" data-fade-up>
           <p class="font-heading text-2xl font-bold text-accent">
-            <CountUp value={metric.value} suffix={metric.suffix} />
+            <CountUp value={metric.value} suffix={metric.suffix} decimals={'isDecimal' in metric && metric.isDecimal ? 1 : 0} />
           </p>
           <p class="mt-1 font-body text-xs text-text-muted">{metric.label}</p>
         </div>

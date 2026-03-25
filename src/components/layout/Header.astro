@@ -58,6 +58,8 @@ const navLinks = [
         type="button"
         class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-text-muted md:hidden"
         aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
         id="mobile-menu-btn"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -112,7 +114,10 @@ const navLinks = [
     const menu = document.getElementById("mobile-menu");
     if (btn && menu) {
       btn.addEventListener("click", () => {
+        const isOpen = !menu.classList.contains("hidden");
         menu.classList.toggle("hidden");
+        btn.setAttribute("aria-expanded", String(!isOpen));
+        btn.setAttribute("aria-label", isOpen ? "Abrir menu" : "Fechar menu");
       });
 
       menu.querySelectorAll("a").forEach((link) => {
@@ -124,6 +129,8 @@ const navLinks = [
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && !menu.classList.contains("hidden")) {
           menu.classList.add("hidden");
+          btn.setAttribute("aria-expanded", "false");
+          btn.setAttribute("aria-label", "Abrir menu");
           btn.focus();
         }
       });

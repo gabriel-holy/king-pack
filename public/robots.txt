@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /404
 
 Sitemap: https://barricasindustriais.com/sitemap-index.xml

@@ -9,9 +9,11 @@ const blog = defineCollection({
     slug: z.string(),
     description: z.string(),
     date: z.string(),
+    dateModified: z.string().optional(),
     author: z.string(),
     tags: z.array(z.string()),
     readingTime: z.number(),
+    image: z.string().optional(),
   }),
 });
 

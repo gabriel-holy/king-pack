@@ -12,12 +12,19 @@ interface Props {
   title: string;
   description: string;
   ogImage?: string;
-  type?: "website" | "product";
+  type?: "website" | "product" | "article";
   structuredData?: Record<string, unknown>;
   noindex?: boolean;
+  articleMeta?: {
+    publishedTime: string;
+    modifiedTime?: string;
+    author: string;
+    tags?: string[];
+    section?: string;
+  };
 }
 
-const { title, description, ogImage, type, structuredData, noindex } = Astro.props;
+const { title, description, ogImage, type, structuredData, noindex, articleMeta } = Astro.props;
 ---
 
 <!doctype html>
@@ -37,6 +44,7 @@ const { title, description, ogImage, type, structuredData, noindex } = Astro.pro
       type={type}
       structuredData={structuredData}
       noindex={noindex}
+      articleMeta={articleMeta}
     />
   </head>
   <body class="min-h-screen bg-bg font-body text-text-primary antialiased">

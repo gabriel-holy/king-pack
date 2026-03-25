@@ -68,8 +68,8 @@
 /* Efeito 4 — Text Reveal */
 .text-reveal {
   clip-path: inset(0 100% 0 0);
-  transition: clip-path 0.65s cubic-bezier(0.77, 0, 0.18, 1);
-  animation: text-reveal-fallback 0.65s cubic-bezier(0.77, 0, 0.18, 1) 1.5s forwards;
+  transition: clip-path 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+  animation: text-reveal-fallback 0.5s cubic-bezier(0.77, 0, 0.18, 1) 0.3s forwards;
 }
 .text-reveal.revealed {
   clip-path: inset(0 0% 0 0);

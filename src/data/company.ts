@@ -14,7 +14,7 @@ export const company = {
   whatsapp: "5519992580247",
   whatsappMessage:
     "Olá! Vi o site da King Pack e quero receber uma amostra grátis.",
-  email: "contato@barricasindustriais.com.br",
+  email: "",
   hours: "Segunda a Sexta, 8h às 18h",
   foundedYear: 2004,
   socialLinks: {} as Record<string, string>,

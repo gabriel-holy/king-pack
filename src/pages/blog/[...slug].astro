@@ -15,33 +15,60 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
+const siteUrl = "https://barricasindustriais.com";
+const postImage = post.data.image ?? "/og-default.jpg";
+
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${siteUrl}/blog` },
+    { "@type": "ListItem", position: 3, name: post.data.title },
+  ],
+};
+
 const articleSchema = {
   "@context": "https://schema.org",
-  "@type": "Article",
-  headline: post.data.title,
-  description: post.data.description,
-  datePublished: post.data.date,
-  author: {
-    "@type": "Organization",
-    name: post.data.author,
-  },
-  publisher: {
-    "@type": "Organization",
-    name: company.name,
-    url: "https://barricasindustriais.com",
-  },
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": `https://barricasindustriais.com/blog/${post.data.slug}`,
-  },
+  "@graph": [
+    {
+      "@type": "Article",
+      headline: post.data.title,
+      description: post.data.description,
+      datePublished: post.data.date,
+      dateModified: post.data.dateModified ?? post.data.date,
+      image: `${siteUrl}${postImage}`,
+      author: {
+        "@type": "Organization",
+        name: post.data.author,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: company.name,
+        url: siteUrl,
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `${siteUrl}/blog/${post.data.slug}`,
+      },
+    },
+    breadcrumbSchema,
+  ],
 };
 ---
 
 <BaseLayout
   title={`${post.data.title} — ${company.name}`}
   description={post.data.description}
-  type="website"
+  ogImage={postImage}
+  type="article"
   structuredData={articleSchema}
+  articleMeta={{
+    publishedTime: post.data.date,
+    modifiedTime: post.data.dateModified ?? post.data.date,
+    author: post.data.author,
+    tags: post.data.tags,
+    section: "Embalagens Industriais",
+  }}
 >
   <article class="mx-auto max-w-text px-6 py-16">
     <!-- Breadcrumb -->

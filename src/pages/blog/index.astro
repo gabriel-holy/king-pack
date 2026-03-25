@@ -7,17 +7,32 @@ const posts = (await getCollection("blog")).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 
+const siteUrl = "https://barricasindustriais.com";
+
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Blog" },
+  ],
+};
+
 const blogSchema = {
   "@context": "https://schema.org",
-  "@type": "Blog",
-  name: `Blog ${company.name}`,
-  description:
-    "Conteúdo técnico sobre embalagens industriais: barricas de papelão, baldes plásticos, compatibilidade química e logística.",
-  url: "https://barricasindustriais.com/blog",
-  publisher: {
-    "@type": "Organization",
-    name: company.name,
-  },
+  "@graph": [
+    {
+      "@type": "Blog",
+      name: `Blog ${company.name}`,
+      description:
+        "Conteúdo técnico sobre embalagens industriais: barricas de papelão, baldes plásticos, compatibilidade química e logística.",
+      url: `${siteUrl}/blog`,
+      publisher: {
+        "@type": "Organization",
+        name: company.name,
+      },
+    },
+    breadcrumbSchema,
+  ],
 };
 ---
 

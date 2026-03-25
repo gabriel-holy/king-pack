@@ -39,9 +39,9 @@ const defaultSpecs: SpecRow[] = generalSpecs ?? [
 ];
 ---
 
-<section class="bg-bg py-16">
+<section class="bg-bg py-16" aria-labelledby="specs-heading">
   <div class="mx-auto max-w-content px-6">
-    <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
+    <h2 id="specs-heading" class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
       {title}
     </h2>
 
@@ -69,13 +69,14 @@ const defaultSpecs: SpecRow[] = generalSpecs ?? [
         {/* Desktop table */}
         <div class="mt-4 hidden overflow-x-auto sm:block">
           <table class="w-full text-left font-body text-sm">
+            <caption class="sr-only">Tabela de modelos disponíveis com capacidade, dimensões, parede e revestimento</caption>
             <thead class="border-b border-border-subtle text-text-muted">
               <tr>
-                <th class="pb-3 pr-6 font-medium">Modelo</th>
-                <th class="pb-3 pr-6 font-medium">Capacidade</th>
-                <th class="pb-3 pr-6 font-medium">Dimensões (DxA)</th>
-                <th class="pb-3 pr-6 font-medium">Parede</th>
-                <th class="pb-3 font-medium">Revestimento</th>
+                <th scope="col" class="pb-3 pr-6 font-medium">Modelo</th>
+                <th scope="col" class="pb-3 pr-6 font-medium">Capacidade</th>
+                <th scope="col" class="pb-3 pr-6 font-medium">Dimensões (DxA)</th>
+                <th scope="col" class="pb-3 pr-6 font-medium">Parede</th>
+                <th scope="col" class="pb-3 font-medium">Revestimento</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-border-subtle">

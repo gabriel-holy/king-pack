@@ -4,9 +4,9 @@ import TestimonialCard from "../shared/TestimonialCard.astro";
 import { testimonials } from "../../data/testimonials";
 ---
 
-<section class="bg-surface py-16">
+<section class="bg-surface py-16" aria-labelledby="testimonials-heading">
   <div class="mx-auto max-w-content px-6">
-    <SectionHeader title="Quem trocou de fornecedor não voltou atrás" />
+    <SectionHeader title="Quem trocou de fornecedor não voltou atrás" id="testimonials-heading" />
     <div class="mt-12 grid gap-8 md:grid-cols-2" data-stagger-parent>
       {testimonials.map((t) => (
         <div data-fade-up><TestimonialCard testimonial={t} /></div>

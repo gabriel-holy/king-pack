@@ -99,9 +99,14 @@ const jsonLd = structuredData ?? defaultStructuredData;
   </>
 )}
 
-<!-- Geo -->
+<!-- Geo & Language targeting -->
 <meta name="geo.region" content="BR-SP" />
 <meta name="geo.placename" content="Americana" />
+<meta name="geo.position" content="-22.7394;-47.3322" />
+<meta name="ICBM" content="-22.7394, -47.3322" />
+<meta http-equiv="content-language" content="pt-BR" />
+<meta name="target" content="BR" />
+<meta name="audience" content="BR" />
 
 <!-- Structured Data -->
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

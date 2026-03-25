@@ -22,11 +22,12 @@ const products = [
 ];
 ---
 
-<section class="bg-surface py-16">
+<section class="bg-surface py-16" aria-labelledby="products-heading">
   <div class="mx-auto max-w-content px-6">
     <SectionHeader
       title="Qual embalagem sua produção precisa?"
       subtitle="Escolha o tipo e veja as especificações técnicas completas — sem cadastro."
+      id="products-heading"
     />
     <div class="mt-12 grid gap-8 md:grid-cols-2" data-stagger-parent>
       {products.map((product) => (

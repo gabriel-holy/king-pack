@@ -19,11 +19,11 @@ export const products: ProductSpec[] = [
     name: "Barricas de Papelão",
     slug: "barricas",
     tagline: "A barrica que 500+ indústrias escolheram para não parar",
-    capacities: ["20L", "50L", "100L", "200L"],
-    material: "Papelão kraft multicamadas com tampa prensada e fundo reforçado",
-    stackingResistance: "até 500kg",
+    capacities: ["14L", "16L", "18L", "20L"],
+    material: "Papelão maculatura com capa kraft, tampa e fundo de plástico",
+    stackingResistance: "Máximo 3 barricas",
     moistureResistance: "Revestimento interno PE ou alumínio opcional",
-    minOrder: "500 unidades",
+    minOrder: "A combinar",
     leadTime: "10 dias úteis",
     applications: [
       "Tintas e Vernizes",
@@ -33,7 +33,7 @@ export const products: ProductSpec[] = [
       "Construção Civil",
     ],
     chemicalCompatibility:
-      "Compatível com produtos à base de água e solvente. Revestimento de alumínio para pH extremo.",
+      "Compatível com produtos à base de água. Solventes apenas em embalagem de lata.",
   },
   {
     id: "baldes",

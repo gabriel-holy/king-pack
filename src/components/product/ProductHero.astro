@@ -38,12 +38,12 @@ const secondaryHref = secondaryCtaMessage
 
 <section class="relative overflow-hidden bg-bg-deep py-20 lg:py-24">
   <div class="mx-auto max-w-content px-6">
-    <div class:list={["grid items-center gap-12", image && "lg:grid-cols-2"]}>
+    <div class:list={["grid items-center gap-12", image && "md:grid-cols-2"]}>
       <div>
         <p class="font-body text-xs font-medium uppercase tracking-widest text-accent" data-fade-up>
           {eyebrow}
         </p>
-        <h1 class="text-reveal mt-4 font-heading text-4xl font-bold tracking-tight text-text-primary lg:text-hero">
+        <h1 class="text-reveal mt-4 font-heading text-[clamp(1.75rem,5vw,3.75rem)] font-bold tracking-tight text-text-primary">
           {title}
         </h1>
         <p class="mt-4 max-w-text font-body text-lg text-text-muted" data-fade-up data-fade-delay="200">
@@ -70,7 +70,7 @@ const secondaryHref = secondaryCtaMessage
         </div>
       </div>
       {image && (
-        <div class="hidden overflow-hidden rounded-lg lg:block" data-fade-up data-fade-delay="300">
+        <div class="hidden overflow-hidden rounded-lg md:block" data-fade-up data-fade-delay="300">
           <img
             src={image}
             alt={imageAlt}

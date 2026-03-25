@@ -66,7 +66,7 @@ const defaultSpecs: SpecRow[] = generalSpecs ?? [
           Modelos disponíveis
         </h3>
         <div class="mt-4 overflow-x-auto">
-          <table class="w-full text-left font-body text-sm">
+          <table class="w-full min-w-[600px] text-left font-body text-sm">
             <thead class="border-b border-border-subtle text-text-muted">
               <tr>
                 <th class="pb-3 pr-6 font-medium">Modelo</th>
@@ -79,10 +79,10 @@ const defaultSpecs: SpecRow[] = generalSpecs ?? [
             <tbody class="divide-y divide-border-subtle">
               {models.map((row) => (
                 <tr>
-                  <td class="py-3 pr-6 font-medium text-text-primary">{row.model}</td>
-                  <td class="py-3 pr-6 text-text-muted">{row.capacity}</td>
-                  <td class="py-3 pr-6 text-text-muted">{row.dimensions}</td>
-                  <td class="py-3 pr-6 text-text-muted">{row.wall}</td>
+                  <td class="whitespace-nowrap py-3 pr-6 font-medium text-text-primary">{row.model}</td>
+                  <td class="whitespace-nowrap py-3 pr-6 text-text-muted">{row.capacity}</td>
+                  <td class="whitespace-nowrap py-3 pr-6 text-text-muted">{row.dimensions}</td>
+                  <td class="whitespace-nowrap py-3 pr-6 text-text-muted">{row.wall}</td>
                   <td class="py-3 text-text-muted">{row.lining}</td>
                 </tr>
               ))}

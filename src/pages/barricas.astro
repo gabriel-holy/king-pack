@@ -11,20 +11,20 @@ import { company } from "../data/company";
 const product = products.find((p) => p.id === "barricas")!;
 
 const barricaModels = [
+  { model: "BP-14", capacity: "14L", dimensions: "260 x 320 mm", wall: "3mm dupla", lining: "Opcional (PE)" },
+  { model: "BP-16", capacity: "16L", dimensions: "270 x 340 mm", wall: "3mm dupla", lining: "Opcional (PE)" },
+  { model: "BP-18", capacity: "18L", dimensions: "280 x 360 mm", wall: "3mm dupla", lining: "Opcional (PE)" },
   { model: "BP-20", capacity: "20L", dimensions: "290 x 380 mm", wall: "3mm dupla", lining: "Opcional (PE)" },
-  { model: "BP-50", capacity: "50L", dimensions: "370 x 520 mm", wall: "4mm dupla", lining: "Opcional (PE)" },
-  { model: "BP-100", capacity: "100L", dimensions: "450 x 650 mm", wall: "5mm tripla", lining: "Opcional (PE/Alumínio)" },
-  { model: "BP-200", capacity: "200L", dimensions: "580 x 880 mm", wall: "6mm tripla", lining: "Opcional (PE/Alumínio)" },
 ];
 
 const applications = [
   {
     name: "Tintas e Vernizes",
-    description: "Revestimento interno PE ou alumínio que protege tinta à base de água e solvente. Empresas como a sua já despacham 10.000+ barricas/mês com zero perda.",
+    description: "Revestimento interno PE ou alumínio que protege tinta à base de água. Empresas como a sua já despacham 10.000+ barricas/mês com zero perda.",
   },
   {
     name: "Grafiato e Texturas",
-    description: "Fundo reforçado que aguenta o peso do grafiato sem deformar. Empilhamento seguro até 500kg — do estoque ao caminhão.",
+    description: "Fundo reforçado que aguenta o peso do grafiato sem deformar. Empilhamento seguro de até 3 barricas — do estoque ao caminhão.",
   },
   {
     name: "Construção Civil",
@@ -107,15 +107,15 @@ const productStructuredData = {
 ---
 
 <BaseLayout
-  title="Barricas de Papelão Industrial 20-200L · Amostra Grátis · King Pack"
-  description="Barricas de papelão kraft 20-200L com 500kg de resistência. Amostra grátis em 48h. Fábrica própria em Americana-SP. Fale no WhatsApp."
+  title="Barricas de Papelão Industrial 14-20L · Amostra Grátis · King Pack"
+  description="Barricas de papelão maculatura 14-20L com empilhamento de até 3 barricas. Amostra grátis em 48h. Fábrica própria em Americana-SP. Fale no WhatsApp."
   type="product"
   structuredData={productStructuredData}
 >
   <ProductHero
     eyebrow="Barrica de Papelão"
-    title="Barricas de Papelão de 20 a 200L. Aguentam o peso da sua produção."
-    description="Papelão kraft multicamadas de 20L a 200L. Empilhamento até 500kg, zero vazamento no transporte, revestimento interno opcional. Testada por 500+ indústrias de tintas, químicos e agroquímicos."
+    title="Barricas de Papelão de 14 a 20L. Aguentam o peso da sua produção."
+    description="Papelão maculatura com capa kraft de 14L a 20L. Empilhamento de até 3 barricas, zero vazamento no transporte, tampa e fundo de plástico. Testada por 500+ indústrias de tintas, químicos e agroquímicos."
     ctaMessage="Olá! Quero receber uma amostra grátis de barrica de papelão. Minha necessidade é [volume/produto]."
     ctaLabel="Receber amostra grátis"
     secondaryCtaMessage="Olá! Tenho uma dúvida técnica sobre compatibilidade dos produtos."

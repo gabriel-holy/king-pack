@@ -122,7 +122,7 @@ Solicite uma amostra grátis e faça o teste com seu produto. Nosso time técnic
 
 ## Fontes
 
-- ABRAFATI (Associação Brasileira dos Fabricantes de Tintas) — Dados de mercado 2024
-- INEOS — HDPE Chemical Resistance Guide
-- Calpac Lab — Chemical Compatibility Charts
-- MoneyReport — Relatório Indústria de Tintas Brasil 2024
+- [ABRAFATI](https://abrafati.com.br/dados-do-setor/) (Associação Brasileira dos Fabricantes de Tintas) — Dados de mercado 2024
+- [INEOS — HDPE Chemical Resistance Guide](https://www.ineos.com/globalassets/ineos-group/businesses/ineos-olefins-and-polymers-usa/products/technical-information--patents/ineos-hdpe-chemical-resistance-guide.pdf)
+- [Calpac Lab — Chemical Compatibility Charts](https://www.calpaclab.com/chemical-charts/)
+- [MoneyReport — Relatório Indústria de Tintas Brasil 2024](https://www.moneyreport.com.br/economia/brasil-e-o-4%E1%B5%92-maior-produtor-de-tintas-com-faturamento-de-r-40-bi/)

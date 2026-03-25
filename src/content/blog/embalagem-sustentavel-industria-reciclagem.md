@@ -119,11 +119,9 @@ Se voce busca reduzir a pegada ambiental da sua operacao sem comprometer desempe
 
 ## Fontes
 
-- ANAP — Associacao Nacional dos Aparistas de Papel. Relatorio Anual 2024.
-- ANAP/MaxiQuim — Pesquisa de Monitoramento da Reciclagem de Papel no Brasil, 2024.
-- IBA — Indice de Reciclagem de Papelao Ondulado.
-- CEMPRE — Compromisso Empresarial para Reciclagem. Fichas tecnicas de materiais.
-- Fibrestar Drums — Comparativo de pegada ambiental de embalagens industriais.
-- GEP — Global Environmental Performance. Analise de ciclo de vida de embalagens.
-- Lei 12.305/2010 — Politica Nacional de Residuos Solidos (PNRS).
-- Decreto 12.688/2025 — Regulamentacao da logistica reversa de embalagens.
+- [ANAP](https://anap.org.br/) — Associacao Nacional dos Aparistas de Papel. Relatorio Anual 2024.
+- [ANAP/MaxiQuim](https://anap.org.br/category/noticias/) — Pesquisa de Monitoramento da Reciclagem de Papel no Brasil, 2024.
+- [CEMPRE](https://cempre.org.br/) — Compromisso Empresarial para Reciclagem. Fichas tecnicas de materiais.
+- [Fibrestar Drums](https://fibrestar.co.uk/sustainability-2/) — Comparativo de pegada ambiental de embalagens industriais.
+- [Lei 12.305/2010](https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12305.htm) — Politica Nacional de Residuos Solidos (PNRS).
+- [Decreto 12.688/2025](https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12688.htm) — Regulamentacao da logistica reversa de embalagens.

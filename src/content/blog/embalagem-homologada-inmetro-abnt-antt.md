@@ -140,11 +140,11 @@ Se voce precisa de embalagem homologada para transporte de produtos perigosos, e
 
 ## Fontes
 
-- ABNT NBR 11274 — Classificacao de tambores
-- ABNT NBR 11564:2021 — Embalagens para transporte de produtos perigosos — Requisitos e metodos de ensaio
-- ABNT NBR 13230 — Simbologia de plasticos reciclaveis
-- ABNT NBR 15792 — Indice de reciclagem
-- ABNT NBR 16182 — Simbologia para disposicao seletiva
-- INMETRO — Programa de Avaliacao da Conformidade para Embalagens para Transporte de Produtos Perigosos
-- Resolucao ANTT 5998/2022 — Regulamento para transporte rodoviario de produtos perigosos
-- ONU — "Recommendations on the Transport of Dangerous Goods — Model Regulations" (Orange Book)
+- [ABNT NBR 11274](https://www.target.com.br/produtos/normas-tecnicas/36808/nbr11274-tambores) — Classificacao de tambores
+- [ABNT NBR 11564:2021](https://www.target.com.br/produtos/normas-tecnicas/36819/nbr11564-embalagens-embalagens-grandes-e-contentores-intermediarios-para-granel-ibc-de-produtos-perigosos-classes-134568-e-9-requisitos-e-metodos-de-ensaios) — Embalagens para transporte de produtos perigosos — Requisitos e metodos de ensaio
+- [ABNT NBR 13230](https://www.target.com.br/produtos/normas-tecnicas/40184/nbr13230-embalagens-e-acondicionamento-plasticos-reciclaveis-identificacao-e-simbologia) — Simbologia de plasticos reciclaveis
+- [ABNT NBR 15792](https://www.target.com.br/produtos/normas-tecnicas/41357/nbr15792-embalagem-indice-de-reciclagem-definicoes-e-metodo-de-calculo) — Indice de reciclagem
+- [ABNT NBR 16182](https://www.target.com.br/produtos/normas-tecnicas/43065/nbr16182-embalagem-e-acondicionamento-simbologia-de-orientacao-de-descarte-seletivo-e-de-identificacaode-materiais) — Simbologia para disposicao seletiva
+- [INMETRO](https://www.gov.br/inmetro/pt-br) — Programa de Avaliacao da Conformidade para Embalagens para Transporte de Produtos Perigosos
+- [Resolucao ANTT 5998/2022](https://anttlegis.antt.gov.br/action/ActionDatalegis.php?acao=detalharAto&tipo=RES&numeroAto=00005998&seqAto=000&valorAno=2022&orgao=DG/ANTT/MI&codTipo=&desItem=&desItemFim=&cod_menu=5408&cod_modulo=161&pesquisa=true) — Regulamento para transporte rodoviario de produtos perigosos
+- [ONU — "Recommendations on the Transport of Dangerous Goods — Model Regulations" (Orange Book)](https://unece.org/transport/dangerous-goods/un-model-regulations-rev-23)

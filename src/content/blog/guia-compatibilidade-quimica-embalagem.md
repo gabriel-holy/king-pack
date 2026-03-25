@@ -184,7 +184,7 @@ Mande uma mensagem no WhatsApp com a ficha técnica do seu produto. Respondemos 
 
 ## Fontes
 
-- INEOS — HDPE Chemical Resistance Guide (dados de compatibilidade PEAD)
-- Calpac Lab — Chemical Compatibility Charts (dados PP e tabelas gerais)
-- Air Sea Containers — Chemical Compatibility Guide (dados Metal e Fibra)
-- ABRAFATI — Dados de mercado e segmentação de tintas
+- [INEOS — HDPE Chemical Resistance Guide](https://www.ineos.com/globalassets/ineos-group/businesses/ineos-olefins-and-polymers-usa/products/technical-information--patents/ineos-hdpe-chemical-resistance-guide.pdf) (dados de compatibilidade PEAD)
+- [Calpac Lab — Chemical Compatibility Charts](https://www.calpaclab.com/chemical-charts/) (dados PP e tabelas gerais)
+- [Air Sea Containers — Chemical Compatibility Guide](https://airseacontainers.com/blog/chemical-storage-guidelines/) (dados Metal e Fibra)
+- [ABRAFATI](https://abrafati.com.br/dados-do-setor/) — Dados de mercado e segmentação de tintas

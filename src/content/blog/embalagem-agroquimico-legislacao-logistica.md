@@ -137,10 +137,10 @@ Precisa de [baldes PEAD](/baldes) para agroquímico? Fale com quem entende de no
 
 ## Fontes
 
-- Brasil. Lei Federal 9.974, de 6 de junho de 2000. Altera a Lei 7.802/1989 (agrotóxicos).
-- CONAMA. Resolução 465, de 5 de dezembro de 2014. Licenciamento ambiental de unidades de recebimento de embalagens vazias.
-- inpEV. Relatório anual do Sistema Campo Limpo. Disponível em: https://www.inpev.org.br
-- SINIR (Sistema Nacional de Informações sobre a Gestão dos Resíduos Sólidos). Logística reversa de embalagens de agrotóxicos.
-- ANTT. Resolução 5998, de 2022. Transporte terrestre de produtos perigosos. Em vigor desde 01/06/2023.
-- INMETRO. Regulamento de avaliação da conformidade para embalagens de produtos perigosos.
-- ONU. "Recommendations on the Transport of Dangerous Goods: Model Regulations" (Orange Book).
+- [Brasil. Lei Federal 9.974/2000](https://www.planalto.gov.br/ccivil_03/leis/l9974.htm). Altera a Lei 7.802/1989 (agrotóxicos).
+- [CONAMA. Resolução 465/2014](https://www.ibama.gov.br/component/legislacao/?view=legislacao&legislacao=134749). Licenciamento ambiental de unidades de recebimento de embalagens vazias.
+- [inpEV](https://www.inpev.org.br/noticias-publicacoes/relatorio-sustentabilidade/). Relatório anual do Sistema Campo Limpo.
+- [SINIR](https://sinir.gov.br/perfis/logistica-reversa/logistica-reversa/agrotoxicos-seus-residuos-e-embalagens/). Logística reversa de embalagens de agrotóxicos.
+- [ANTT. Resolução 5998/2022](https://anttlegis.antt.gov.br/action/ActionDatalegis.php?acao=detalharAto&tipo=RES&numeroAto=00005998&seqAto=000&valorAno=2022&orgao=DG/ANTT/MI&codTipo=&desItem=&desItemFim=&cod_menu=5408&cod_modulo=161&pesquisa=true). Transporte terrestre de produtos perigosos. Em vigor desde 01/06/2023.
+- [INMETRO](https://www.gov.br/inmetro/pt-br). Regulamento de avaliação da conformidade para embalagens de produtos perigosos.
+- [ONU. "Recommendations on the Transport of Dangerous Goods: Model Regulations" (Orange Book)](https://unece.org/transport/dangerous-goods/un-model-regulations-rev-23).

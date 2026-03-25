@@ -101,6 +101,6 @@ Manda o peso e o volume do seu produto. A gente dimensiona a [barrica](/barricas
 
 ## Fontes
 
-- ABRAFATI. Dados do setor de tintas 2024. Disponível em: https://www.abrafati.com.br
-- Graffiare. Catálogo de produtos: textura acrílica 50L. Disponível em: https://www.graffiare.com.br
+- [ABRAFATI](https://abrafati.com.br/dados-do-setor/). Dados do setor de tintas 2024.
+- [Graffiare](https://www.graffiare.com.br/loja/). Catálogo de produtos: textura acrílica 50L.
 - King Pack. Linha de barricas de papelão: modelos BP-14 a BP-20

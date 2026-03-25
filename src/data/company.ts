@@ -10,8 +10,8 @@ export const company = {
     zip: "13474-764",
     country: "BR",
   },
-  phone: "(19) 99258-0247",
-  whatsapp: "5519992580247",
+  phone: "(19) 99332-0250",
+  whatsapp: "5519993320250",
   whatsappMessage:
     "Olá! Vi o site da King Pack e quero receber uma amostra grátis.",
   email: "",

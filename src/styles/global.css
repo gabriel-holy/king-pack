@@ -66,6 +66,63 @@
   left: 1rem;
 }
 
+/* Screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg-deep);
+}
+
+/* High Contrast / Forced Colors */
+@media (prefers-contrast: more) {
+  :root {
+    --color-text-muted: #c0c0c0;
+    --color-border-subtle: #606060;
+    --color-accent: #66bbff;
+  }
+
+  *:focus-visible {
+    outline-width: 3px;
+  }
+}
+
+@media (forced-colors: active) {
+  *:focus-visible {
+    outline: 3px solid LinkText;
+  }
+
+  .skip-link {
+    background: Canvas;
+    color: LinkText;
+    border: 2px solid LinkText;
+  }
+}
+
+/* Reduced Transparency */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --color-accent-bg: rgba(77, 171, 247, 0.25);
+    --color-accent-border: rgba(77, 171, 247, 0.40);
+  }
+
+  header {
+    backdrop-filter: none;
+    background-color: var(--color-bg-deep) !important;
+  }
+}
+
 /* Efeito 1 — Fade Up */
 [data-fade-up] {
   opacity: 0;

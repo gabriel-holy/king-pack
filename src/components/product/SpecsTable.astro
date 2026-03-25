@@ -48,7 +48,7 @@ const defaultSpecs: SpecRow[] = generalSpecs ?? [
     {/* General specs — key-value list, mobile-friendly */}
     <div class="mt-8 grid gap-0 divide-y divide-border-subtle rounded-lg border border-border-subtle">
       {defaultSpecs.map((spec) => (
-        <div class="flex flex-col gap-1 px-6 py-4 sm:flex-row sm:gap-8">
+        <div class="flex flex-col gap-1 px-6 py-4 transition-colors hover:bg-surface/50 sm:flex-row sm:gap-8">
           <span class="shrink-0 font-body text-sm font-medium text-text-muted sm:w-[220px] sm:pt-0.5">
             {spec.label}
           </span>
@@ -59,14 +59,16 @@ const defaultSpecs: SpecRow[] = generalSpecs ?? [
       ))}
     </div>
 
-    {/* Models table — horizontal scroll on mobile */}
+    {/* Models — table on desktop, cards on mobile */}
     {models && models.length > 0 && (
       <div class="mt-8">
         <h3 class="font-heading text-lg font-semibold text-text-primary">
           Modelos disponíveis
         </h3>
-        <div class="mt-4 overflow-x-auto">
-          <table class="w-full min-w-[600px] text-left font-body text-sm">
+
+        {/* Desktop table */}
+        <div class="mt-4 hidden overflow-x-auto sm:block">
+          <table class="w-full text-left font-body text-sm">
             <thead class="border-b border-border-subtle text-text-muted">
               <tr>
                 <th class="pb-3 pr-6 font-medium">Modelo</th>
@@ -78,7 +80,7 @@ const defaultSpecs: SpecRow[] = generalSpecs ?? [
             </thead>
             <tbody class="divide-y divide-border-subtle">
               {models.map((row) => (
-                <tr>
+                <tr class="transition-colors hover:bg-surface/50">
                   <td class="whitespace-nowrap py-3 pr-6 font-medium text-text-primary">{row.model}</td>
                   <td class="whitespace-nowrap py-3 pr-6 text-text-muted">{row.capacity}</td>
                   <td class="whitespace-nowrap py-3 pr-6 text-text-muted">{row.dimensions}</td>
@@ -88,6 +90,33 @@ const defaultSpecs: SpecRow[] = generalSpecs ?? [
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile cards */}
+        <div class="mt-4 grid gap-3 sm:hidden">
+          {models.map((row) => (
+            <div class="rounded-lg border border-border-subtle p-4">
+              <p class="font-heading text-base font-semibold text-accent">{row.model}</p>
+              <dl class="mt-2 grid grid-cols-2 gap-x-4 gap-y-2 font-body text-sm">
+                <div>
+                  <dt class="text-text-muted">Capacidade</dt>
+                  <dd class="font-medium text-text-primary">{row.capacity}</dd>
+                </div>
+                <div>
+                  <dt class="text-text-muted">Dimensões</dt>
+                  <dd class="font-medium text-text-primary">{row.dimensions}</dd>
+                </div>
+                <div>
+                  <dt class="text-text-muted">Parede</dt>
+                  <dd class="font-medium text-text-primary">{row.wall}</dd>
+                </div>
+                <div>
+                  <dt class="text-text-muted">Revestimento</dt>
+                  <dd class="font-medium text-text-primary">{row.lining}</dd>
+                </div>
+              </dl>
+            </div>
+          ))}
         </div>
       </div>
     )}

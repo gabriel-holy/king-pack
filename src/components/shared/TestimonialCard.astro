@@ -10,14 +10,16 @@ const { testimonial } = Astro.props;
 
 <div class="rounded-lg border border-border-subtle bg-bg p-8">
   <blockquote class="font-body text-sm leading-relaxed text-text-muted">
-    &ldquo;{testimonial.quote}&rdquo;
+    <p>&ldquo;{testimonial.quote}&rdquo;</p>
+    <footer class="mt-6">
+      <cite class="not-italic">
+        <span class="font-heading text-sm font-semibold text-text-primary">
+          {testimonial.author}
+        </span>
+        <span class="block font-body text-xs text-text-muted">
+          {testimonial.role} — {testimonial.company}, {testimonial.city}
+        </span>
+      </cite>
+    </footer>
   </blockquote>
-  <div class="mt-6">
-    <p class="font-heading text-sm font-semibold text-text-primary">
-      {testimonial.author}
-    </p>
-    <p class="font-body text-xs text-text-muted">
-      {testimonial.role} — {testimonial.company}, {testimonial.city}
-    </p>
-  </div>
 </div>

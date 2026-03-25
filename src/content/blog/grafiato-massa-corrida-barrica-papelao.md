@@ -42,7 +42,7 @@ A hierarquia de custo por unidade, para volumes equivalentes na faixa de 14 a 20
 
 Para um fabricante de grafiato que embala milhares de unidades por mês, a diferença de custo unitário entre papelão e plástico se multiplica rápido. Quando o produto é compatível com papelão — e esse é o caso dos pastosos — não há justificativa técnica para pagar mais caro.
 
-A King Pack fabrica [barricas de papelão](/barricas) nos modelos BP-14 (14L), BP-16 (16L), BP-18 (18L) e BP-20 (20L). O material é papelão maculatura com capa kraft, tampa e fundo de plástico. Essa configuração atende a faixa de volume mais comum para texturas e massas vendidas no varejo de construção civil.
+A King Pack fabrica [barricas de papelão](/barricas) nos modelos BP-14 (14L), BP-16 (16L), BP-18 (18L) e BP-20 (20L). O material é papelão maculatura com capa semi kraft, tampa e fundo plásticos fixados com grampos industriais de alta resistência. Essa configuração atende a faixa de volume mais comum para texturas e massas vendidas no varejo de construção civil.
 
 ## Empilhamento e logística
 

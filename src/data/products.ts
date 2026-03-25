@@ -20,7 +20,7 @@ export const products: ProductSpec[] = [
     slug: "barricas",
     tagline: "A barrica que 500+ indústrias escolheram para não parar",
     capacities: ["14L", "16L", "18L", "20L"],
-    material: "Papelão maculatura com capa kraft, tampa e fundo de plástico",
+    material: "Papelão maculatura com capa semi kraft, tampa e fundo plásticos com grampos industriais de alta resistência",
     stackingResistance: "Máximo 3 barricas",
     moistureResistance: "Revestimento interno PE ou alumínio opcional",
     minOrder: "A combinar",

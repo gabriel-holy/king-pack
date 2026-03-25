@@ -93,9 +93,9 @@ const { title, description, ogImage, type, structuredData, noindex } = Astro.pro
       }
 
       function initAll(): void {
-        initFadeUp();
-        initScrollProgress();
-        initTextReveal();
+        try { initFadeUp(); } catch (_) {}
+        try { initScrollProgress(); } catch (_) {}
+        try { initTextReveal(); } catch (_) {}
       }
 
       initAll();

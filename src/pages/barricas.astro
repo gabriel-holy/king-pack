@@ -7,6 +7,7 @@ import ObjectionEliminator from "../components/product/ObjectionEliminator.astro
 import WhatsAppCTA from "../components/shared/WhatsAppCTA.astro";
 import { products } from "../data/products";
 import { company } from "../data/company";
+import warehousePalletsImg from "../assets/images/products/warehouse-pallets.jpg";
 
 const product = products.find((p) => p.id === "barricas")!;
 
@@ -109,6 +110,7 @@ const productStructuredData = {
 <BaseLayout
   title="Barricas de Papelão Industrial 14-20L · Amostra Grátis · King Pack"
   description="Barricas de papelão maculatura 14-20L com empilhamento de até 3 barricas. Amostra grátis em 48h. Fábrica própria em Americana-SP. Fale no WhatsApp."
+  ogImage="/images/og/og-barricas.jpg"
   type="product"
   structuredData={productStructuredData}
 >
@@ -120,10 +122,8 @@ const productStructuredData = {
     ctaLabel="Receber amostra grátis"
     secondaryCtaMessage="Olá! Tenho uma dúvida técnica sobre compatibilidade dos produtos."
     secondaryCtaLabel="Dúvida técnica — WhatsApp"
-    image="/images/products/warehouse-pallets.jpg"
+    image={warehousePalletsImg}
     imageAlt="Produtos embalados em pallets dentro de galpão industrial"
-    imageWidth={1200}
-    imageHeight={800}
   />
 
   <SpecsTable
@@ -134,6 +134,18 @@ const productStructuredData = {
   <ApplicationCards applications={applications} />
 
   <ObjectionEliminator objections={objections} />
+
+  <!-- Cross-link -->
+  <section class="bg-surface py-12">
+    <div class="mx-auto max-w-text px-6 text-center">
+      <p class="font-body text-sm text-text-muted">
+        Precisa de embalagem plástica também?
+      </p>
+      <a href="/baldes" class="mt-2 inline-block font-heading text-sm font-semibold text-accent hover:text-accent-hover">
+        Ver Baldes Plásticos 3,6-20L &rarr;
+      </a>
+    </div>
+  </section>
 
   <!-- CTA Final -->
   <section class="bg-bg-deep py-16">

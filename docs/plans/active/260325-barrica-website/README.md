@@ -67,7 +67,7 @@ Layer 3 (verificação final):
 | 008 | SEO Deep Optimization | 006, 007 | Varus-e4b8 | `done` | 2026-03-25 | 2026-03-25 |
 | 009 | Copy Refinements (Revisao Copywriting) | 007 | Senna-f2a9 | `done` | 2026-03-25 | 2026-03-25 |
 | 010 | Animacoes e Transicoes (CSS + Vanilla JS) | 002, 003, 004, 005 | Warwick-c9d2 | `done` | 2026-03-25 | 2026-03-25 |
-| 011 | SEO & Performance Advanced | 006, 007, 008, 010 | Viego-8c4f | `in_progress` | 2026-03-25 | - |
+| 011 | SEO & Performance Advanced | 006, 007, 008, 010 | Viego-8c4f | `done` | 2026-03-25 | 2026-03-25 |
 
 ---
 

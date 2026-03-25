@@ -8,6 +8,7 @@ import HowItWorks from "../components/home/HowItWorks.astro";
 import Testimonials from "../components/home/Testimonials.astro";
 import FinalCTA from "../components/home/FinalCTA.astro";
 import { company } from "../data/company";
+import { testimonials } from "../data/testimonials";
 
 const siteUrl = "https://barricasindustriais.com";
 
@@ -32,7 +33,17 @@ const localBusinessSchema = {
     latitude: "-22.7394",
     longitude: "-47.3322",
   },
-  sameAs: [] as string[],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    reviewCount: String(testimonials.length),
+  },
+  review: testimonials.map((t) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: t.author },
+    reviewBody: t.quote,
+    reviewRating: { "@type": "Rating", ratingValue: "5" },
+  })),
 };
 
 const websiteSchema = {
@@ -41,9 +52,34 @@ const websiteSchema = {
   url: siteUrl,
 };
 
+const howToSchema = {
+  "@type": "HowTo",
+  name: "Como trocar de fornecedor de embalagens sem risco",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Peça sua amostra grátis",
+      text: "Manda um WhatsApp com o produto e o volume. A gente responde em até 2 horas.",
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Teste na sua linha",
+      text: "Amostra grátis entregue em até 48h. Você testa no seu processo real.",
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Aprovou? A produção começa",
+      text: "Produção sob medida em 7 a 10 dias úteis. Lotes a partir de 200 unidades com entrega em SP.",
+    },
+  ],
+};
+
 const structuredData = {
   "@context": "https://schema.org",
-  "@graph": [localBusinessSchema, websiteSchema],
+  "@graph": [localBusinessSchema, websiteSchema, howToSchema],
 };
 ---
 

@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const WHATSAPP_NUMBER = "5519999999999";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá! Gostaria de saber mais sobre as barricas de papelão.")}`;
+import WhatsAppButton from "../components/WhatsAppButton.astro";
 ---
 
 <Layout
@@ -96,14 +94,7 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
     <div class="mx-auto max-w-4xl px-4 text-center">
       <h2 class="text-3xl font-bold">Precisa de barricas sob medida?</h2>
       <p class="mt-4 text-brand-200">Informe volume, quantidade e aplicação. Respondemos em até 2 horas.</p>
-      <a
-        href={WHATSAPP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mt-8 inline-block rounded-lg bg-green-500 px-8 py-4 text-lg font-semibold text-white hover:bg-green-600"
-      >
-        Pedir Orçamento pelo WhatsApp
-      </a>
+      <WhatsAppButton message="Olá! Gostaria de saber mais sobre as barricas de papelão." label="Pedir Orçamento pelo WhatsApp" size="lg" class="mt-8" />
     </div>
   </section>
 </Layout>

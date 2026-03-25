@@ -1,13 +1,13 @@
 ---
+import { SITE, WHATSAPP } from "../config";
+
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = "Fábrica de barricas de papelão e baldes plásticos em Americana-SP. Mais de 20 anos atendendo indústrias de tintas, vernizes, químicos e agroquímicos." } = Astro.props;
-
-const WHATSAPP_NUMBER = "5519999999999"; // TODO: trocar pelo número real
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá! Vim pelo site e gostaria de solicitar um orçamento.")}`;
+const { title, description = SITE.description } = Astro.props;
+const whatsappUrl = WHATSAPP.url();
 ---
 
 <!doctype html>
@@ -31,7 +31,7 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
         "addressRegion": "SP",
         "addressCountry": "BR"
       },
-      "telephone": "+5519999999999",
+      "telephone": `+${WHATSAPP.number}`,
       "url": Astro.site?.toString()
     })} />
   </head>
@@ -50,7 +50,7 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
           <li><a href="/contato" class="text-sm font-medium text-gray-600 hover:text-brand-700">Contato</a></li>
         </ul>
         <a
-          href={WHATSAPP_URL}
+          href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           class="rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700"
@@ -86,8 +86,7 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
             <h4 class="font-semibold text-gray-900">Contato</h4>
             <ul class="mt-2 space-y-1 text-sm text-gray-600">
               <li>Americana - SP</li>
-              <li>(19) 99999-9999</li>
-              <!-- TODO: dados reais -->
+              <li>(19) 99258-0247</li>
             </ul>
           </div>
         </div>
@@ -99,7 +98,7 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
 
     <!-- Floating WhatsApp Button -->
     <a
-      href={WHATSAPP_URL}
+      href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
       class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600"

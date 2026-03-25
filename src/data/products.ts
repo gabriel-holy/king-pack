@@ -26,11 +26,10 @@ export const products: ProductSpec[] = [
     minOrder: "A combinar",
     leadTime: "10 dias úteis",
     applications: [
-      "Tintas e Vernizes",
+      "Tintas à Base de Água",
       "Grafiato e Texturas",
-      "Produtos Químicos",
-      "Agroquímicos",
       "Construção Civil",
+      "Produtos Secos e Granulares",
     ],
     chemicalCompatibility:
       "Compatível com produtos à base de água. Solventes apenas em embalagem de lata.",
@@ -54,6 +53,6 @@ export const products: ProductSpec[] = [
       "Produtos para Construção",
     ],
     chemicalCompatibility:
-      "PEAD resistente a ácidos, bases e solventes. PP para produtos à base de água.",
+      "PEAD resistente a ácidos, bases e álcoois. Incompatível com solventes aromáticos (tolueno, xileno). PP para produtos à base de água.",
   },
 ];

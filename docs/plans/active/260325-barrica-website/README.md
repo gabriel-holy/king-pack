@@ -23,7 +23,7 @@
 | 009 | Refinamentos de Copy pós-Revisão Copywriting | `done` | 007 |
 | 010 | Animações e Transições (CSS + Vanilla JS) | `done` | 002, 003, 004, 005 |
 | 011 | SEO & Performance Advanced | `done` | 006, 007, 008, 010 |
-| 012 | Blog: Setup Técnico (Content Collection + Template) | `pending` | nenhuma |
+| 012 | Blog: Setup Técnico (Content Collection + Template) | `done` | nenhuma |
 | 013 | Auditoria de Compatibilidade: Correções de Conteúdo | `done` | nenhuma |
 | 014 | Post 1: Barrica de Papelão ou Lata | `pending` | 012 |
 | 015 | Post 2: Mercado de Tintas no Brasil | `pending` | 012 |
@@ -82,7 +82,7 @@
 | 009 | Copy Refinements (Revisao Copywriting) | 007 | Senna-f2a9 | `done` | 2026-03-25 | 2026-03-25 |
 | 010 | Animacoes e Transicoes (CSS + Vanilla JS) | 002, 003, 004, 005 | Warwick-c9d2 | `done` | 2026-03-25 | 2026-03-25 |
 | 011 | SEO & Performance Advanced | 006, 007, 008, 010 | Viego-8c4f | `done` | 2026-03-25 | 2026-03-25 |
-| 012 | Blog: Setup Técnico (Content Collection + Template) | nenhuma | Vex-7d3a | `in_progress` | 2026-03-25 | - |
+| 012 | Blog: Setup Técnico (Content Collection + Template) | nenhuma | Vex-7d3a | `done` | 2026-03-25 | 2026-03-25 |
 | 013 | Auditoria de Compatibilidade: Correções de Conteúdo | nenhuma | Mundo-e5b2 | `done` | 2026-03-25 | 2026-03-25 |
 | 014 | Post 1: Barrica de Papelão ou Lata | 012 | - | `pending` | - | - |
 | 015 | Post 2: Mercado de Tintas no Brasil | 012 | - | `pending` | - | - |

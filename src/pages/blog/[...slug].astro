@@ -1,0 +1,140 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import WhatsAppCTA from "../../components/shared/WhatsAppCTA.astro";
+import { company } from "../../data/company";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date,
+  author: {
+    "@type": "Organization",
+    name: post.data.author,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: company.name,
+    url: "https://barricasindustriais.com",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `https://barricasindustriais.com/blog/${post.data.slug}`,
+  },
+};
+---
+
+<BaseLayout
+  title={`${post.data.title} — ${company.name}`}
+  description={post.data.description}
+  type="website"
+  structuredData={articleSchema}
+>
+  <article class="mx-auto max-w-text px-6 py-16">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-8">
+      <ol class="flex items-center gap-2 font-body text-xs text-text-muted">
+        <li>
+          <a href="/" class="transition-colors hover:text-accent">Home</a>
+        </li>
+        <li aria-hidden="true" class="select-none">/</li>
+        <li>
+          <a href="/blog" class="transition-colors hover:text-accent">Blog</a>
+        </li>
+        <li aria-hidden="true" class="select-none">/</li>
+        <li class="truncate text-text-primary" aria-current="page">
+          {post.data.title}
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Post header -->
+    <header class="mb-10 border-b border-border-subtle pb-8">
+      <div class="mb-4 flex flex-wrap items-center gap-3">
+        {post.data.tags.map((tag: string) => (
+          <span class="rounded-sm bg-[rgba(77,171,247,0.10)] px-2 py-1 font-body text-xs font-medium text-accent">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <h1 class="font-heading text-4xl font-bold tracking-tight text-text-primary">
+        {post.data.title}
+      </h1>
+      <div class="mt-4 flex items-center gap-4 font-body text-sm text-text-muted">
+        <span>{post.data.author}</span>
+        <span aria-hidden="true">·</span>
+        <time datetime={post.data.date}>
+          {new Date(post.data.date + "T00:00:00").toLocaleDateString("pt-BR", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </time>
+        <span aria-hidden="true">·</span>
+        <span>{post.data.readingTime} min de leitura</span>
+      </div>
+    </header>
+
+    <!-- Post content -->
+    <div class="prose prose-invert max-w-none
+      prose-headings:font-heading prose-headings:font-semibold prose-headings:tracking-snug prose-headings:text-text-primary
+      prose-h2:mt-12 prose-h2:text-2xl
+      prose-h3:mt-8 prose-h3:text-xl
+      prose-p:font-body prose-p:text-base prose-p:leading-relaxed prose-p:text-text-muted
+      prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+      prose-strong:text-text-primary prose-strong:font-semibold
+      prose-ul:text-text-muted prose-ol:text-text-muted
+      prose-li:text-text-muted prose-li:marker:text-accent
+      prose-table:text-sm
+      prose-th:border-border-subtle prose-th:bg-surface prose-th:px-4 prose-th:py-2 prose-th:text-left prose-th:font-body prose-th:font-medium prose-th:text-text-primary
+      prose-td:border-border-subtle prose-td:px-4 prose-td:py-2 prose-td:text-text-muted
+      prose-blockquote:border-accent prose-blockquote:text-text-muted
+      prose-code:text-accent prose-code:bg-surface prose-code:rounded-sm prose-code:px-1 prose-code:py-0.5 prose-code:text-sm prose-code:before:content-none prose-code:after:content-none
+      prose-hr:border-border-subtle
+      prose-img:rounded-lg">
+      <Content />
+    </div>
+
+    <!-- CTA WhatsApp -->
+    <section class="mt-16 rounded-lg border border-border-subtle bg-surface p-8 text-center">
+      <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
+        Precisa de embalagens industriais?
+      </h2>
+      <p class="mx-auto mt-3 max-w-lg font-body text-base text-text-muted">
+        A King Pack fabrica barricas de papelão e baldes plásticos sob medida para a sua indústria. Fale direto com a fábrica.
+      </p>
+      <div class="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <WhatsAppCTA
+          message="Olá! Li um artigo no blog e gostaria de saber mais sobre as embalagens."
+          label="Falar no WhatsApp"
+          size="md"
+        />
+        <a
+          href="/barricas"
+          class="inline-flex min-h-[44px] items-center gap-2 rounded-md border border-border-subtle px-6 py-3 font-body text-sm font-medium text-text-muted transition-colors hover:border-accent hover:text-accent"
+        >
+          Ver Barricas
+        </a>
+        <a
+          href="/baldes"
+          class="inline-flex min-h-[44px] items-center gap-2 rounded-md border border-border-subtle px-6 py-3 font-body text-sm font-medium text-text-muted transition-colors hover:border-accent hover:text-accent"
+        >
+          Ver Baldes
+        </a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

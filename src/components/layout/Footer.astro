@@ -33,6 +33,11 @@ const whatsappUrl = buildWhatsAppUrl();
               Baldes Plásticos
             </a>
           </li>
+          <li>
+            <a href="/blog" class="font-body text-sm text-text-muted transition-colors hover:text-accent">
+              Blog
+            </a>
+          </li>
         </ul>
       </nav>
 
@@ -59,7 +64,11 @@ const whatsappUrl = buildWhatsAppUrl();
     </div>
 
     <div class="mt-10 border-t border-border-subtle pt-8 text-center font-body text-xs text-text-muted">
-      &copy; {new Date().getFullYear()} {company.name}. Todos os direitos reservados.
+      &copy; <span id="copyright-year">{new Date().getFullYear()}</span> {company.name}. Todos os direitos reservados.
     </div>
+
+    <script>
+      document.getElementById("copyright-year")!.textContent = String(new Date().getFullYear());
+    </script>
   </div>
 </footer>

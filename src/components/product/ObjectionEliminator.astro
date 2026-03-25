@@ -15,9 +15,9 @@ const {
 } = Astro.props;
 ---
 
-<section class="bg-bg py-16">
+<section class="bg-bg py-16" aria-labelledby="objections-heading">
   <div class="mx-auto max-w-content px-6">
-    <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
+    <h2 id="objections-heading" class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
       {heading}
     </h2>
     <div class="mt-8 grid gap-6 md:grid-cols-3" data-stagger-parent>

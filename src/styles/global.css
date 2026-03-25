@@ -166,7 +166,8 @@
 .card-lift {
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
-.card-lift:hover {
+.card-lift:hover,
+.card-lift:focus-within {
   transform: translateY(-4px);
   border-color: var(--color-accent);
 }
@@ -174,7 +175,8 @@
   .card-lift {
     transition: none;
   }
-  .card-lift:hover {
+  .card-lift:hover,
+  .card-lift:focus-within {
     transform: none;
   }
 }

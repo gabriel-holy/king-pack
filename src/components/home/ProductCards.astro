@@ -1,22 +1,21 @@
 ---
+import { Image } from "astro:assets";
 import SectionHeader from "../shared/SectionHeader.astro";
+import warehousePackagesImg from "../../assets/images/products/warehouse-packages.jpg";
+import chemicalWorkerImg from "../../assets/images/products/chemical-worker.jpg";
 
 const products = [
   {
     href: "/barricas",
-    image: "/images/products/warehouse-packages.jpg",
+    image: warehousePackagesImg,
     imageAlt: "Pacotes industriais empilhados em galpão de distribuição",
-    imageWidth: 1200,
-    imageHeight: 900,
     name: "Barricas de Papelão",
     description: "14L a 20L. Empilhamento de até 3 barricas e zero vazamento no transporte. Para tintas, vernizes e químicos.",
   },
   {
     href: "/baldes",
-    image: "/images/products/chemical-worker.jpg",
+    image: chemicalWorkerImg,
     imageAlt: "Operador industrial manuseando container químico com EPI",
-    imageWidth: 1200,
-    imageHeight: 803,
     name: "Baldes Plásticos",
     description: "3,6L a 20L. Vedação hermética, empilhamento seguro e resistência química comprovada. Para tintas, massas e agroquímicos.",
   },

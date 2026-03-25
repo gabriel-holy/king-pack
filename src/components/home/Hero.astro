@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import WhatsAppCTA from "../shared/WhatsAppCTA.astro";
 import MagneticButton from "../shared/MagneticButton.astro";
+import factoryImg from "../../assets/images/factory/factory-interior.jpg";
 ---
 
 <section class="relative overflow-hidden bg-bg-deep py-20 lg:py-24">
@@ -32,11 +34,13 @@ import MagneticButton from "../shared/MagneticButton.astro";
         </div>
       </div>
       <div class="hidden overflow-hidden rounded-lg md:block" data-fade-up data-fade-delay="300">
-        <img
-          src="/images/factory/factory-interior.jpg"
+        <Image
+          src={factoryImg}
           alt="Chão de fábrica industrial com operador em maquinário pesado de produção"
-          width="1200"
-          height="800"
+          width={1200}
+          height={800}
+          format="webp"
+          quality={80}
           fetchpriority="high"
           class="h-auto w-full rounded-lg object-cover"
           id="hero-parallax-img"

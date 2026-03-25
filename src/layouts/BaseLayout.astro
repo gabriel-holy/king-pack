@@ -5,6 +5,7 @@ import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import WhatsAppButton from "../components/layout/WhatsAppButton.astro";
 import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import "../styles/global.css";
 
 interface Props {
@@ -47,6 +48,7 @@ const { title, description, ogImage, type, structuredData, noindex } = Astro.pro
     <Footer />
     <WhatsAppButton />
     <Analytics />
+    <SpeedInsights />
 
     <script>
       import { initFadeUp } from "../utils/fadeUp";

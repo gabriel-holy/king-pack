@@ -1,13 +1,13 @@
 ---
-import { SITE, WHATSAPP } from "../config";
+import { company, buildWhatsAppUrl } from "../data/company";
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = SITE.description } = Astro.props;
-const whatsappUrl = WHATSAPP.url();
+const { title, description = company.description } = Astro.props;
+const whatsappUrl = buildWhatsAppUrl();
 ---
 
 <!doctype html>
@@ -23,15 +23,17 @@ const whatsappUrl = WHATSAPP.url();
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "Fábrica de Barricas e Baldes",
+      "name": company.name,
       "description": description,
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Americana",
-        "addressRegion": "SP",
-        "addressCountry": "BR"
+        "streetAddress": `${company.address.street} - ${company.address.neighborhood}`,
+        "addressLocality": company.address.city,
+        "addressRegion": company.address.state,
+        "postalCode": company.address.zip,
+        "addressCountry": company.address.country
       },
-      "telephone": `+${WHATSAPP.number}`,
+      "telephone": `+${company.whatsapp}`,
       "url": Astro.site?.toString()
     })} />
   </head>
@@ -41,7 +43,7 @@ const whatsappUrl = WHATSAPP.url();
       <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <a href="/" class="text-xl font-bold text-brand-800">
           <!-- TODO: substituir por logo real -->
-          Barricas & Baldes
+          {company.name}
         </a>
         <ul class="hidden items-center gap-8 md:flex">
           <li><a href="/" class="text-sm font-medium text-gray-600 hover:text-brand-700">Home</a></li>
@@ -70,9 +72,9 @@ const whatsappUrl = WHATSAPP.url();
       <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div class="grid gap-8 md:grid-cols-3">
           <div>
-            <h3 class="text-lg font-bold text-brand-800">Barricas & Baldes</h3>
+            <h3 class="text-lg font-bold text-brand-800">{company.name}</h3>
             <p class="mt-2 text-sm text-gray-600">
-              Fábrica de embalagens industriais em Americana-SP. Mais de 20 anos de mercado.
+              Fábrica de embalagens industriais em {company.address.city}-{company.address.state}. Mais de 20 anos de mercado.
             </p>
           </div>
           <div>
@@ -85,8 +87,8 @@ const whatsappUrl = WHATSAPP.url();
           <div>
             <h4 class="font-semibold text-gray-900">Contato</h4>
             <ul class="mt-2 space-y-1 text-sm text-gray-600">
-              <li>Americana - SP</li>
-              <li>(19) 99258-0247</li>
+              <li>{company.address.city} - {company.address.state}</li>
+              <li>{company.phone}</li>
             </ul>
           </div>
         </div>

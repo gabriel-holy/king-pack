@@ -1,5 +1,5 @@
 ---
-import { WHATSAPP } from "../config";
+import { buildWhatsAppUrl } from "../data/company";
 
 interface Props {
   message?: string;
@@ -15,7 +15,7 @@ const {
   size = "md",
 } = Astro.props;
 
-const href = WHATSAPP.url(message);
+const href = buildWhatsAppUrl(message);
 
 const sizeClasses = {
   sm: "px-4 py-2 text-sm",

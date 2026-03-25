@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
+import { company } from "../data/company";
 ---
 
 <Layout
@@ -22,22 +23,21 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
         <div>
           <h2 class="text-xl font-bold">Informações</h2>
           <dl class="mt-6 space-y-4 text-sm text-gray-600">
-            <!-- TODO: substituir por dados reais -->
             <div>
               <dt class="font-semibold text-gray-900">Endereço</dt>
-              <dd>Rua Exemplo, 123 - Distrito Industrial<br>Americana - SP, 13465-000</dd>
+              <dd>{company.address.street} - {company.address.neighborhood}<br>{company.address.city} - {company.address.state}, {company.address.zip}</dd>
             </div>
             <div>
               <dt class="font-semibold text-gray-900">Telefone / WhatsApp</dt>
-              <dd>(19) 99258-0247</dd>
+              <dd>{company.phone}</dd>
             </div>
             <div>
               <dt class="font-semibold text-gray-900">E-mail</dt>
-              <dd>contato@barricas.com.br</dd>
+              <dd>{company.email}</dd>
             </div>
             <div>
               <dt class="font-semibold text-gray-900">Horário</dt>
-              <dd>Segunda a Sexta, 8h às 17h</dd>
+              <dd>{company.hours}</dd>
             </div>
           </dl>
         </div>

@@ -319,5 +319,7 @@ const structuredData = {
 
 ---
 
+<!-- Lock: Viego-8c4f | in_progress | 2026-03-25T00:00:00Z -->
+
 *Ticket criado em: 2026-03-25*
 *Auditoria realizada por: Claude (SEO Fundamentals Audit)*

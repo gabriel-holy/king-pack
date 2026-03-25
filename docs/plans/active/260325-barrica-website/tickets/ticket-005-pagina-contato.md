@@ -1,4 +1,4 @@
-<!-- Lock: - | pending | - -->
+<!-- Lock: Leona-b4e2 | done | 2026-03-25T16:03:00Z -->
 
 # Ticket 005 — Página de Contato
 
@@ -62,11 +62,11 @@
 
 ## Acceptance Criteria
 
-- [ ] Página `/contato` renderiza corretamente
-- [ ] Card de WhatsApp é o elemento mais visível da página
-- [ ] Botão WhatsApp funcional (abre com mensagem pré-preenchida)
-- [ ] Endereço da empresa visível com link para Google Maps
-- [ ] CNPJ, horário e e-mail exibidos
-- [ ] Mobile: card WhatsApp ocupa largura total, botão com thumb-friendly size
-- [ ] `astro check` sem erros
-- [ ] Build sem erros
+- [x] Página `/contato` renderiza corretamente
+- [x] Card de WhatsApp é o elemento mais visível da página
+- [x] Botão WhatsApp funcional (abre com mensagem pré-preenchida)
+- [x] Endereço da empresa visível com link para Google Maps
+- [x] CNPJ, horário e e-mail exibidos
+- [x] Mobile: card WhatsApp ocupa largura total, botão com thumb-friendly size
+- [x] `astro check` sem erros
+- [x] Build sem erros

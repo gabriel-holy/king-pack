@@ -1,0 +1,40 @@
+---
+import SectionHeader from "../shared/SectionHeader.astro";
+
+const steps = [
+  {
+    number: 1,
+    title: "Solicite uma amostra",
+    description: "Fale no WhatsApp, informe o produto e volume. Sem compromisso.",
+  },
+  {
+    number: 2,
+    title: "Receba em até 48h",
+    description: "Enviamos amostra grátis para você testar na sua linha de produção.",
+  },
+  {
+    number: 3,
+    title: "Aprovou? Primeiro pedido",
+    description: "Produção sob medida com prazo garantido. Lotes a partir de 200 unidades.",
+  },
+];
+---
+
+<section class="bg-bg py-16">
+  <div class="mx-auto max-w-content px-6">
+    <SectionHeader title="Como Funciona" />
+    <div class="mt-12 grid gap-8 sm:grid-cols-3">
+      {steps.map((step) => (
+        <div class="text-center">
+          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-surface font-heading text-xl font-bold text-accent">
+            {step.number}
+          </div>
+          <h3 class="mt-4 font-heading text-lg font-semibold text-text-primary">{step.title}</h3>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            {step.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

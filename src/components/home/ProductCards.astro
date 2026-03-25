@@ -1,0 +1,45 @@
+---
+import SectionHeader from "../shared/SectionHeader.astro";
+
+const products = [
+  {
+    href: "/barricas",
+    placeholder: "Foto: barrica de papelão em galpão industrial",
+    name: "Barricas de Papelão",
+    description: "De 20L a 200L. Tampa prensada, fundo reforçado, revestimento interno opcional. Para tintas, vernizes e produtos químicos.",
+  },
+  {
+    href: "/baldes",
+    placeholder: "Foto: baldes plásticos industriais empilhados",
+    name: "Baldes Plásticos",
+    description: "De 3,6L a 20L. Polipropileno ou polietileno, com alça metálica ou plástica. Para tintas, massas, grafiatos e químicos.",
+  },
+];
+---
+
+<section class="bg-surface py-16">
+  <div class="mx-auto max-w-content px-6">
+    <SectionHeader
+      title="Nossos Produtos"
+      subtitle="Embalagens projetadas para suportar as exigências da sua linha de produção."
+    />
+    <div class="mt-12 grid gap-8 md:grid-cols-2">
+      {products.map((product) => (
+        <a href={product.href} class="group rounded-lg border border-border-subtle bg-bg p-8 transition-colors hover:border-accent">
+          <div class="mb-4 flex h-48 items-center justify-center rounded-lg bg-surface-2">
+            <span class="font-body text-sm text-text-muted">{product.placeholder}</span>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-text-primary group-hover:text-accent">
+            {product.name}
+          </h3>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            {product.description}
+          </p>
+          <span class="mt-4 inline-block font-body text-sm font-medium text-accent">
+            Ver especificações &rarr;
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

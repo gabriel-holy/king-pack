@@ -54,10 +54,10 @@ Layer 3 (verificação final):
 | Ticket | Description | Depends On | Agent | Status | Started | Finished |
 |--------|-------------|------------|-------|--------|---------|----------|
 | 001 | Setup Projeto Astro + Tailwind + Identidade | - | Jinx-a3f7 | `done` | 2026-03-25 | 2026-03-25 |
-| 002 | Homepage | 001 | - | `pending` | - | - |
-| 003 | Página Barricas de Papelão | 001 | - | `pending` | - | - |
-| 004 | Página Baldes Plásticos | 001, 003 | - | `pending` | - | - |
-| 005 | Página de Contato | 001 | - | `pending` | - | - |
+| 002 | Homepage | 001 | Thresh-b4e2 | `done` | 2026-03-25 | 2026-03-25 |
+| 003 | Página Barricas de Papelão | 001 | Draven-c7e1 | `done` | 2026-03-25 | 2026-03-25 |
+| 004 | Página Baldes Plásticos | 001, 003 | Yasuo-d8a1 | `done` | 2026-03-25 | 2026-03-25 |
+| 005 | Página de Contato | 001 | Leona-b4e2 | `done` | 2026-03-25 | 2026-03-25 |
 | 006 | SEO Final + Performance + Deploy | 002, 003, 004, 005 | - | `pending` | - | - |
 
 ---

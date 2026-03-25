@@ -1,4 +1,4 @@
-<!-- Lock: - | pending | - -->
+<!-- Lock: Thresh-b4e2 | done | 2026-03-25T19:01:00Z -->
 
 # Ticket 002 — Homepage
 
@@ -79,17 +79,17 @@
 
 ## Acceptance Criteria
 
-- [ ] Homepage renderiza corretamente em `npm run dev`
-- [ ] 7 seções visíveis na ordem definida no core-flows
-- [ ] Alternância de fundos (deep → bg → surface → bg → ...) cria ritmo visual
-- [ ] Hero tem tagline legível em < 8 segundos de scanning
-- [ ] CTA primário do hero é botão WhatsApp funcional
-- [ ] Métricas exibem 4 números com Space Grotesk 700
-- [ ] Cards de produto linkam para `/barricas` e `/baldes`
-- [ ] "Como funciona" tem 3 passos numerados
-- [ ] Depoimento tem nome + cargo + empresa + resultado
-- [ ] CTA final é botão WhatsApp funcional
-- [ ] JSON-LD LocalBusiness presente no `<head>`
-- [ ] Mobile: todas as seções responsivas, CTAs acessíveis com thumb
-- [ ] `astro check` sem erros
-- [ ] Build sem erros
+- [x] Homepage renderiza corretamente em `npm run dev`
+- [x] 7 seções visíveis na ordem definida no core-flows
+- [x] Alternância de fundos (deep → bg → surface → bg → ...) cria ritmo visual
+- [x] Hero tem tagline legível em < 8 segundos de scanning
+- [x] CTA primário do hero é botão WhatsApp funcional
+- [x] Métricas exibem 4 números com Space Grotesk 700
+- [x] Cards de produto linkam para `/barricas` e `/baldes`
+- [x] "Como funciona" tem 3 passos numerados
+- [x] Depoimento tem nome + cargo + empresa + resultado
+- [x] CTA final é botão WhatsApp funcional
+- [x] JSON-LD LocalBusiness presente no `<head>`
+- [x] Mobile: todas as seções responsivas, CTAs acessíveis com thumb
+- [x] `astro check` sem erros
+- [x] Build sem erros

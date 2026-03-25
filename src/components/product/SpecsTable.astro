@@ -1,0 +1,95 @@
+---
+import type { ProductSpec } from "../../data/products";
+
+interface SpecRow {
+  label: string;
+  value: string;
+}
+
+interface ModelRow {
+  model: string;
+  capacity: string;
+  dimensions: string;
+  wall: string;
+  lining: string;
+}
+
+interface Props {
+  title?: string;
+  product: ProductSpec;
+  generalSpecs?: SpecRow[];
+  models?: ModelRow[];
+}
+
+const {
+  title = "Especificações Técnicas",
+  product,
+  generalSpecs,
+  models,
+} = Astro.props;
+
+const defaultSpecs: SpecRow[] = generalSpecs ?? [
+  { label: "Material", value: product.material },
+  { label: "Capacidades", value: product.capacities.join(", ") },
+  { label: "Resistência de empilhamento", value: product.stackingResistance },
+  { label: "Resistência à umidade", value: product.moistureResistance },
+  { label: "Compatibilidade química", value: product.chemicalCompatibility },
+  { label: "Lote mínimo", value: product.minOrder },
+  { label: "Prazo de entrega", value: product.leadTime },
+];
+---
+
+<section class="bg-bg py-16">
+  <div class="mx-auto max-w-content px-6">
+    <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
+      {title}
+    </h2>
+
+    {/* General specs — key-value list, mobile-friendly */}
+    <div class="mt-8 grid gap-0 divide-y divide-border-subtle rounded-lg border border-border-subtle">
+      {defaultSpecs.map((spec) => (
+        <div class="flex flex-col gap-1 px-6 py-4 sm:flex-row sm:items-center sm:gap-8">
+          <span class="min-w-[220px] font-body text-sm font-medium text-text-muted">
+            {spec.label}
+          </span>
+          <span class="font-body text-base text-text-primary">
+            {spec.value}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    {/* Models table — horizontal scroll on mobile */}
+    {models && models.length > 0 && (
+      <div class="mt-8">
+        <h3 class="font-heading text-lg font-semibold text-text-primary">
+          Modelos disponíveis
+        </h3>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full text-left font-body text-sm">
+            <thead class="border-b border-border-subtle text-text-muted">
+              <tr>
+                <th class="pb-3 pr-6 font-medium">Modelo</th>
+                <th class="pb-3 pr-6 font-medium">Capacidade</th>
+                <th class="pb-3 pr-6 font-medium">Dimensões (DxA)</th>
+                <th class="pb-3 pr-6 font-medium">Parede</th>
+                <th class="pb-3 font-medium">Revestimento</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border-subtle">
+              {models.map((row) => (
+                <tr>
+                  <td class="py-3 pr-6 font-medium text-text-primary">{row.model}</td>
+                  <td class="py-3 pr-6 text-text-muted">{row.capacity}</td>
+                  <td class="py-3 pr-6 text-text-muted">{row.dimensions}</td>
+                  <td class="py-3 pr-6 text-text-muted">{row.wall}</td>
+                  <td class="py-3 text-text-muted">{row.lining}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    )}
+  </div>
+</section>

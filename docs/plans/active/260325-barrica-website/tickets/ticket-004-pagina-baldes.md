@@ -1,4 +1,4 @@
-<!-- Lock: - | pending | - -->
+<!-- Lock: Yasuo-d8a1 | done | 2026-03-25T16:08:00Z -->
 
 # Ticket 004 — Página Baldes Plásticos
 
@@ -58,12 +58,12 @@
 
 ## Acceptance Criteria
 
-- [ ] Página `/baldes` renderiza corretamente
-- [ ] Dados de specs são de baldes (não barricas) — vindos de `products.ts`
-- [ ] Aplicações mostram setores adequados (químicos, agro, construção)
-- [ ] WhatsApp abre com mensagem sobre baldes (não genérica)
-- [ ] Title e description são únicos e diferentes de `/barricas`
-- [ ] Structured data Product no `<head>` com dados de baldes
-- [ ] Mobile responsivo
-- [ ] `astro check` sem erros
-- [ ] Build sem erros
+- [x] Página `/baldes` renderiza corretamente
+- [x] Dados de specs são de baldes (não barricas) — vindos de `products.ts`
+- [x] Aplicações mostram setores adequados (químicos, agro, construção)
+- [x] WhatsApp abre com mensagem sobre baldes (não genérica)
+- [x] Title e description são únicos e diferentes de `/barricas`
+- [x] Structured data Product no `<head>` com dados de baldes
+- [x] Mobile responsivo
+- [x] `astro check` sem erros
+- [x] Build sem erros

@@ -1,129 +1,113 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ProductHero from "../components/product/ProductHero.astro";
+import SpecsTable from "../components/product/SpecsTable.astro";
+import ApplicationCards from "../components/product/ApplicationCards.astro";
+import ObjectionEliminator from "../components/product/ObjectionEliminator.astro";
 import WhatsAppCTA from "../components/shared/WhatsAppCTA.astro";
+import { products } from "../data/products";
+import { company } from "../data/company";
+
+const product = products.find((p) => p.id === "baldes")!;
+
+const baldeModels = [
+  { model: "BL-3.6", capacity: "3,6L", dimensions: "190 x 170 mm", wall: "1.2mm PP", lining: "Natural" },
+  { model: "BL-5", capacity: "5L", dimensions: "210 x 190 mm", wall: "1.2mm PP", lining: "Natural" },
+  { model: "BL-10", capacity: "10L", dimensions: "260 x 250 mm", wall: "1.5mm PEAD", lining: "Natural / Colorido" },
+  { model: "BL-18", capacity: "18L", dimensions: "310 x 340 mm", wall: "1.8mm PEAD", lining: "Natural / Colorido" },
+  { model: "BL-20", capacity: "20L", dimensions: "320 x 360 mm", wall: "2.0mm PEAD", lining: "Natural / Colorido" },
+];
+
+const applications = [
+  {
+    name: "Tintas e Massas",
+    description: "Baldes com vedação hermética para tintas à base de água e solvente. Resistência química comprovada.",
+  },
+  {
+    name: "Químicos Industriais",
+    description: "PEAD resistente a ácidos, bases e solventes orgânicos. Aprovados para transporte de produtos químicos.",
+  },
+  {
+    name: "Agroquímicos",
+    description: "Embalagens para defensivos e fertilizantes líquidos. Vedação que previne vazamentos no transporte.",
+  },
+  {
+    name: "Produtos para Construção",
+    description: "Baldes para impermeabilizantes, resinas e aditivos. Fácil empilhamento e manuseio em obra.",
+  },
+];
+
+const objections = [
+  {
+    title: "Amostra grátis",
+    description: "Teste na sua linha antes de fechar. Sem compromisso.",
+  },
+  {
+    title: "3 passos",
+    description: "Solicita, testa, aprova. Processo simples e direto.",
+  },
+  {
+    title: "Prazo garantido",
+    description: `${product.leadTime} de produção. Entrega para todo o estado de SP.`,
+  },
+];
+
+const productStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: product.name,
+  description: `${product.tagline}. Capacidades: ${product.capacities.join(", ")}. ${product.material}.`,
+  brand: {
+    "@type": "Brand",
+    name: company.name,
+  },
+  manufacturer: {
+    "@type": "Organization",
+    name: company.name,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: company.address.city,
+      addressRegion: company.address.state,
+      addressCountry: company.address.country,
+    },
+  },
+  material: product.material,
+  category: "Embalagens Industriais",
+};
 ---
 
 <BaseLayout
   title="Baldes Plásticos Industriais — Specs Técnicas e Orçamento"
-  description="Baldes plásticos para tintas, químicos e agroquímicos: capacidades 3,6-20L, lote mínimo 200 unidades. Fale via WhatsApp."
+  description="Baldes plásticos para tintas, químicos e agroquímicos: capacidades 3,6-20L, PP e PEAD, lote mínimo 200 unidades. Fale via WhatsApp."
+  structuredData={productStructuredData}
 >
-  <!-- Hero -->
-  <section class="bg-bg-deep py-16">
-    <div class="mx-auto max-w-content px-6">
-      <p class="font-body text-xs font-medium uppercase tracking-widest text-accent">
-        Produto
-      </p>
-      <h1 class="mt-4 font-heading text-4xl font-bold tracking-tight text-text-primary">
-        Baldes Plásticos
-      </h1>
-      <p class="mt-4 max-w-text font-body text-lg text-text-muted">
-        Baldes de 3,6L a 20L em polipropileno e polietileno. Alça metálica ou plástica. Para tintas, massas, grafiatos e químicos.
-      </p>
-      <WhatsAppCTA
-        message="Olá! Tenho interesse em baldes plásticos industriais. Pode me ajudar?"
-        label="Solicitar amostra grátis — WhatsApp"
-        size="md"
-        class="mt-8"
-      />
-    </div>
-  </section>
+  <ProductHero
+    eyebrow="Produto"
+    title="Baldes Plásticos Industriais"
+    description="Baldes em polipropileno e polietileno de alta densidade de 3,6L a 20L. Vedação hermética para tintas, químicos, agroquímicos e produtos para construção."
+    ctaMessage="Olá! Tenho interesse em baldes plásticos industriais. Pode me ajudar?"
+    ctaLabel="Solicitar amostra grátis — WhatsApp"
+    secondaryCtaMessage="Olá! Tenho uma dúvida técnica sobre compatibilidade dos baldes plásticos."
+    secondaryCtaLabel="Dúvida técnica — WhatsApp"
+  />
 
-  <!-- Specs Table -->
-  <section class="bg-bg py-16">
-    <div class="mx-auto max-w-content px-6">
-      <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
-        Especificações Técnicas
-      </h2>
-      <div class="mt-8 overflow-x-auto">
-        <table class="w-full text-left font-body text-sm">
-          <thead class="border-b border-border-subtle text-text-muted">
-            <tr>
-              <th class="pb-3 pr-6 font-medium">Modelo</th>
-              <th class="pb-3 pr-6 font-medium">Capacidade</th>
-              <th class="pb-3 pr-6 font-medium">Material</th>
-              <th class="pb-3 pr-6 font-medium">Alça</th>
-              <th class="pb-3 font-medium">Tampa</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-border-subtle">
-            <tr>
-              <td class="py-3 pr-6 font-medium text-text-primary">BL-3.6</td>
-              <td class="py-3 pr-6 text-text-muted">3,6L</td>
-              <td class="py-3 pr-6 text-text-muted">Polipropileno</td>
-              <td class="py-3 pr-6 text-text-muted">Plástica</td>
-              <td class="py-3 text-text-muted">Pressão</td>
-            </tr>
-            <tr>
-              <td class="py-3 pr-6 font-medium text-text-primary">BL-5</td>
-              <td class="py-3 pr-6 text-text-muted">5L</td>
-              <td class="py-3 pr-6 text-text-muted">Polipropileno</td>
-              <td class="py-3 pr-6 text-text-muted">Metálica</td>
-              <td class="py-3 text-text-muted">Pressão</td>
-            </tr>
-            <tr>
-              <td class="py-3 pr-6 font-medium text-text-primary">BL-10</td>
-              <td class="py-3 pr-6 text-text-muted">10L</td>
-              <td class="py-3 pr-6 text-text-muted">Polietileno</td>
-              <td class="py-3 pr-6 text-text-muted">Metálica</td>
-              <td class="py-3 text-text-muted">Rosca</td>
-            </tr>
-            <tr>
-              <td class="py-3 pr-6 font-medium text-text-primary">BL-18</td>
-              <td class="py-3 pr-6 text-text-muted">18L</td>
-              <td class="py-3 pr-6 text-text-muted">Polietileno</td>
-              <td class="py-3 pr-6 text-text-muted">Metálica</td>
-              <td class="py-3 text-text-muted">Pressão</td>
-            </tr>
-            <tr>
-              <td class="py-3 pr-6 font-medium text-text-primary">BL-20</td>
-              <td class="py-3 pr-6 text-text-muted">20L</td>
-              <td class="py-3 pr-6 text-text-muted">Polietileno</td>
-              <td class="py-3 pr-6 text-text-muted">Metálica</td>
-              <td class="py-3 text-text-muted">Pressão / Rosca</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
+  <SpecsTable
+    product={product}
+    models={baldeModels}
+  />
 
-  <!-- Applications -->
-  <section class="bg-surface py-16">
-    <div class="mx-auto max-w-content px-6">
-      <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
-        Aplicações por Setor
-      </h2>
-      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-lg border border-border-subtle bg-bg p-6">
-          <h3 class="font-heading text-lg font-semibold text-text-primary">Tintas e Massas</h3>
-          <p class="mt-2 font-body text-sm text-text-muted">
-            Baldes com vedação hermética para tintas látex, acrílicas e massas corridas.
-          </p>
-        </div>
-        <div class="rounded-lg border border-border-subtle bg-bg p-6">
-          <h3 class="font-heading text-lg font-semibold text-text-primary">Grafiatos e Texturas</h3>
-          <p class="mt-2 font-body text-sm text-text-muted">
-            Resistência a materiais abrasivos. Tampa de pressão para fácil abertura na obra.
-          </p>
-        </div>
-        <div class="rounded-lg border border-border-subtle bg-bg p-6">
-          <h3 class="font-heading text-lg font-semibold text-text-primary">Químicos Industriais</h3>
-          <p class="mt-2 font-body text-sm text-text-muted">
-            Polietileno de alta densidade para produtos com pH extremo.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <ApplicationCards applications={applications} />
 
-  <!-- CTA -->
+  <ObjectionEliminator objections={objections} />
+
+  <!-- CTA Final -->
   <section class="bg-bg-deep py-16">
     <div class="mx-auto max-w-text px-6 text-center">
       <h2 class="font-heading text-3xl font-semibold tracking-snug text-text-primary">
-        Precisa de baldes para sua produção?
+        Precisa de baldes sob medida?
       </h2>
       <p class="mt-4 font-body text-text-muted">
-        Volume, material e tipo de tampa sob medida. Orçamento rápido.
+        Informe volume, quantidade e aplicação. Respondemos em até 2 horas.
       </p>
       <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
         <WhatsAppCTA
@@ -132,7 +116,7 @@ import WhatsAppCTA from "../components/shared/WhatsAppCTA.astro";
           size="lg"
         />
         <WhatsAppCTA
-          message="Olá! Tenho uma dúvida técnica sobre compatibilidade dos produtos."
+          message="Olá! Tenho uma dúvida técnica sobre compatibilidade dos baldes plásticos."
           label="Dúvida técnica — WhatsApp"
           size="md"
         />

@@ -1,0 +1,36 @@
+---
+interface Objection {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  heading?: string;
+  objections: Objection[];
+}
+
+const {
+  heading = "Medo de trocar de fornecedor?",
+  objections,
+} = Astro.props;
+---
+
+<section class="bg-bg py-16">
+  <div class="mx-auto max-w-content px-6">
+    <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
+      {heading}
+    </h2>
+    <div class="mt-8 grid gap-6 sm:grid-cols-3">
+      {objections.map((item) => (
+        <div class="rounded-lg border border-border-subtle bg-surface p-6">
+          <p class="font-heading text-lg font-semibold text-accent">
+            {item.title}
+          </p>
+          <p class="mt-2 font-body text-sm text-text-muted">
+            {item.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

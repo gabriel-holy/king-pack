@@ -1,0 +1,59 @@
+---
+import WhatsAppCTA from "../shared/WhatsAppCTA.astro";
+import { buildWhatsAppUrl } from "../../data/company";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  ctaMessage: string;
+  ctaLabel?: string;
+  secondaryCtaMessage?: string;
+  secondaryCtaLabel?: string;
+}
+
+const {
+  eyebrow = "Produto",
+  title,
+  description,
+  ctaMessage,
+  ctaLabel = "Solicitar amostra grátis — WhatsApp",
+  secondaryCtaMessage,
+  secondaryCtaLabel = "Dúvida técnica — WhatsApp",
+} = Astro.props;
+
+const secondaryHref = secondaryCtaMessage
+  ? buildWhatsAppUrl(secondaryCtaMessage)
+  : undefined;
+---
+
+<section class="bg-bg-deep py-20 lg:py-24">
+  <div class="mx-auto max-w-content px-6">
+    <p class="font-body text-xs font-medium uppercase tracking-widest text-accent">
+      {eyebrow}
+    </p>
+    <h1 class="mt-4 font-heading text-4xl font-bold tracking-tight text-text-primary lg:text-hero">
+      {title}
+    </h1>
+    <p class="mt-4 max-w-text font-body text-lg text-text-muted">
+      {description}
+    </p>
+    <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+      <WhatsAppCTA
+        message={ctaMessage}
+        label={ctaLabel}
+        size="md"
+      />
+      {secondaryHref && (
+        <a
+          href={secondaryHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex min-h-[44px] items-center gap-2 rounded-md border border-border-subtle px-6 py-3 font-heading text-base font-semibold text-text-primary transition-colors hover:border-accent hover:text-accent"
+        >
+          {secondaryCtaLabel}
+        </a>
+      )}
+    </div>
+  </div>
+</section>

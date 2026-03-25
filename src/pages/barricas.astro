@@ -1,144 +1,101 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ProductHero from "../components/product/ProductHero.astro";
+import SpecsTable from "../components/product/SpecsTable.astro";
+import ApplicationCards from "../components/product/ApplicationCards.astro";
+import ObjectionEliminator from "../components/product/ObjectionEliminator.astro";
 import WhatsAppCTA from "../components/shared/WhatsAppCTA.astro";
+import { products } from "../data/products";
+import { company } from "../data/company";
+
+const product = products.find((p) => p.id === "barricas")!;
+
+const barricaModels = [
+  { model: "BP-20", capacity: "20L", dimensions: "290 x 380 mm", wall: "3mm dupla", lining: "Opcional (PE)" },
+  { model: "BP-50", capacity: "50L", dimensions: "370 x 520 mm", wall: "4mm dupla", lining: "Opcional (PE)" },
+  { model: "BP-100", capacity: "100L", dimensions: "450 x 650 mm", wall: "5mm tripla", lining: "Opcional (PE/Alumínio)" },
+  { model: "BP-200", capacity: "200L", dimensions: "580 x 880 mm", wall: "6mm tripla", lining: "Opcional (PE/Alumínio)" },
+];
+
+const applications = [
+  {
+    name: "Tintas e Vernizes",
+    description: "Barricas com revestimento interno para tintas à base de água e solvente. Capacidades de 20L a 200L.",
+  },
+  {
+    name: "Grafiato e Texturas",
+    description: "Embalagens reforçadas para massas e texturas de alta densidade. Fundo reforçado para empilhamento.",
+  },
+  {
+    name: "Construção Civil",
+    description: "Barricas para resinas, impermeabilizantes e aditivos. Resistência a produtos alcalinos.",
+  },
+];
+
+const objections = [
+  {
+    title: "Amostra grátis",
+    description: "Teste na sua linha antes de fechar. Sem compromisso.",
+  },
+  {
+    title: "3 passos",
+    description: "Solicita, testa, aprova. Processo simples e direto.",
+  },
+  {
+    title: "Prazo garantido",
+    description: `${product.leadTime} de produção. Entrega para todo o estado de SP.`,
+  },
+];
+
+const productStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: product.name,
+  description: `${product.tagline}. Capacidades: ${product.capacities.join(", ")}. ${product.material}.`,
+  brand: {
+    "@type": "Brand",
+    name: company.name,
+  },
+  manufacturer: {
+    "@type": "Organization",
+    name: company.name,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: company.address.city,
+      addressRegion: company.address.state,
+      addressCountry: company.address.country,
+    },
+  },
+  material: product.material,
+  category: "Embalagens Industriais",
+};
 ---
 
 <BaseLayout
   title="Barricas de Papelão Industrial — Specs Técnicas e Orçamento"
   description="Barricas de papelão para indústria: capacidades 20-200L, resistência 500kg empilhamento, prazo 10 dias. Fale via WhatsApp."
+  structuredData={productStructuredData}
 >
-  <!-- Hero -->
-  <section class="bg-bg-deep py-16">
-    <div class="mx-auto max-w-content px-6">
-      <p class="font-body text-xs font-medium uppercase tracking-widest text-accent">
-        Produto
-      </p>
-      <h1 class="mt-4 font-heading text-4xl font-bold tracking-tight text-text-primary">
-        Barricas de Papelão
-      </h1>
-      <p class="mt-4 max-w-text font-body text-lg text-text-muted">
-        Embalagens de papelão reforçado de 20L a 200L. Projetadas para armazenamento e transporte de tintas, vernizes, resinas e produtos químicos.
-      </p>
-      <WhatsAppCTA
-        message="Olá! Tenho interesse em barricas de papelão. Pode me enviar mais informações?"
-        label="Solicitar amostra grátis — WhatsApp"
-        size="md"
-        class="mt-8"
-      />
-    </div>
-  </section>
+  <ProductHero
+    eyebrow="Produto"
+    title="Barricas de Papelão"
+    description="Embalagens de papelão kraft multicamadas de 20L a 200L. Projetadas para armazenamento e transporte de tintas, vernizes, resinas e produtos químicos."
+    ctaMessage="Olá! Tenho interesse em barricas de papelão. Pode me enviar mais informações?"
+    ctaLabel="Solicitar amostra grátis — WhatsApp"
+    secondaryCtaMessage="Olá! Tenho uma dúvida técnica sobre compatibilidade dos produtos."
+    secondaryCtaLabel="Dúvida técnica — WhatsApp"
+  />
 
-  <!-- Specs Table -->
-  <section class="bg-bg py-16">
-    <div class="mx-auto max-w-content px-6">
-      <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
-        Especificações Técnicas
-      </h2>
-      <div class="mt-8 overflow-x-auto">
-        <table class="w-full text-left font-body text-sm">
-          <thead class="border-b border-border-subtle text-text-muted">
-            <tr>
-              <th class="pb-3 pr-6 font-medium">Modelo</th>
-              <th class="pb-3 pr-6 font-medium">Capacidade</th>
-              <th class="pb-3 pr-6 font-medium">Dimensões (DxA)</th>
-              <th class="pb-3 pr-6 font-medium">Parede</th>
-              <th class="pb-3 font-medium">Revestimento</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-border-subtle">
-            <tr>
-              <td class="py-3 pr-6 font-medium text-text-primary">BP-20</td>
-              <td class="py-3 pr-6 text-text-muted">20L</td>
-              <td class="py-3 pr-6 text-text-muted">290 x 380 mm</td>
-              <td class="py-3 pr-6 text-text-muted">3mm dupla</td>
-              <td class="py-3 text-text-muted">Opcional (PE)</td>
-            </tr>
-            <tr>
-              <td class="py-3 pr-6 font-medium text-text-primary">BP-50</td>
-              <td class="py-3 pr-6 text-text-muted">50L</td>
-              <td class="py-3 pr-6 text-text-muted">370 x 520 mm</td>
-              <td class="py-3 pr-6 text-text-muted">4mm dupla</td>
-              <td class="py-3 text-text-muted">Opcional (PE)</td>
-            </tr>
-            <tr>
-              <td class="py-3 pr-6 font-medium text-text-primary">BP-100</td>
-              <td class="py-3 pr-6 text-text-muted">100L</td>
-              <td class="py-3 pr-6 text-text-muted">450 x 650 mm</td>
-              <td class="py-3 pr-6 text-text-muted">5mm tripla</td>
-              <td class="py-3 text-text-muted">Opcional (PE/Alumínio)</td>
-            </tr>
-            <tr>
-              <td class="py-3 pr-6 font-medium text-text-primary">BP-200</td>
-              <td class="py-3 pr-6 text-text-muted">200L</td>
-              <td class="py-3 pr-6 text-text-muted">580 x 880 mm</td>
-              <td class="py-3 pr-6 text-text-muted">6mm tripla</td>
-              <td class="py-3 text-text-muted">Opcional (PE/Alumínio)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
+  <SpecsTable
+    product={product}
+    models={barricaModels}
+  />
 
-  <!-- Applications -->
-  <section class="bg-surface py-16">
-    <div class="mx-auto max-w-content px-6">
-      <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
-        Aplicações por Setor
-      </h2>
-      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-lg border border-border-subtle bg-bg p-6">
-          <h3 class="font-heading text-lg font-semibold text-text-primary">Tintas e Vernizes</h3>
-          <p class="mt-2 font-body text-sm text-text-muted">
-            Barricas com revestimento interno para tintas à base de água e solvente.
-          </p>
-        </div>
-        <div class="rounded-lg border border-border-subtle bg-bg p-6">
-          <h3 class="font-heading text-lg font-semibold text-text-primary">Produtos Químicos</h3>
-          <p class="mt-2 font-body text-sm text-text-muted">
-            Resistência a produtos com pH variado. Revestimento de alumínio disponível.
-          </p>
-        </div>
-        <div class="rounded-lg border border-border-subtle bg-bg p-6">
-          <h3 class="font-heading text-lg font-semibold text-text-primary">Agroquímicos</h3>
-          <p class="mt-2 font-body text-sm text-text-muted">
-            Embalagens para defensivos e fertilizantes líquidos.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <ApplicationCards applications={applications} />
 
-  <!-- Objection Eliminator -->
-  <section class="bg-bg py-16">
-    <div class="mx-auto max-w-content px-6">
-      <h2 class="font-heading text-2xl font-semibold tracking-snug text-text-primary">
-        Medo de trocar de fornecedor?
-      </h2>
-      <div class="mt-8 grid gap-6 sm:grid-cols-3">
-        <div class="rounded-lg border border-border-subtle bg-surface p-6">
-          <p class="font-heading text-lg font-semibold text-accent">Amostra grátis</p>
-          <p class="mt-2 font-body text-sm text-text-muted">
-            Teste na sua linha antes de fechar. Sem compromisso.
-          </p>
-        </div>
-        <div class="rounded-lg border border-border-subtle bg-surface p-6">
-          <p class="font-heading text-lg font-semibold text-accent">3 passos</p>
-          <p class="mt-2 font-body text-sm text-text-muted">
-            Solicita, testa, aprova. Processo simples e direto.
-          </p>
-        </div>
-        <div class="rounded-lg border border-border-subtle bg-surface p-6">
-          <p class="font-heading text-lg font-semibold text-accent">Prazo garantido</p>
-          <p class="mt-2 font-body text-sm text-text-muted">
-            10 dias úteis de produção. Entrega para todo o estado de SP.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <ObjectionEliminator objections={objections} />
 
-  <!-- CTA -->
+  <!-- CTA Final -->
   <section class="bg-bg-deep py-16">
     <div class="mx-auto max-w-text px-6 text-center">
       <h2 class="font-heading text-3xl font-semibold tracking-snug text-text-primary">

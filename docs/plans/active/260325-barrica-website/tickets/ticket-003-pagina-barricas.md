@@ -1,4 +1,4 @@
-<!-- Lock: - | pending | - -->
+<!-- Lock: Draven-c7e1 | done | 2026-03-25T18:05:00Z -->
 
 # Ticket 003 — Página Barricas de Papelão
 
@@ -70,15 +70,15 @@
 
 ## Acceptance Criteria
 
-- [ ] Página `/barricas` renderiza corretamente
-- [ ] Hero com tagline e 2 CTAs WhatsApp (amostra + dúvida técnica)
-- [ ] Tabela de specs visível sem scroll horizontal em desktop
-- [ ] Specs incluem: capacidades, material, resistência empilhamento, umidade, lote mínimo, prazo
-- [ ] Cards de aplicação mostram 3 setores (tintas, grafiato, construção)
-- [ ] Seção "Medo de trocar?" com 3 argumentos concretos
-- [ ] CTA final com WhatsApp funcional
-- [ ] Structured data Product no `<head>`
-- [ ] Mobile: tabela de specs scrollável horizontalmente ou em layout de cards
-- [ ] Componentes são genéricos o suficiente para reutilizar em `/baldes`
-- [ ] `astro check` sem erros
-- [ ] Build sem erros
+- [x] Página `/barricas` renderiza corretamente
+- [x] Hero com tagline e 2 CTAs WhatsApp (amostra + dúvida técnica)
+- [x] Tabela de specs visível sem scroll horizontal em desktop
+- [x] Specs incluem: capacidades, material, resistência empilhamento, umidade, lote mínimo, prazo
+- [x] Cards de aplicação mostram 3 setores (tintas, grafiato, construção)
+- [x] Seção "Medo de trocar?" com 3 argumentos concretos
+- [x] CTA final com WhatsApp funcional
+- [x] Structured data Product no `<head>`
+- [x] Mobile: tabela de specs scrollável horizontalmente ou em layout de cards
+- [x] Componentes são genéricos o suficiente para reutilizar em `/baldes`
+- [x] `astro check` sem erros
+- [x] Build sem erros

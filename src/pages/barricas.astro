@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const WHATSAPP_NUMBER = "5519999999999";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá! Gostaria de saber mais sobre as barricas de papelão.")}`;
+---
+
+<Layout
+  title="Barricas de Papelão | Embalagens Industriais"
+  description="Barricas de papelão de 20L a 200L para tintas, vernizes e produtos químicos. Tampa prensada, fundo reforçado, revestimento interno opcional."
+>
+  <!-- Hero -->
+  <section class="bg-brand-900 py-16 text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-bold">Barricas de Papelão</h1>
+      <p class="mt-4 max-w-2xl text-lg text-brand-200">
+        Embalagens de papelão reforçado de 20L a 200L. Projetadas para armazenamento e transporte de tintas, vernizes, resinas e produtos químicos.
+      </p>
+    </div>
+  </section>
+
+  <!-- Specs Table -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold">Especificações Técnicas</h2>
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead class="border-b border-gray-200 text-gray-500">
+            <tr>
+              <th class="pb-3 pr-6 font-medium">Modelo</th>
+              <th class="pb-3 pr-6 font-medium">Capacidade</th>
+              <th class="pb-3 pr-6 font-medium">Dimensões (DxA)</th>
+              <th class="pb-3 pr-6 font-medium">Parede</th>
+              <th class="pb-3 font-medium">Revestimento</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <!-- TODO: substituir por specs reais -->
+            <tr>
+              <td class="py-3 pr-6 font-medium">BP-20</td>
+              <td class="py-3 pr-6">20L</td>
+              <td class="py-3 pr-6">290 x 380 mm</td>
+              <td class="py-3 pr-6">3mm dupla</td>
+              <td class="py-3">Opcional (PE)</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-6 font-medium">BP-50</td>
+              <td class="py-3 pr-6">50L</td>
+              <td class="py-3 pr-6">370 x 520 mm</td>
+              <td class="py-3 pr-6">4mm dupla</td>
+              <td class="py-3">Opcional (PE)</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-6 font-medium">BP-100</td>
+              <td class="py-3 pr-6">100L</td>
+              <td class="py-3 pr-6">450 x 650 mm</td>
+              <td class="py-3 pr-6">5mm tripla</td>
+              <td class="py-3">Opcional (PE/Alumínio)</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-6 font-medium">BP-200</td>
+              <td class="py-3 pr-6">200L</td>
+              <td class="py-3 pr-6">580 x 880 mm</td>
+              <td class="py-3 pr-6">6mm tripla</td>
+              <td class="py-3">Opcional (PE/Alumínio)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Applications -->
+  <section class="bg-gray-50 py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold">Aplicações</h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-xl bg-white p-6 shadow-sm">
+          <h3 class="font-bold">Tintas e Vernizes</h3>
+          <p class="mt-2 text-sm text-gray-600">Barricas com revestimento interno para tintas à base de água e solvente.</p>
+        </div>
+        <div class="rounded-xl bg-white p-6 shadow-sm">
+          <h3 class="font-bold">Produtos Químicos</h3>
+          <p class="mt-2 text-sm text-gray-600">Resistência a produtos com pH variado. Revestimento de alumínio disponível.</p>
+        </div>
+        <div class="rounded-xl bg-white p-6 shadow-sm">
+          <h3 class="font-bold">Agroquímicos</h3>
+          <p class="mt-2 text-sm text-gray-600">Embalagens aprovadas para defensivos e fertilizantes líquidos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-brand-800 py-16 text-white">
+    <div class="mx-auto max-w-4xl px-4 text-center">
+      <h2 class="text-3xl font-bold">Precisa de barricas sob medida?</h2>
+      <p class="mt-4 text-brand-200">Informe volume, quantidade e aplicação. Respondemos em até 2 horas.</p>
+      <a
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-8 inline-block rounded-lg bg-green-500 px-8 py-4 text-lg font-semibold text-white hover:bg-green-600"
+      >
+        Pedir Orçamento pelo WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>

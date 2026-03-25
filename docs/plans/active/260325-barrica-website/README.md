@@ -20,6 +20,7 @@
 | 006 | SEO Final, Performance e Deploy | `pending` | - | 002, 003, 004, 005 |
 | 007 | Otimização de Copy com Marketing Psychology | `pending` | - | 002, 003, 004, 005 |
 | 008 | SEO Deep Optimization (Auditoria Avançada) | `pending` | - | 006, 007 |
+| 009 | Refinamentos de Copy pos-Revisao Copywriting | `pending` | - | 007 |
 
 ---
 
@@ -61,14 +62,15 @@ Layer 3 (verificação final):
 | 004 | Página Baldes Plásticos | 001, 003 | Yasuo-d8a1 | `done` | 2026-03-25 | 2026-03-25 |
 | 005 | Página de Contato | 001 | Leona-b4e2 | `done` | 2026-03-25 | 2026-03-25 |
 | 006 | SEO Final + Performance + Deploy | 002, 003, 004, 005 | Veigar-e2f9 | `done` | 2026-03-25 | 2026-03-25 |
-| 007 | Copy Marketing Psychology | 002, 003, 004, 005 | Morgana-f1c3 | `in_progress` | 2026-03-25 | - |
-| 008 | SEO Deep Optimization | 006, 007 | - | `pending` | - | - |
+| 007 | Copy Marketing Psychology | 002, 003, 004, 005 | Morgana-f1c3 | `done` | 2026-03-25 | 2026-03-25 |
+| 008 | SEO Deep Optimization | 006, 007 | Varus-e4b8 | `in_progress` | 2026-03-25 | - |
+| 009 | Copy Refinements (Revisao Copywriting) | 007 | - | `pending` | - | - |
 
 ---
 
 ## Execution Summary
 
-- **Total tickets:** 8
+- **Total tickets:** 9
 - **Parallelizable:** 3 (tickets 002, 003, 005 — layer 1)
 - **Dependency layers:** 4
 - **Invariantes identificadas:** 15

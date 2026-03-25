@@ -9,9 +9,9 @@ const { testimonial } = Astro.props;
 ---
 
 <div class="rounded-lg border border-border-subtle bg-bg p-8">
-  <p class="font-body text-sm leading-relaxed text-text-muted">
-    "{testimonial.quote}"
-  </p>
+  <blockquote class="font-body text-sm leading-relaxed text-text-muted">
+    &ldquo;{testimonial.quote}&rdquo;
+  </blockquote>
   <div class="mt-6">
     <p class="font-heading text-sm font-semibold text-text-primary">
       {testimonial.author}

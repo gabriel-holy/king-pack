@@ -1,4 +1,4 @@
-<!-- Lock: Morgana-f1c3 | in_progress | 2026-03-25T12:00:00Z -->
+<!-- Lock: Morgana-f1c3 | done | 2026-03-25T16:31:00Z -->
 
 # Ticket 007 — Otimizacao de Copy com Marketing Psychology
 

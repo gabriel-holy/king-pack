@@ -11,9 +11,10 @@ interface Props {
   ogImage?: string;
   type?: "website" | "product";
   structuredData?: Record<string, unknown>;
+  noindex?: boolean;
 }
 
-const { title, description, ogImage, type, structuredData } = Astro.props;
+const { title, description, ogImage, type, structuredData, noindex } = Astro.props;
 ---
 
 <!doctype html>
@@ -28,6 +29,7 @@ const { title, description, ogImage, type, structuredData } = Astro.props;
       ogImage={ogImage}
       type={type}
       structuredData={structuredData}
+      noindex={noindex}
     />
   </head>
   <body class="min-h-screen bg-bg font-body text-text-primary antialiased">

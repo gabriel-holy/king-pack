@@ -23,10 +23,13 @@ const steps = [
 <section class="bg-bg py-16">
   <div class="mx-auto max-w-content px-6">
     <SectionHeader title="3 passos para trocar de fornecedor sem risco" />
-    <div class="mt-12 grid gap-8 sm:grid-cols-3">
-      {steps.map((step) => (
-        <div class="text-center">
-          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-surface font-heading text-xl font-bold text-accent">
+    <div class="mt-12 grid gap-8 sm:grid-cols-3 sm:gap-0">
+      {steps.map((step, i) => (
+        <div class="relative text-center px-6">
+          {i < steps.length - 1 && (
+            <div class="absolute right-0 top-6 hidden h-px w-full translate-x-1/2 bg-border-subtle sm:block" aria-hidden="true" />
+          )}
+          <div class="relative mx-auto flex h-12 w-12 items-center justify-center rounded-full border-2 border-accent bg-bg font-heading text-xl font-bold text-accent">
             {step.number}
           </div>
           <h3 class="mt-4 font-heading text-lg font-semibold text-text-primary">{step.title}</h3>

@@ -257,5 +257,7 @@ socialLinks: {
 
 ---
 
+<!-- Lock: Varus-e4b8 | in_progress | 2026-03-25T00:00:00Z -->
+
 *Ticket criado em: 2026-03-25*
 *Auditoria realizada por: Claude (Roier SEO)*

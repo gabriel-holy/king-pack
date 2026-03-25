@@ -9,8 +9,9 @@ import Testimonials from "../components/home/Testimonials.astro";
 import FinalCTA from "../components/home/FinalCTA.astro";
 import { company } from "../data/company";
 
-const structuredData = {
-  "@context": "https://schema.org",
+const siteUrl = "https://barricasindustriais.com";
+
+const localBusinessSchema = {
   "@type": "LocalBusiness",
   name: company.name,
   description: `Fabricante industrial de barricas de papelão e baldes plásticos para indústrias de tintas, grafiato e químicos. ${company.city}.`,
@@ -23,7 +24,7 @@ const structuredData = {
     addressCountry: company.address.country,
   },
   telephone: company.phone,
-  url: "https://barricasindustriais.com",
+  url: siteUrl,
   openingHours: "Mo-Fr 08:00-18:00",
   foundingDate: String(company.foundedYear),
   geo: {
@@ -31,6 +32,18 @@ const structuredData = {
     latitude: "-22.7394",
     longitude: "-47.3322",
   },
+  sameAs: [] as string[],
+};
+
+const websiteSchema = {
+  "@type": "WebSite",
+  name: company.name,
+  url: siteUrl,
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [localBusinessSchema, websiteSchema],
 };
 ---
 

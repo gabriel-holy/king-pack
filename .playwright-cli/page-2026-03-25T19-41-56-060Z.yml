@@ -1,0 +1,174 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "King Pack" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "Home" [ref=e7] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e8]:
+          - link "Barricas" [ref=e9] [cursor=pointer]:
+            - /url: /barricas
+        - listitem [ref=e10]:
+          - link "Baldes" [ref=e11] [cursor=pointer]:
+            - /url: /baldes
+        - listitem [ref=e12]:
+          - link "Contato" [ref=e13] [cursor=pointer]:
+            - /url: /contato
+      - link "WhatsApp" [ref=e15] [cursor=pointer]:
+        - /url: https://wa.me/5519992580247?text=Ol%C3%A1!%20Vi%20o%20site%20da%20King%20Pack%20e%20quero%20receber%20uma%20amostra%20gr%C3%A1tis.
+        - img [ref=e16]
+        - text: WhatsApp
+  - main [ref=e18]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - paragraph [ref=e23]: Barrica de Papelão
+        - heading "Barricas de Papelão que Aguentam o Peso da Sua Produção" [level=1] [ref=e24]
+        - paragraph [ref=e25]: Papelão kraft multicamadas de 20L a 200L. Empilhamento até 500kg, zero vazamento no transporte, revestimento interno opcional. Testada por 500+ indústrias de tintas, químicos e agroquímicos.
+        - generic [ref=e26]:
+          - link "Receber amostra grátis" [ref=e27] [cursor=pointer]:
+            - /url: https://wa.me/5519992580247?text=Ol%C3%A1!%20Quero%20receber%20uma%20amostra%20gr%C3%A1tis%20de%20barrica%20de%20papel%C3%A3o.%20Minha%20necessidade%20%C3%A9%20%5Bvolume%2Fproduto%5D.
+            - img [ref=e28]
+            - text: Receber amostra grátis
+          - link "Dúvida técnica — WhatsApp" [ref=e30] [cursor=pointer]:
+            - /url: https://wa.me/5519992580247?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20t%C3%A9cnica%20sobre%20compatibilidade%20dos%20produtos.
+      - img "Produtos embalados em pallets dentro de galpão industrial" [ref=e32]
+    - generic [ref=e34]:
+      - heading "Especificações Técnicas" [level=2] [ref=e35]
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - generic [ref=e38]: Material
+          - generic [ref=e39]: Papelão kraft multicamadas com tampa prensada e fundo reforçado
+        - generic [ref=e40]:
+          - generic [ref=e41]: Capacidades
+          - generic [ref=e42]: 20L, 50L, 100L, 200L
+        - generic [ref=e43]:
+          - generic [ref=e44]: Resistência de empilhamento
+          - generic [ref=e45]: até 500kg
+        - generic [ref=e46]:
+          - generic [ref=e47]: Resistência à umidade
+          - generic [ref=e48]: Revestimento interno PE ou alumínio opcional
+        - generic [ref=e49]:
+          - generic [ref=e50]: Compatibilidade química
+          - generic [ref=e51]: Compatível com produtos à base de água e solvente. Revestimento de alumínio para pH extremo.
+        - generic [ref=e52]:
+          - generic [ref=e53]: Lote mínimo
+          - generic [ref=e54]: 500 unidades
+        - generic [ref=e55]:
+          - generic [ref=e56]: Prazo de entrega
+          - generic [ref=e57]: 10 dias úteis
+      - generic [ref=e58]:
+        - heading "Modelos disponíveis" [level=3] [ref=e59]
+        - table [ref=e61]:
+          - rowgroup [ref=e62]:
+            - row "Modelo Capacidade Dimensões (DxA) Parede Revestimento" [ref=e63]:
+              - columnheader "Modelo" [ref=e64]
+              - columnheader "Capacidade" [ref=e65]
+              - columnheader "Dimensões (DxA)" [ref=e66]
+              - columnheader "Parede" [ref=e67]
+              - columnheader "Revestimento" [ref=e68]
+          - rowgroup [ref=e69]:
+            - row "BP-20 20L 290 x 380 mm 3mm dupla Opcional (PE)" [ref=e70]:
+              - cell "BP-20" [ref=e71]
+              - cell "20L" [ref=e72]
+              - cell "290 x 380 mm" [ref=e73]
+              - cell "3mm dupla" [ref=e74]
+              - cell "Opcional (PE)" [ref=e75]
+            - row "BP-50 50L 370 x 520 mm 4mm dupla Opcional (PE)" [ref=e76]:
+              - cell "BP-50" [ref=e77]
+              - cell "50L" [ref=e78]
+              - cell "370 x 520 mm" [ref=e79]
+              - cell "4mm dupla" [ref=e80]
+              - cell "Opcional (PE)" [ref=e81]
+            - row "BP-100 100L 450 x 650 mm 5mm tripla Opcional (PE/Alumínio)" [ref=e82]:
+              - cell "BP-100" [ref=e83]
+              - cell "100L" [ref=e84]
+              - cell "450 x 650 mm" [ref=e85]
+              - cell "5mm tripla" [ref=e86]
+              - cell "Opcional (PE/Alumínio)" [ref=e87]
+            - row "BP-200 200L 580 x 880 mm 6mm tripla Opcional (PE/Alumínio)" [ref=e88]:
+              - cell "BP-200" [ref=e89]
+              - cell "200L" [ref=e90]
+              - cell "580 x 880 mm" [ref=e91]
+              - cell "6mm tripla" [ref=e92]
+              - cell "Opcional (PE/Alumínio)" [ref=e93]
+    - generic [ref=e95]:
+      - heading "Aplicações por Setor" [level=2] [ref=e96]
+      - generic [ref=e97]:
+        - generic [ref=e98]:
+          - heading "Tintas e Vernizes" [level=3] [ref=e99]
+          - paragraph [ref=e100]: Revestimento interno PE ou alumínio que protege tinta à base de água e solvente. Empresas como a sua já despacham 10.000+ barricas/mês com zero perda.
+        - generic [ref=e101]:
+          - heading "Grafiato e Texturas" [level=3] [ref=e102]
+          - paragraph [ref=e103]: Fundo reforçado que aguenta o peso do grafiato sem deformar. Empilhamento seguro até 500kg — do estoque ao caminhão.
+        - generic [ref=e104]:
+          - heading "Construção Civil" [level=3] [ref=e105]
+          - paragraph [ref=e106]: Resistência comprovada a resinas, impermeabilizantes e aditivos alcalinos. Revestimento de alumínio para pH extremo.
+    - generic [ref=e108]:
+      - heading "Medo de trocar de fornecedor?" [level=2] [ref=e109]
+      - generic [ref=e110]:
+        - generic [ref=e111]:
+          - paragraph [ref=e112]: Teste antes de decidir
+          - paragraph [ref=e113]: Receba uma amostra grátis em até 48h. Teste na sua linha de produção real. Se não aprovar, zero custo.
+        - generic [ref=e114]:
+          - paragraph [ref=e115]: Simples como deve ser
+          - paragraph [ref=e116]: WhatsApp → amostra em 48h → primeiro pedido. Sem burocracia, sem licitação, sem enrolação.
+        - generic [ref=e117]:
+          - paragraph [ref=e118]: Prazo garantido
+          - paragraph [ref=e119]: Produção em 10 dias úteis com entrega na porta da sua fábrica em SP. Prazo garantido em contrato.
+    - generic [ref=e121]:
+      - heading "Cada dia sem a embalagem certa é produção parada" [level=2] [ref=e122]
+      - paragraph [ref=e123]: Manda volume, quantidade e aplicação no WhatsApp. Resposta em até 2 horas — direto com o dono da fábrica.
+      - generic [ref=e124]:
+        - link "Pedir Orçamento — WhatsApp" [ref=e125] [cursor=pointer]:
+          - /url: https://wa.me/5519992580247?text=Ol%C3%A1!%20Quero%20receber%20uma%20amostra%20gr%C3%A1tis%20de%20barrica%20de%20papel%C3%A3o.%20Minha%20necessidade%20%C3%A9%20%5Bvolume%2Fproduto%5D.
+          - img [ref=e126]
+          - text: Pedir Orçamento — WhatsApp
+        - link "Dúvida técnica — WhatsApp" [ref=e128] [cursor=pointer]:
+          - /url: https://wa.me/5519992580247?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20t%C3%A9cnica%20sobre%20compatibilidade%20dos%20produtos.
+          - img [ref=e129]
+          - text: Dúvida técnica — WhatsApp
+  - contentinfo [ref=e131]:
+    - generic [ref=e132]:
+      - generic [ref=e133]:
+        - generic [ref=e134]:
+          - heading "King Pack" [level=3] [ref=e135]
+          - paragraph [ref=e136]: 22 anos fabricando embalagens que não falham. 500+ indústrias em SP confiam na King Pack.
+        - generic [ref=e137]:
+          - heading "Produtos" [level=4] [ref=e138]
+          - list [ref=e139]:
+            - listitem [ref=e140]:
+              - link "Barricas de Papelão" [ref=e141] [cursor=pointer]:
+                - /url: /barricas
+            - listitem [ref=e142]:
+              - link "Baldes Plásticos" [ref=e143] [cursor=pointer]:
+                - /url: /baldes
+        - generic [ref=e144]:
+          - heading "Contato" [level=4] [ref=e145]
+          - list [ref=e146]:
+            - listitem [ref=e147]: Rua Exemplo, 123 — Distrito Industrial
+            - listitem [ref=e148]: Americana - SP, 13465-000
+            - listitem [ref=e149]:
+              - link "(19) 99258-0247" [ref=e150] [cursor=pointer]:
+                - /url: https://wa.me/5519992580247?text=Ol%C3%A1!%20Vi%20o%20site%20da%20King%20Pack%20e%20quero%20receber%20uma%20amostra%20gr%C3%A1tis.
+            - listitem [ref=e151]: Segunda a Sexta, 8h às 18h
+      - generic [ref=e152]: "© 2026 King Pack. Todos os direitos reservados. | CNPJ: XX.XXX.XXX/XXXX-XX"
+  - link "Falar no WhatsApp" [ref=e153] [cursor=pointer]:
+    - /url: https://wa.me/5519992580247?text=Ol%C3%A1!%20Vi%20o%20site%20da%20King%20Pack%20e%20quero%20receber%20uma%20amostra%20gr%C3%A1tis.
+    - img [ref=e154]
+  - generic [ref=e158]:
+    - button "Menu" [ref=e159]:
+      - img [ref=e161]
+      - generic: Menu
+    - button "Inspect" [ref=e165]:
+      - img [ref=e167]
+      - generic: Inspect
+    - button "Audit" [ref=e169]:
+      - generic [ref=e170]:
+        - img [ref=e171]
+        - img [ref=e174]
+      - generic: Audit
+    - button "Settings" [ref=e177]:
+      - img [ref=e179]
+      - generic: Settings

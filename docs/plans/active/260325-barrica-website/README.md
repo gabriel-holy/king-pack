@@ -28,7 +28,7 @@
 | 014 | Post 1: Barrica de Papelão ou Lata | `pending` | 012 |
 | 015 | Post 2: Mercado de Tintas no Brasil | `pending` | 012 |
 | 016 | Post 3: Guia de Compatibilidade Química | `pending` | 012 |
-| 017 | Post 4: Embalagem Homologada INMETRO/ABNT/ANTT | `pending` | 012 |
+| 017 | Post 4: Embalagem Homologada INMETRO/ABNT/ANTT | `done` | 012 |
 | 018 | Post 5: Embalagem Sustentável na Indústria | `pending` | 012 |
 | 019 | Post 6: Grafiato e Massa Corrida | `pending` | 012 |
 | 020 | Post 7: Embalagem de Agroquímico | `pending` | 012 |
@@ -87,7 +87,7 @@
 | 014 | Post 1: Barrica de Papelão ou Lata | 012 | Kayn-2e7b | `done` | 2026-03-25 | 2026-03-25 |
 | 015 | Post 2: Mercado de Tintas no Brasil | 012 | Rengar-4f8c | `done` | 2026-03-25 | 2026-03-25 |
 | 016 | Post 3: Guia de Compatibilidade Química | 012 | Zyra-4c8e | `done` | 2026-03-25 | 2026-03-25 |
-| 017 | Post 4: Embalagem Homologada INMETRO/ABNT/ANTT | 012 | Mordekaiser-b1d6 | `in_progress` | 2026-03-25 | - |
+| 017 | Post 4: Embalagem Homologada INMETRO/ABNT/ANTT | 012 | Mordekaiser-b1d6 | `done` | 2026-03-25 | 2026-03-25 |
 | 018 | Post 5: Embalagem Sustentável na Indústria | 012 | - | `pending` | - | - |
 | 019 | Post 6: Grafiato e Massa Corrida | 012 | - | `pending` | - | - |
 | 020 | Post 7: Embalagem de Agroquímico | 012 | - | `pending` | - | - |

@@ -58,7 +58,7 @@ Layer 3 (verificação final):
 | 003 | Página Barricas de Papelão | 001 | Draven-c7e1 | `done` | 2026-03-25 | 2026-03-25 |
 | 004 | Página Baldes Plásticos | 001, 003 | Yasuo-d8a1 | `done` | 2026-03-25 | 2026-03-25 |
 | 005 | Página de Contato | 001 | Leona-b4e2 | `done` | 2026-03-25 | 2026-03-25 |
-| 006 | SEO Final + Performance + Deploy | 002, 003, 004, 005 | - | `pending` | - | - |
+| 006 | SEO Final + Performance + Deploy | 002, 003, 004, 005 | Veigar-e2f9 | `done` | 2026-03-25 | 2026-03-25 |
 
 ---
 

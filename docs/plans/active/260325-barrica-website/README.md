@@ -85,8 +85,8 @@
 | 012 | Blog: Setup Técnico (Content Collection + Template) | nenhuma | Vex-7d3a | `done` | 2026-03-25 | 2026-03-25 |
 | 013 | Auditoria de Compatibilidade: Correções de Conteúdo | nenhuma | Mundo-e5b2 | `done` | 2026-03-25 | 2026-03-25 |
 | 014 | Post 1: Barrica de Papelão ou Lata | 012 | Kayn-2e7b | `done` | 2026-03-25 | 2026-03-25 |
-| 015 | Post 2: Mercado de Tintas no Brasil | 012 | Rengar-4f8c | `in_progress` | 2026-03-25 | - |
-| 016 | Post 3: Guia de Compatibilidade Química | 012 | - | `pending` | - | - |
+| 015 | Post 2: Mercado de Tintas no Brasil | 012 | Rengar-4f8c | `done` | 2026-03-25 | 2026-03-25 |
+| 016 | Post 3: Guia de Compatibilidade Química | 012 | Zyra-4c8e | `in_progress` | 2026-03-25 | - |
 | 017 | Post 4: Embalagem Homologada INMETRO/ABNT/ANTT | 012 | - | `pending` | - | - |
 | 018 | Post 5: Embalagem Sustentável na Indústria | 012 | - | `pending` | - | - |
 | 019 | Post 6: Grafiato e Massa Corrida | 012 | - | `pending` | - | - |

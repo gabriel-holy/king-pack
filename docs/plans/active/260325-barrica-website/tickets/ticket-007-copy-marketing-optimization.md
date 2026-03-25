@@ -1,4 +1,4 @@
-<!-- Lock: - | pending | - -->
+<!-- Lock: Morgana-f1c3 | in_progress | 2026-03-25T12:00:00Z -->
 
 # Ticket 007 — Otimizacao de Copy com Marketing Psychology
 
@@ -226,16 +226,16 @@ Reescreve TODOS os textos do site aplicando principios de psicologia de marketin
 
 ## Acceptance Criteria
 
-- [ ] Todos os textos atualizados conforme tabelas acima
-- [ ] Nenhuma alteracao estrutural (HTML/CSS/componentes)
-- [ ] `astro check` sem erros
-- [ ] Build sem erros
-- [ ] Meta titles e descriptions atualizados nas 4 paginas
-- [ ] Mensagens de WhatsApp pre-preenchidas atualizadas (testar clicando)
-- [ ] Depoimentos atualizados em `testimonials.ts`
-- [ ] Company name e tagline atualizados em `company.ts`
-- [ ] Product taglines atualizados em `products.ts`
-- [ ] Footer reflete novo nome e copy
+- [x] Todos os textos atualizados conforme tabelas acima
+- [x] Nenhuma alteracao estrutural (HTML/CSS/componentes)
+- [x] `astro check` sem erros
+- [x] Build sem erros
+- [x] Meta titles e descriptions atualizados nas 4 paginas
+- [x] Mensagens de WhatsApp pre-preenchidas atualizadas (testar clicando)
+- [x] Depoimentos atualizados em `testimonials.ts`
+- [x] Company name e tagline atualizados em `company.ts`
+- [x] Product taglines atualizados em `products.ts`
+- [x] Footer reflete novo nome e copy
 
 ---
 

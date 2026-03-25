@@ -4,15 +4,21 @@ import SectionHeader from "../shared/SectionHeader.astro";
 const products = [
   {
     href: "/barricas",
-    placeholder: "Foto: barrica de papelão em galpão industrial",
+    image: "/images/products/warehouse-packages.jpg",
+    imageAlt: "Pacotes industriais empilhados em galpão de distribuição",
+    imageWidth: 1200,
+    imageHeight: 900,
     name: "Barricas de Papelão",
-    description: "De 20L a 200L. Tampa prensada, fundo reforçado, revestimento interno opcional. Para tintas, vernizes e produtos químicos.",
+    description: "20L a 200L. Aguentam 500kg de empilhamento e zero vazamento no transporte. Para tintas, vernizes e químicos.",
   },
   {
     href: "/baldes",
-    placeholder: "Foto: baldes plásticos industriais empilhados",
+    image: "/images/products/chemical-worker.jpg",
+    imageAlt: "Operador industrial manuseando container químico com EPI",
+    imageWidth: 1200,
+    imageHeight: 803,
     name: "Baldes Plásticos",
-    description: "De 3,6L a 20L. Polipropileno ou polietileno, com alça metálica ou plástica. Para tintas, massas, grafiatos e químicos.",
+    description: "3,6L a 20L. Vedação hermética, empilhamento seguro e resistência química comprovada. Para tintas, massas e agroquímicos.",
   },
 ];
 ---
@@ -20,14 +26,21 @@ const products = [
 <section class="bg-surface py-16">
   <div class="mx-auto max-w-content px-6">
     <SectionHeader
-      title="Nossos Produtos"
-      subtitle="Embalagens projetadas para suportar as exigências da sua linha de produção."
+      title="Qual embalagem sua produção precisa?"
+      subtitle="Escolha o tipo e veja as especificações técnicas completas — sem cadastro."
     />
     <div class="mt-12 grid gap-8 md:grid-cols-2">
       {products.map((product) => (
         <a href={product.href} class="group rounded-lg border border-border-subtle bg-bg p-8 transition-colors hover:border-accent">
-          <div class="mb-4 flex h-48 items-center justify-center rounded-lg bg-surface-2">
-            <span class="font-body text-sm text-text-muted">{product.placeholder}</span>
+          <div class="mb-4 overflow-hidden rounded-lg bg-surface-2">
+            <img
+              src={product.image}
+              alt={product.imageAlt}
+              width={product.imageWidth}
+              height={product.imageHeight}
+              loading="lazy"
+              class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
           </div>
           <h3 class="font-heading text-xl font-semibold text-text-primary group-hover:text-accent">
             {product.name}
@@ -36,7 +49,7 @@ const products = [
             {product.description}
           </p>
           <span class="mt-4 inline-block font-body text-sm font-medium text-accent">
-            Ver especificações &rarr;
+            Ver specs e pedir amostra grátis &rarr;
           </span>
         </a>
       ))}

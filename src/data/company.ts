@@ -1,6 +1,6 @@
 export const company = {
-  name: "Fábrica de Barricas e Baldes",
-  tagline: "Embalagens industriais que sua produção exige",
+  name: "King Pack",
+  tagline: "Sua produção não para. Sua embalagem também não.",
   city: "Americana, SP",
   address: {
     street: "Rua Exemplo, 123",
@@ -14,7 +14,7 @@ export const company = {
   phone: "(19) 99258-0247",
   whatsapp: "5519992580247",
   whatsappMessage:
-    "Olá! Vi o site e gostaria de saber mais sobre as embalagens.",
+    "Olá! Vi o site da King Pack e quero receber uma amostra grátis.",
   email: "contato@barricasindustriais.com.br",
   hours: "Segunda a Sexta, 8h às 18h",
   foundedYear: 2004,

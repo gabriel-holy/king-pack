@@ -20,30 +20,30 @@ const barricaModels = [
 const applications = [
   {
     name: "Tintas e Vernizes",
-    description: "Barricas com revestimento interno para tintas à base de água e solvente. Capacidades de 20L a 200L.",
+    description: "Revestimento interno PE ou alumínio que protege tinta à base de água e solvente. Empresas como a sua já despacham 10.000+ barricas/mês com zero perda.",
   },
   {
     name: "Grafiato e Texturas",
-    description: "Embalagens reforçadas para massas e texturas de alta densidade. Fundo reforçado para empilhamento.",
+    description: "Fundo reforçado que aguenta o peso do grafiato sem deformar. Empilhamento seguro até 500kg — do estoque ao caminhão.",
   },
   {
     name: "Construção Civil",
-    description: "Barricas para resinas, impermeabilizantes e aditivos. Resistência a produtos alcalinos.",
+    description: "Resistência comprovada a resinas, impermeabilizantes e aditivos alcalinos. Revestimento de alumínio para pH extremo.",
   },
 ];
 
 const objections = [
   {
-    title: "Amostra grátis",
-    description: "Teste na sua linha antes de fechar. Sem compromisso.",
+    title: "Teste antes de decidir",
+    description: "Receba uma amostra grátis em até 48h. Teste na sua linha de produção real. Se não aprovar, zero custo.",
   },
   {
-    title: "3 passos",
-    description: "Solicita, testa, aprova. Processo simples e direto.",
+    title: "Simples como deve ser",
+    description: "WhatsApp → amostra em 48h → primeiro pedido. Sem burocracia, sem licitação, sem enrolação.",
   },
   {
     title: "Prazo garantido",
-    description: `${product.leadTime} de produção. Entrega para todo o estado de SP.`,
+    description: `Produção em ${product.leadTime} com entrega na porta da sua fábrica em SP. Prazo garantido em contrato.`,
   },
 ];
 
@@ -72,19 +72,23 @@ const productStructuredData = {
 ---
 
 <BaseLayout
-  title="Barricas de Papelão Industrial — Specs Técnicas e Orçamento"
-  description="Barricas de papelão para indústria: capacidades 20-200L, resistência 500kg empilhamento, prazo 10 dias. Fale via WhatsApp."
+  title="Barricas de Papelão Industrial 20-200L · Amostra Grátis · King Pack"
+  description="Barricas de papelão kraft 20-200L com 500kg de resistência. Amostra grátis em 48h. Fábrica própria em Americana-SP. Fale no WhatsApp."
   type="product"
   structuredData={productStructuredData}
 >
   <ProductHero
-    eyebrow="Produto"
-    title="Barricas de Papelão"
-    description="Embalagens de papelão kraft multicamadas de 20L a 200L. Projetadas para armazenamento e transporte de tintas, vernizes, resinas e produtos químicos."
-    ctaMessage="Olá! Tenho interesse em barricas de papelão. Pode me enviar mais informações?"
-    ctaLabel="Solicitar amostra grátis — WhatsApp"
+    eyebrow="Barrica de Papelão"
+    title="Barricas de Papelão que Aguentam o Peso da Sua Produção"
+    description="Papelão kraft multicamadas de 20L a 200L. Empilhamento até 500kg, zero vazamento no transporte, revestimento interno opcional. Testada por 500+ indústrias de tintas, químicos e agroquímicos."
+    ctaMessage="Olá! Quero receber uma amostra grátis de barrica de papelão. Minha necessidade é [volume/produto]."
+    ctaLabel="Receber amostra grátis"
     secondaryCtaMessage="Olá! Tenho uma dúvida técnica sobre compatibilidade dos produtos."
     secondaryCtaLabel="Dúvida técnica — WhatsApp"
+    image="/images/products/warehouse-pallets.jpg"
+    imageAlt="Produtos embalados em pallets dentro de galpão industrial"
+    imageWidth={1200}
+    imageHeight={800}
   />
 
   <SpecsTable
@@ -100,14 +104,14 @@ const productStructuredData = {
   <section class="bg-bg-deep py-16">
     <div class="mx-auto max-w-text px-6 text-center">
       <h2 class="font-heading text-3xl font-semibold tracking-snug text-text-primary">
-        Precisa de barricas sob medida?
+        Cada dia sem a embalagem certa é produção parada
       </h2>
       <p class="mt-4 font-body text-text-muted">
-        Informe volume, quantidade e aplicação. Respondemos em até 2 horas.
+        Manda volume, quantidade e aplicação no WhatsApp. Resposta em até 2 horas — direto com o dono da fábrica.
       </p>
       <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
         <WhatsAppCTA
-          message="Olá! Tenho interesse em barricas de papelão. Pode me enviar mais informações?"
+          message="Olá! Quero receber uma amostra grátis de barrica de papelão. Minha necessidade é [volume/produto]."
           label="Pedir Orçamento — WhatsApp"
           size="lg"
         />

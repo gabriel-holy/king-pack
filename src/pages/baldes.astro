@@ -21,34 +21,34 @@ const baldeModels = [
 const applications = [
   {
     name: "Tintas e Massas",
-    description: "Baldes com vedação hermética para tintas à base de água e solvente. Resistência química comprovada.",
+    description: "Vedação hermética que elimina vazamento de tintas à base de água e solvente. Seu cliente recebe o produto intacto.",
   },
   {
     name: "Químicos Industriais",
-    description: "PEAD resistente a ácidos, bases e solventes orgânicos. Aprovados para transporte de produtos químicos.",
+    description: "PEAD que resiste a ácidos, bases e solventes sem deformar. Aprovado para transporte de químicos perigosos — sua logística segura.",
   },
   {
     name: "Agroquímicos",
-    description: "Embalagens para defensivos e fertilizantes líquidos. Vedação que previne vazamentos no transporte.",
+    description: "Vedação total para defensivos e fertilizantes líquidos. Zero vazamento do campo ao ponto de venda.",
   },
   {
     name: "Produtos para Construção",
-    description: "Baldes para impermeabilizantes, resinas e aditivos. Fácil empilhamento e manuseio em obra.",
+    description: "Empilhamento fácil em obra, manuseio com uma mão só. Ideal para impermeabilizantes, resinas e aditivos.",
   },
 ];
 
 const objections = [
   {
-    title: "Amostra grátis",
-    description: "Teste na sua linha antes de fechar. Sem compromisso.",
+    title: "Teste antes de decidir",
+    description: "Receba uma amostra grátis em até 48h. Teste na sua linha de produção real. Se não aprovar, zero custo.",
   },
   {
-    title: "3 passos",
-    description: "Solicita, testa, aprova. Processo simples e direto.",
+    title: "Simples como deve ser",
+    description: "WhatsApp → amostra em 48h → primeiro pedido. Sem burocracia, sem licitação, sem enrolação.",
   },
   {
     title: "Prazo garantido",
-    description: `${product.leadTime} de produção. Entrega para todo o estado de SP.`,
+    description: `Produção em ${product.leadTime} com entrega na porta da sua fábrica em SP. Prazo garantido em contrato.`,
   },
 ];
 
@@ -77,19 +77,23 @@ const productStructuredData = {
 ---
 
 <BaseLayout
-  title="Baldes Plásticos Industriais — Specs Técnicas e Orçamento"
-  description="Baldes plásticos para tintas, químicos e agroquímicos: capacidades 3,6-20L, PP e PEAD, lote mínimo 200 unidades. Fale via WhatsApp."
+  title="Baldes Plásticos Industriais 3,6-20L · Amostra Grátis · King Pack"
+  description="Baldes PP e PEAD de 3,6L a 20L. Vedação hermética, resistência química comprovada. Amostra grátis em 48h. Fábrica em Americana-SP."
   type="product"
   structuredData={productStructuredData}
 >
   <ProductHero
-    eyebrow="Produto"
-    title="Baldes Plásticos Industriais"
-    description="Baldes em polipropileno e polietileno de alta densidade de 3,6L a 20L. Vedação hermética para tintas, químicos, agroquímicos e produtos para construção."
-    ctaMessage="Olá! Tenho interesse em baldes plásticos industriais. Pode me ajudar?"
-    ctaLabel="Solicitar amostra grátis — WhatsApp"
+    eyebrow="Balde Plástico Industrial"
+    title="Baldes que Vedam, Empilham e Não Vazam"
+    description="PP e PEAD de 3,6L a 20L. Vedação hermética testada, empilhamento até 300kg e resistência química para tintas, agroquímicos e químicos industriais. Usados por 500+ indústrias em SP."
+    ctaMessage="Olá! Quero receber uma amostra grátis de balde plástico. Minha necessidade é [volume/produto]."
+    ctaLabel="Receber amostra grátis"
     secondaryCtaMessage="Olá! Tenho uma dúvida técnica sobre compatibilidade dos baldes plásticos."
     secondaryCtaLabel="Dúvida técnica — WhatsApp"
+    image="/images/products/production-line-bottles.jpg"
+    imageAlt="Linha de produção industrial com containers em série"
+    imageWidth={1200}
+    imageHeight={800}
   />
 
   <SpecsTable
@@ -105,14 +109,14 @@ const productStructuredData = {
   <section class="bg-bg-deep py-16">
     <div class="mx-auto max-w-text px-6 text-center">
       <h2 class="font-heading text-3xl font-semibold tracking-snug text-text-primary">
-        Precisa de baldes sob medida?
+        Cada balde que vaza é cliente que você perde
       </h2>
       <p class="mt-4 font-body text-text-muted">
-        Informe volume, quantidade e aplicação. Respondemos em até 2 horas.
+        Manda volume, quantidade e aplicação no WhatsApp. Resposta em até 2 horas — direto com o dono da fábrica.
       </p>
       <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
         <WhatsAppCTA
-          message="Olá! Tenho interesse em baldes plásticos industriais. Pode me ajudar?"
+          message="Olá! Quero receber uma amostra grátis de balde plástico. Minha necessidade é [volume/produto]."
           label="Pedir Orçamento — WhatsApp"
           size="lg"
         />

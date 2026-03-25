@@ -11,7 +11,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t1",
     quote:
-      "Trocamos de fornecedor há 3 anos e desde então zero ocorrências de barrica danificada no transporte. A fábrica entrega no prazo e a qualidade é consistente lote a lote.",
+      "Trocamos de fornecedor há 3 anos. Resultado: zero barricas danificadas no transporte e entrega no prazo em 100% dos pedidos. Qualidade idêntica lote a lote — isso não tem preço.",
     author: "Carlos Mendes",
     role: "Gerente de Compras",
     company: "Tintas Progresso",
@@ -20,7 +20,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t2",
     quote:
-      "Precisávamos de baldes que aguentassem o grafiato sem deformar. Testamos a amostra grátis e em 1 semana já fizemos o primeiro pedido de 2.000 unidades.",
+      "Testamos a amostra grátis numa segunda-feira. Na sexta já tínhamos fechado um pedido de 2.000 baldes. Grafiato pesado, zero deformação. Exatamente o que a gente precisava.",
     author: "Fernanda Oliveira",
     role: "Gerente de Produção",
     company: "Revestimentos MaxTex",

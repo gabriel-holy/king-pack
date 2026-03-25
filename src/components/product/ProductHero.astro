@@ -10,6 +10,10 @@ interface Props {
   ctaLabel?: string;
   secondaryCtaMessage?: string;
   secondaryCtaLabel?: string;
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
 const {
@@ -20,6 +24,10 @@ const {
   ctaLabel = "Solicitar amostra grátis — WhatsApp",
   secondaryCtaMessage,
   secondaryCtaLabel = "Dúvida técnica — WhatsApp",
+  image,
+  imageAlt = "",
+  imageWidth = 1200,
+  imageHeight = 800,
 } = Astro.props;
 
 const secondaryHref = secondaryCtaMessage
@@ -29,30 +37,46 @@ const secondaryHref = secondaryCtaMessage
 
 <section class="bg-bg-deep py-20 lg:py-24">
   <div class="mx-auto max-w-content px-6">
-    <p class="font-body text-xs font-medium uppercase tracking-widest text-accent">
-      {eyebrow}
-    </p>
-    <h1 class="mt-4 font-heading text-4xl font-bold tracking-tight text-text-primary lg:text-hero">
-      {title}
-    </h1>
-    <p class="mt-4 max-w-text font-body text-lg text-text-muted">
-      {description}
-    </p>
-    <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-      <WhatsAppCTA
-        message={ctaMessage}
-        label={ctaLabel}
-        size="md"
-      />
-      {secondaryHref && (
-        <a
-          href={secondaryHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex min-h-[44px] items-center gap-2 rounded-md border border-border-subtle px-6 py-3 font-heading text-base font-semibold text-text-primary transition-colors hover:border-accent hover:text-accent"
-        >
-          {secondaryCtaLabel}
-        </a>
+    <div class:list={["grid items-center gap-12", image && "lg:grid-cols-2"]}>
+      <div>
+        <p class="font-body text-xs font-medium uppercase tracking-widest text-accent">
+          {eyebrow}
+        </p>
+        <h1 class="mt-4 font-heading text-4xl font-bold tracking-tight text-text-primary lg:text-hero">
+          {title}
+        </h1>
+        <p class="mt-4 max-w-text font-body text-lg text-text-muted">
+          {description}
+        </p>
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <WhatsAppCTA
+            message={ctaMessage}
+            label={ctaLabel}
+            size="md"
+          />
+          {secondaryHref && (
+            <a
+              href={secondaryHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex min-h-[44px] items-center gap-2 rounded-md border border-border-subtle px-6 py-3 font-heading text-base font-semibold text-text-primary transition-colors hover:border-accent hover:text-accent"
+            >
+              {secondaryCtaLabel}
+            </a>
+          )}
+        </div>
+      </div>
+      {image && (
+        <div class="hidden overflow-hidden rounded-lg lg:block">
+          <img
+            src={image}
+            alt={imageAlt}
+            width={imageWidth}
+            height={imageHeight}
+            fetchpriority="high"
+            class="h-auto w-full rounded-lg object-cover"
+          />
+        </div>
       )}
     </div>
   </div>

@@ -3,14 +3,13 @@ export const company = {
   tagline: "Sua produção não para. Sua embalagem também não.",
   city: "Americana, SP",
   address: {
-    street: "Rua Exemplo, 123",
-    neighborhood: "Distrito Industrial",
+    street: "R. do Poliester, 109",
+    neighborhood: "Lot. Industrial Salto Grande II",
     city: "Americana",
     state: "SP",
-    zip: "13465-000",
+    zip: "13474-764",
     country: "BR",
   },
-  cnpj: "XX.XXX.XXX/XXXX-XX",
   phone: "(19) 99258-0247",
   whatsapp: "5519992580247",
   whatsappMessage:
@@ -18,6 +17,7 @@ export const company = {
   email: "contato@barricasindustriais.com.br",
   hours: "Segunda a Sexta, 8h às 18h",
   foundedYear: 2004,
+  socialLinks: {} as Record<string, string>,
   metrics: {
     yearsInMarket: 22,
     activeClients: 500,

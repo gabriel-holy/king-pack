@@ -1,5 +1,6 @@
 ---
 import WhatsAppCTA from "../shared/WhatsAppCTA.astro";
+import MagneticButton from "../shared/MagneticButton.astro";
 import { buildWhatsAppUrl } from "../../data/company";
 
 interface Props {
@@ -35,25 +36,27 @@ const secondaryHref = secondaryCtaMessage
   : undefined;
 ---
 
-<section class="bg-bg-deep py-20 lg:py-24">
+<section class="relative overflow-hidden bg-bg-deep py-20 lg:py-24">
   <div class="mx-auto max-w-content px-6">
     <div class:list={["grid items-center gap-12", image && "lg:grid-cols-2"]}>
       <div>
-        <p class="font-body text-xs font-medium uppercase tracking-widest text-accent">
+        <p class="font-body text-xs font-medium uppercase tracking-widest text-accent" data-fade-up>
           {eyebrow}
         </p>
-        <h1 class="mt-4 font-heading text-4xl font-bold tracking-tight text-text-primary lg:text-hero">
+        <h1 class="text-reveal mt-4 font-heading text-4xl font-bold tracking-tight text-text-primary lg:text-hero">
           {title}
         </h1>
-        <p class="mt-4 max-w-text font-body text-lg text-text-muted">
+        <p class="mt-4 max-w-text font-body text-lg text-text-muted" data-fade-up data-fade-delay="200">
           {description}
         </p>
-        <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <WhatsAppCTA
-            message={ctaMessage}
-            label={ctaLabel}
-            size="md"
-          />
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center" data-fade-up data-fade-delay="400">
+          <MagneticButton>
+            <WhatsAppCTA
+              message={ctaMessage}
+              label={ctaLabel}
+              size="md"
+            />
+          </MagneticButton>
           {secondaryHref && (
             <a
               href={secondaryHref}
@@ -67,17 +70,53 @@ const secondaryHref = secondaryCtaMessage
         </div>
       </div>
       {image && (
-        <div class="hidden overflow-hidden rounded-lg lg:block">
+        <div class="hidden overflow-hidden rounded-lg lg:block" data-fade-up data-fade-delay="300">
           <img
             src={image}
             alt={imageAlt}
             width={imageWidth}
             height={imageHeight}
             fetchpriority="high"
-            class="h-auto w-full rounded-lg object-cover"
+            class="product-hero-img h-auto w-full rounded-lg object-cover"
           />
         </div>
       )}
     </div>
   </div>
 </section>
+
+<script>
+  function initProductHeroParallax(): void {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    if (prefersReducedMotion || isMobile) return;
+
+    const img = document.querySelector('.product-hero-img') as HTMLElement | null;
+    if (!img) return;
+
+    let ticking = false;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+
+    img.style.willChange = 'transform';
+
+    function onScroll(): void {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        img!.style.transform = `translateY(${scrollY * 0.4}px)`;
+        ticking = false;
+
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          img!.style.willChange = '';
+        }, 150);
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  initProductHeroParallax();
+  document.addEventListener('astro:after-swap', initProductHeroParallax);
+</script>

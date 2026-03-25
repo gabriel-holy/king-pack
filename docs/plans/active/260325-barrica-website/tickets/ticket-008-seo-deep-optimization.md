@@ -215,19 +215,19 @@ socialLinks: {
 
 ## Acceptance Criteria
 
-- [ ] Twitter Card tags presentes em todas as paginas (verificar com Twitter Card Validator ou meta inspector)
-- [ ] OG Image default renderiza em compartilhamentos (WhatsApp, LinkedIn)
-- [ ] 404 page tem `noindex` no HTML gerado
-- [ ] BreadcrumbList schema valido em `/barricas`, `/baldes`, `/contato` (testar com Google Rich Results Test)
-- [ ] FAQPage schema valido em `/barricas` e `/baldes`
-- [ ] WebSite schema presente na Home
-- [ ] Product schema inclui `offers` em `/barricas` e `/baldes`
-- [ ] ContactPage schema em `/contato`
-- [ ] `theme-color` meta tag presente
-- [ ] Apple Touch Icon e favicon PNG em `public/`
-- [ ] `hreflang` tag em todas as paginas
-- [ ] `npm run build` sem erros
-- [ ] Structured data valido (testar com https://validator.schema.org ou Google Rich Results Test)
+- [x] Twitter Card tags presentes em todas as paginas (verificar com Twitter Card Validator ou meta inspector)
+- [x] OG Image default renderiza em compartilhamentos (WhatsApp, LinkedIn)
+- [x] 404 page tem `noindex` no HTML gerado
+- [x] BreadcrumbList schema valido em `/barricas`, `/baldes`, `/contato` (testar com Google Rich Results Test)
+- [x] FAQPage schema valido em `/barricas` e `/baldes`
+- [x] WebSite schema presente na Home
+- [x] Product schema inclui `offers` em `/barricas` e `/baldes`
+- [x] ContactPage schema em `/contato`
+- [x] `theme-color` meta tag presente
+- [x] Apple Touch Icon e favicon PNG em `public/`
+- [x] `hreflang` tag em todas as paginas
+- [x] `npm run build` sem erros
+- [x] Structured data valido (testar com https://validator.schema.org ou Google Rich Results Test)
 
 ---
 
@@ -257,7 +257,7 @@ socialLinks: {
 
 ---
 
-<!-- Lock: Varus-e4b8 | in_progress | 2026-03-25T00:00:00Z -->
+<!-- Lock: Varus-e4b8 | done | 2026-03-25T16:45:00Z -->
 
 *Ticket criado em: 2026-03-25*
 *Auditoria realizada por: Claude (Roier SEO)*

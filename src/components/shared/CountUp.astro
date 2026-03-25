@@ -1,0 +1,78 @@
+---
+interface Props {
+  value: number;
+  suffix?: string;
+  duration?: number;
+  class?: string;
+}
+
+const {
+  value,
+  suffix = "",
+  duration = 1200,
+  class: className = "",
+} = Astro.props;
+---
+
+<span
+  class:list={["countup", className]}
+  data-countup
+  data-countup-value={value}
+  data-countup-suffix={suffix}
+  data-countup-duration={duration}
+  style="font-variant-numeric: tabular-nums;"
+>
+  {value}{suffix}
+</span>
+
+<script>
+  function initCountUp(): void {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const elements = document.querySelectorAll<HTMLElement>('[data-countup]');
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const el = entry.target as HTMLElement;
+          observer.unobserve(el);
+
+          if (prefersReducedMotion) return;
+
+          const target = Number(el.dataset.countupValue) || 0;
+          const suffix = el.dataset.countupSuffix || '';
+          const duration = Number(el.dataset.countupDuration) || 1200;
+          const start = performance.now();
+
+          el.textContent = `0${suffix}`;
+
+          function easeOutQuart(t: number): number {
+            return 1 - Math.pow(1 - t, 4);
+          }
+
+          function tick(now: number): void {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const easedProgress = easeOutQuart(progress);
+            const current = Math.round(easedProgress * target);
+            el.textContent = `${current}${suffix}`;
+
+            if (progress < 1) {
+              requestAnimationFrame(tick);
+            }
+          }
+
+          requestAnimationFrame(tick);
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+  }
+
+  initCountUp();
+  document.addEventListener('astro:after-swap', initCountUp);
+</script>

@@ -21,6 +21,7 @@
 | 007 | Otimização de Copy com Marketing Psychology | `pending` | - | 002, 003, 004, 005 |
 | 008 | SEO Deep Optimization (Auditoria Avançada) | `pending` | - | 006, 007 |
 | 009 | Refinamentos de Copy pos-Revisao Copywriting | `pending` | - | 007 |
+| 010 | Animacoes e Transicoes (CSS + Vanilla JS) | `pending` | - | 002, 003, 004, 005 |
 
 ---
 
@@ -63,14 +64,15 @@ Layer 3 (verificação final):
 | 005 | Página de Contato | 001 | Leona-b4e2 | `done` | 2026-03-25 | 2026-03-25 |
 | 006 | SEO Final + Performance + Deploy | 002, 003, 004, 005 | Veigar-e2f9 | `done` | 2026-03-25 | 2026-03-25 |
 | 007 | Copy Marketing Psychology | 002, 003, 004, 005 | Morgana-f1c3 | `done` | 2026-03-25 | 2026-03-25 |
-| 008 | SEO Deep Optimization | 006, 007 | Varus-e4b8 | `in_progress` | 2026-03-25 | - |
-| 009 | Copy Refinements (Revisao Copywriting) | 007 | - | `pending` | - | - |
+| 008 | SEO Deep Optimization | 006, 007 | Varus-e4b8 | `done` | 2026-03-25 | 2026-03-25 |
+| 009 | Copy Refinements (Revisao Copywriting) | 007 | Senna-f2a9 | `done` | 2026-03-25 | 2026-03-25 |
+| 010 | Animacoes e Transicoes (CSS + Vanilla JS) | 002, 003, 004, 005 | Warwick-c9d2 | `done` | 2026-03-25 | 2026-03-25 |
 
 ---
 
 ## Execution Summary
 
-- **Total tickets:** 9
+- **Total tickets:** 10
 - **Parallelizable:** 3 (tickets 002, 003, 005 — layer 1)
 - **Dependency layers:** 4
 - **Invariantes identificadas:** 15
@@ -93,6 +95,8 @@ Layer 3 (verificação final):
 | `tickets/ticket-006-*.md` | SEO, Performance, Deploy |
 | `tickets/ticket-007-copy-marketing-optimization.md` | Otimização de copy com marketing psychology |
 | `tickets/ticket-008-seo-deep-optimization.md` | SEO deep optimization (auditoria técnica avançada) |
+| `tickets/ticket-009-copy-refinements.md` | Refinamentos de copy pos-revisao copywriting |
+| `tickets/ticket-010-animacoes-transicoes.md` | Animacoes e transicoes (CSS + Vanilla JS) |
 
 ---
 

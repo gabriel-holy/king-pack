@@ -10,7 +10,7 @@ const whatsappUrl = buildWhatsAppUrl();
       <!-- Company -->
       <div>
         <h3 class="font-heading text-lg font-semibold tracking-snug text-text-primary">
-          {company.name}
+          {company.name} — Embalagens Industriais
         </h3>
         <p class="mt-3 font-body text-sm text-text-muted">
           {company.metrics.yearsInMarket} anos fabricando embalagens que não falham. {company.metrics.activeClients}+ indústrias em SP confiam na King Pack.
@@ -60,8 +60,6 @@ const whatsappUrl = buildWhatsAppUrl();
 
     <div class="mt-10 border-t border-border-subtle pt-8 text-center font-body text-xs text-text-muted">
       &copy; {new Date().getFullYear()} {company.name}. Todos os direitos reservados.
-      <span class="mx-1">|</span>
-      CNPJ: {company.cnpj}
     </div>
   </div>
 </footer>

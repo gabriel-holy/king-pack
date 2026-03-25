@@ -1,22 +1,28 @@
 ---
 import WhatsAppCTA from "../shared/WhatsAppCTA.astro";
+import MagneticButton from "../shared/MagneticButton.astro";
 ---
 
-<section class="bg-bg-deep py-20 lg:py-24">
+<section class="relative overflow-hidden bg-bg-deep py-20 lg:py-24">
+  <div class="absolute inset-0 -z-10" id="hero-parallax-bg">
+    <div class="absolute inset-0 bg-bg-deep"></div>
+  </div>
   <div class="mx-auto max-w-content px-6">
     <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
-        <p class="font-body text-xs font-medium uppercase tracking-widest text-accent">
+        <p class="font-body text-xs font-medium uppercase tracking-widest text-accent" data-fade-up>
           Desde 2004 · Americana, SP
         </p>
-        <h1 class="mt-4 font-heading text-4xl font-bold leading-tight tracking-tight text-text-primary sm:text-[clamp(2.25rem,5vw,3.75rem)]">
+        <h1 class="text-reveal mt-4 font-heading text-4xl font-bold leading-tight tracking-tight text-text-primary sm:text-[clamp(2.25rem,5vw,3.75rem)]">
           Sua produção não para. Sua embalagem também não.
         </h1>
-        <p class="mt-6 font-body text-lg text-text-muted">
+        <p class="mt-6 font-body text-lg text-text-muted" data-fade-up data-fade-delay="200">
           Barricas de papelão e baldes plásticos que 500+ indústrias de tintas, químicos e agroquímicos já confiam. Fabricação própria em Americana-SP.
         </p>
-        <div class="mt-8 flex flex-wrap gap-4">
-          <WhatsAppCTA label="Receber amostra grátis" size="md" />
+        <div class="mt-8 flex flex-wrap gap-4" data-fade-up data-fade-delay="400">
+          <MagneticButton>
+            <WhatsAppCTA label="Pedir minha amostra grátis" size="md" />
+          </MagneticButton>
           <a
             href="/barricas"
             class="inline-flex min-h-[44px] items-center rounded-md border border-border-subtle px-6 py-3 font-heading text-sm font-semibold text-text-primary transition-colors hover:bg-surface"
@@ -25,7 +31,7 @@ import WhatsAppCTA from "../shared/WhatsAppCTA.astro";
           </a>
         </div>
       </div>
-      <div class="hidden overflow-hidden rounded-lg lg:block">
+      <div class="hidden overflow-hidden rounded-lg lg:block" data-fade-up data-fade-delay="300">
         <img
           src="/images/factory/factory-interior.jpg"
           alt="Chão de fábrica industrial com operador em maquinário pesado de produção"
@@ -33,8 +39,49 @@ import WhatsAppCTA from "../shared/WhatsAppCTA.astro";
           height="800"
           fetchpriority="high"
           class="h-auto w-full rounded-lg object-cover"
+          id="hero-parallax-img"
         />
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  function initHeroParallax(): void {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    if (prefersReducedMotion || isMobile) return;
+
+    const img = document.getElementById('hero-parallax-img') as HTMLElement | null;
+    if (!img) return;
+
+    let ticking = false;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+
+    img.style.willChange = 'transform';
+
+    function onScroll(): void {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        img!.style.transform = `translateY(${scrollY * 0.4}px)`;
+        ticking = false;
+
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          img!.style.willChange = '';
+        }, 150);
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    window.addEventListener('scroll', () => {
+      img!.style.willChange = 'transform';
+    }, { passive: true, once: true });
+  }
+
+  initHeroParallax();
+  document.addEventListener('astro:after-swap', initHeroParallax);
+</script>

@@ -29,9 +29,9 @@ const products = [
       title="Qual embalagem sua produção precisa?"
       subtitle="Escolha o tipo e veja as especificações técnicas completas — sem cadastro."
     />
-    <div class="mt-12 grid gap-8 md:grid-cols-2">
+    <div class="mt-12 grid gap-8 md:grid-cols-2" data-stagger-parent>
       {products.map((product) => (
-        <a href={product.href} class="group rounded-lg border border-border-subtle bg-bg p-8 transition-colors hover:border-accent">
+        <a href={product.href} class="card-lift group rounded-lg border border-border-subtle bg-bg p-8" data-fade-up>
           <div class="mb-4 overflow-hidden rounded-lg bg-surface-2">
             <img
               src={product.image}
@@ -49,7 +49,7 @@ const products = [
             {product.description}
           </p>
           <span class="mt-4 inline-block font-body text-sm font-medium text-accent">
-            Ver specs e pedir amostra grátis &rarr;
+            Ver specs · Amostra grátis &rarr;
           </span>
         </a>
       ))}

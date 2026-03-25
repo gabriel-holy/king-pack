@@ -1,17 +1,20 @@
 ---
 import WhatsAppCTA from "../shared/WhatsAppCTA.astro";
+import MagneticButton from "../shared/MagneticButton.astro";
 ---
 
 <section class="bg-bg-deep py-16">
-  <div class="mx-auto max-w-text px-6 text-center">
+  <div class="mx-auto max-w-text px-6 text-center" data-fade-up>
     <h2 class="font-heading text-3xl font-semibold tracking-snug text-text-primary">
-      Enquanto você pesquisa, sua produção espera
+      A próxima remessa não espera
     </h2>
     <p class="mt-4 font-body text-text-muted">
       Peça uma amostra grátis agora. Sem cadastro, sem compromisso — só WhatsApp.
     </p>
     <div class="mt-8 flex justify-center">
-      <WhatsAppCTA label="Quero minha amostra grátis" size="lg" />
+      <MagneticButton>
+        <WhatsAppCTA label="Quero minha amostra grátis" size="lg" />
+      </MagneticButton>
     </div>
   </div>
 </section>

@@ -7,9 +7,9 @@ import { testimonials } from "../../data/testimonials";
 <section class="bg-surface py-16">
   <div class="mx-auto max-w-content px-6">
     <SectionHeader title="Quem trocou de fornecedor não voltou atrás" />
-    <div class="mt-12 grid gap-8 md:grid-cols-2">
+    <div class="mt-12 grid gap-8 md:grid-cols-2" data-stagger-parent>
       {testimonials.map((t) => (
-        <TestimonialCard testimonial={t} />
+        <div data-fade-up><TestimonialCard testimonial={t} /></div>
       ))}
     </div>
   </div>

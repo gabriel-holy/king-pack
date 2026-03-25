@@ -1,4 +1,4 @@
-<!-- Lock: - | pending | - -->
+<!-- Lock: Senna-f2a9 | done | 2026-03-25T21:05:00Z -->
 
 # Ticket 009 — Refinamentos de Copy pos-Revisao Copywriting
 
@@ -104,13 +104,13 @@ Adicionar " — Embalagens Industriais" apos `{company.name}` no titulo do foote
 
 ## Acceptance Criteria
 
-- [ ] 10 ajustes de texto aplicados conforme tabelas
-- [ ] Nenhum texto com pressao excessiva ("cada dia sem...", "cada balde que vaza...")
-- [ ] Nenhuma auto-declaracao ("confiam em nos") em posicoes de metrica/trust
-- [ ] CTA com verbo ativo na primeira pessoa ("Pedir minha...")
-- [ ] Footer com descriptor apos King Pack
-- [ ] `astro check` sem erros
-- [ ] Build sem erros
+- [x] 10 ajustes de texto aplicados conforme tabelas
+- [x] Nenhum texto com pressao excessiva ("cada dia sem...", "cada balde que vaza...")
+- [x] Nenhuma auto-declaracao ("confiam em nos") em posicoes de metrica/trust
+- [x] CTA com verbo ativo na primeira pessoa ("Pedir minha...")
+- [x] Footer com descriptor apos King Pack
+- [x] `astro check` sem erros
+- [x] Build sem erros
 
 ---
 

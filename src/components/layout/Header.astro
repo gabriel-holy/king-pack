@@ -106,11 +106,46 @@ const navLinks = [
 </header>
 
 <script>
-  const btn = document.getElementById("mobile-menu-btn");
-  const menu = document.getElementById("mobile-menu");
-  if (btn && menu) {
-    btn.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-    });
+  function initHeader(): void {
+    const btn = document.getElementById("mobile-menu-btn");
+    const menu = document.getElementById("mobile-menu");
+    if (btn && menu) {
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    }
+
+    // Efeito 7 — Active nav highlight com IntersectionObserver (homepage only)
+    if (window.location.pathname !== "/") return;
+
+    const navLinks = document.querySelectorAll<HTMLAnchorElement>('header nav a[href^="#"]');
+    if (!navLinks.length) return;
+
+    const sections = document.querySelectorAll<HTMLElement>('section[id]');
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach((link) => {
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('text-accent');
+              link.classList.remove('text-text-muted');
+            } else {
+              link.classList.remove('text-accent');
+              link.classList.add('text-text-muted');
+            }
+          });
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
   }
+
+  initHeader();
+  document.addEventListener('astro:after-swap', initHeader);
 </script>

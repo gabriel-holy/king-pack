@@ -1,20 +1,23 @@
 ---
 import { company } from "../../data/company";
+import CountUp from "../shared/CountUp.astro";
 
 const metrics = [
-  { value: `${company.metrics.yearsInMarket}+`, label: "Anos fabricando sem parar" },
-  { value: `${company.metrics.activeClients}+`, label: "Indústrias confiam em nós" },
-  { value: `${company.metrics.deliveryHours}h`, label: "Da fábrica até você" },
-  { value: company.metrics.defectRate, label: "Defeitos no transporte" },
+  { value: company.metrics.yearsInMarket, suffix: "+", label: "Anos de fabricação ininterrupta" },
+  { value: company.metrics.activeClients, suffix: "+", label: "Indústrias atendidas em SP" },
+  { value: company.metrics.deliveryHours, suffix: "h", label: "Horas da fábrica até sua porta" },
+  { value: 0, suffix: "%", label: "Perdas no transporte" },
 ];
 ---
 
 <section class="bg-bg py-12">
-  <div class="mx-auto flex max-w-content flex-wrap justify-center px-6 md:flex-nowrap">
+  <div class="mx-auto flex max-w-content flex-wrap justify-center px-6 md:flex-nowrap" data-stagger-parent>
     {metrics.map((metric, i) => (
       <>
-        <div class="flex w-1/2 flex-col items-center px-4 py-3 text-center md:w-1/4 md:py-0">
-          <p class="font-heading text-2xl font-bold text-accent">{metric.value}</p>
+        <div class="flex w-1/2 flex-col items-center px-4 py-3 text-center md:w-1/4 md:py-0" data-fade-up>
+          <p class="font-heading text-2xl font-bold text-accent">
+            <CountUp value={metric.value} suffix={metric.suffix} />
+          </p>
           <p class="mt-1 font-body text-xs text-text-muted">{metric.label}</p>
         </div>
         {i < metrics.length - 1 && (

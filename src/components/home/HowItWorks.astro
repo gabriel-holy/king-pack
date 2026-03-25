@@ -14,7 +14,7 @@ const steps = [
   },
   {
     number: 3,
-    title: "Aprovou? Produção imediata",
+    title: "Aprovou? A produção começa",
     description: "Produção sob medida em 7 a 10 dias úteis. Lotes a partir de 200 unidades com entrega em SP.",
   },
 ];
@@ -23,9 +23,9 @@ const steps = [
 <section class="bg-bg py-16">
   <div class="mx-auto max-w-content px-6">
     <SectionHeader title="3 passos para trocar de fornecedor sem risco" />
-    <div class="mt-12 grid gap-8 sm:grid-cols-3 sm:gap-0">
+    <div class="mt-12 grid gap-8 sm:grid-cols-3 sm:gap-0" data-stagger-parent>
       {steps.map((step, i) => (
-        <div class="relative text-center px-6">
+        <div class="relative text-center px-6" data-fade-up>
           {i < steps.length - 1 && (
             <div class="absolute right-0 top-6 hidden h-px w-full translate-x-1/2 bg-border-subtle sm:block" aria-hidden="true" />
           )}

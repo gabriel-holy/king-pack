@@ -41,3 +41,97 @@
     outline-offset: 2px;
   }
 }
+
+/* Efeito 1 — Fade Up */
+[data-fade-up] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+[data-fade-up].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-fade-up] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Efeito 4 — Text Reveal */
+.text-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.65s cubic-bezier(0.77, 0, 0.18, 1);
+}
+.text-reveal.revealed {
+  clip-path: inset(0 0% 0 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .text-reveal {
+    clip-path: none;
+    transition: none;
+  }
+}
+
+/* Efeito 6 — Card Hover Lift */
+.card-lift {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-lift {
+    transition: none;
+  }
+  .card-lift:hover {
+    transform: none;
+  }
+}
+
+/* Efeito 9 — View Transitions */
+::view-transition-old(root) {
+  animation: 350ms ease both fade-out-up;
+}
+::view-transition-new(root) {
+  animation: 350ms ease both fade-in-up;
+}
+@keyframes fade-out-up {
+  to { opacity: 0; transform: translateY(-12px); }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+/* Efeito 10 — Scroll Progress Bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 9999;
+  pointer-events: none;
+}
+@supports (animation-timeline: scroll()) {
+  #scroll-progress {
+    animation: grow-bar linear;
+    animation-timeline: scroll();
+  }
+  @keyframes grow-bar {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+}

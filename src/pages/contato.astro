@@ -3,15 +3,51 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import WhatsAppCTA from "../components/shared/WhatsAppCTA.astro";
 import { company } from "../data/company";
 
+const siteUrl = "https://barricasindustriais.com";
+
 const mapsQuery = encodeURIComponent(
   `${company.address.street}, ${company.address.neighborhood}, ${company.address.city} - ${company.address.state}, ${company.address.zip}`
 );
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+
+const contactPageSchema = {
+  "@type": "ContactPage",
+  name: `Contato — ${company.name}`,
+  description: "Fale com a fábrica via WhatsApp",
+  mainEntity: {
+    "@type": "LocalBusiness",
+    name: company.name,
+    telephone: company.phone,
+    email: company.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: `${company.address.street} - ${company.address.neighborhood}`,
+      addressLocality: company.address.city,
+      addressRegion: company.address.state,
+      postalCode: company.address.zip,
+      addressCountry: company.address.country,
+    },
+  },
+};
+
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Contato" },
+  ],
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [contactPageSchema, breadcrumbSchema],
+};
 ---
 
 <BaseLayout
   title="Contato — King Pack · Fábrica de Barricas e Baldes, Americana SP"
   description="Fale direto com o dono da fábrica via WhatsApp: (19) 99258-0247. Resposta em até 2h. Americana, SP."
+  structuredData={structuredData}
 >
   <!-- Hero -->
   <section class="bg-bg-deep py-16 md:py-20">
@@ -106,10 +142,6 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
             <div>
               <dt class="font-medium text-text-muted">Horário</dt>
               <dd class="mt-1 text-text-primary">{company.hours}</dd>
-            </div>
-            <div>
-              <dt class="font-medium text-text-muted">CNPJ</dt>
-              <dd class="mt-1 text-text-primary">{company.cnpj}</dd>
             </div>
           </dl>
         </div>

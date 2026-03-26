@@ -1,19 +1,19 @@
 ---
 const painPoints = [
   {
-    icon: "💥",
     title: "Barrica que estoura no transporte",
     description: "Lote inteiro perdido + retrabalho + atraso na entrega ao cliente final.",
+    iconPath: "M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0ZM12 9v4M12 17h.01",
   },
   {
-    icon: "🚫",
     title: "Embalagem sem certificação",
     description: "Linha parada até regularizar. Multa, retrabalho e cliente esperando.",
+    iconPath: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 .6-.92l7-3.11a1 1 0 0 1 .8 0l7 3.11A1 1 0 0 1 20 6ZM14.5 9.5l-5 5M9.5 9.5l5 5",
   },
   {
-    icon: "⏳",
     title: "Fornecedor que atrasa",
     description: "Sua produção espera, seu cliente não. Atraso na embalagem = atraso em tudo.",
+    iconPath: "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20ZM12 6v6l4 2",
   },
 ];
 ---
@@ -26,7 +26,22 @@ const painPoints = [
     <div class="mt-10 grid gap-6 sm:grid-cols-3">
       {painPoints.map((point) => (
         <div class="rounded-lg border border-red-900/20 bg-red-950/10 p-6 text-center">
-          <span class="text-3xl" aria-hidden="true">{point.icon}</span>
+          <div class="flex justify-center" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-red-400"
+            >
+              <path d={point.iconPath} />
+            </svg>
+          </div>
           <h3 class="mt-3 font-heading text-base font-semibold text-text-primary">
             {point.title}
           </h3>

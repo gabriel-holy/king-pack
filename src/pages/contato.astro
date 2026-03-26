@@ -2,11 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import WhatsAppCTA from "../components/shared/WhatsAppCTA.astro";
 import FAQSection from "../components/shared/FAQSection.astro";
-import { company } from "../data/company";
+import { company, buildWhatsAppUrl } from "../data/company";
 
 const faqItems = [
   { question: "Qual o pedido mínimo?", answer: "A partir de 200 unidades por modelo para barricas de papelão e baldes plásticos. Para volumes menores, consulte disponibilidade." },
-  { question: "Vocês entregam fora de SP?", answer: "Sim! Atendemos todo o Brasil. Em SP a entrega é em até 48h. Para outros estados, o prazo depende da região — consulte no WhatsApp." },
+  { question: "Vocês entregam fora de SP?", answer: `Sim! Atendemos todo o Brasil. Em SP a entrega é em até 48h. Para outros estados, o prazo depende da região — consulte no <a href="${buildWhatsAppUrl("Olá! Gostaria de saber o prazo de entrega para a minha região.")}" target="_blank" rel="noopener noreferrer">WhatsApp</a>.` },
   { question: "A amostra é realmente grátis?", answer: "Sim, 100% grátis e sem compromisso. Enviamos a amostra para você testar na sua linha de produção real antes de fechar qualquer pedido." },
   { question: "Prazo de entrega para pedidos recorrentes?", answer: "Para clientes recorrentes, mantemos estoque programado com entrega em 48h dentro de SP. Pedidos novos saem em 7 a 10 dias úteis." },
   { question: "Posso personalizar cores ou impressão?", answer: "Sim! Oferecemos personalização de cores para baldes plásticos e impressão na capa semi kraft das barricas. Consulte quantidades mínimas para personalização." },

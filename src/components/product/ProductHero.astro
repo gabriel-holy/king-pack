@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import WhatsAppCTA from "../shared/WhatsAppCTA.astro";
 import MagneticButton from "../shared/MagneticButton.astro";
-import { buildWhatsAppUrl } from "../../data/company";
 
 interface Props {
   eyebrow?: string;
@@ -11,8 +10,6 @@ interface Props {
   description: string;
   ctaMessage: string;
   ctaLabel?: string;
-  secondaryCtaMessage?: string;
-  secondaryCtaLabel?: string;
   image?: ImageMetadata;
   imageAlt?: string;
 }
@@ -23,15 +20,10 @@ const {
   description,
   ctaMessage,
   ctaLabel = "Solicitar amostra grátis — WhatsApp",
-  secondaryCtaMessage,
-  secondaryCtaLabel = "Dúvida técnica — WhatsApp",
   image,
   imageAlt = "",
 } = Astro.props;
 
-const secondaryHref = secondaryCtaMessage
-  ? buildWhatsAppUrl(secondaryCtaMessage)
-  : undefined;
 ---
 
 <section class="relative overflow-hidden bg-bg-deep py-20 lg:py-24">
@@ -55,17 +47,6 @@ const secondaryHref = secondaryCtaMessage
               size="md"
             />
           </MagneticButton>
-          {secondaryHref && (
-            <a
-              href={secondaryHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex min-h-[44px] items-center gap-2 rounded-md border border-border-subtle px-6 py-3 font-heading text-sm font-semibold text-text-primary transition-colors hover:border-accent hover:text-accent sm:text-base"
-            >
-              {secondaryCtaLabel}
-              <span class="sr-only"> (abre em nova aba)</span>
-            </a>
-          )}
         </div>
       </div>
       {image && (

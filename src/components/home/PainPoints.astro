@@ -25,7 +25,7 @@ const painPoints = [
     </h2>
     <div class="mt-10 grid gap-6 sm:grid-cols-3">
       {painPoints.map((point) => (
-        <div class="rounded-lg border border-red-900/20 bg-red-950/10 p-6 text-center">
+        <div class="rounded-lg border border-accent-border bg-accent-bg p-6 text-center">
           <div class="flex justify-center" aria-hidden="true">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@ const painPoints = [
               stroke-width="1.5"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="text-red-400"
+              class="text-accent"
             >
               <path d={point.iconPath} />
             </svg>

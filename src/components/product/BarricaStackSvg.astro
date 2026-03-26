@@ -1,0 +1,284 @@
+---
+interface Props {
+  diameter: number;
+  height: number;
+}
+
+const { diameter, height } = Astro.props;
+
+const VIEW_W = 340;
+const TARGET_VIEW_H = 420;
+const BODY_MAX_W = 140;
+const SCALE = BODY_MAX_W / diameter;
+const RX = (diameter * SCALE) / 2;
+const RY = RX * 0.18;
+
+const TAMPA_H = 5;
+const FUNDO_H = 4;
+const GAP = 3;
+const UNITS = 3;
+const MARGIN_TOP = 40;
+const MARGIN_BOT = 40;
+const COTA_LEFT_MARGIN = 40;
+const ARROW_SPACE = 25;
+
+const availableH = TARGET_VIEW_H - MARGIN_TOP - MARGIN_BOT - (UNITS - 1) * GAP;
+const unitH = Math.min(height * SCALE, availableH / UNITS);
+
+const totalStackH = UNITS * unitH + (UNITS - 1) * GAP;
+const VIEW_H = MARGIN_TOP + totalStackH + MARGIN_BOT;
+
+const CX = VIEW_W / 2;
+const stackStartY = MARGIN_TOP;
+
+function unitTopY(i: number): number {
+  return stackStartY + i * (unitH + GAP);
+}
+function unitBotY(i: number): number {
+  return unitTopY(i) + unitH;
+}
+
+const COTA_X = COTA_LEFT_MARGIN - 8;
+const totalTop = unitTopY(0);
+const totalBot = unitBotY(UNITS - 1);
+const totalHeight = height * UNITS;
+---
+
+<svg
+  role="img"
+  aria-labelledby="stack-barrica-title"
+  width="100%"
+  viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+  xmlns="http://www.w3.org/2000/svg"
+  class="barrica-stack-svg"
+>
+  <title id="stack-barrica-title">
+    Empilhamento maximo de 3 barricas de papelao cheias
+  </title>
+
+  <defs>
+    <pattern id="stack-hatch-b" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" class="stack-hatch-line" />
+    </pattern>
+    <pattern id="stack-hatch-b-cross" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(-45)">
+      <line x1="0" y1="0" x2="0" y2="6" class="stack-hatch-line" />
+    </pattern>
+  </defs>
+
+  {/* === 3 BARRICAS EMPILHADAS === */}
+  {Array.from({ length: UNITS }).map((_, i) => {
+    const topY = unitTopY(i);
+    const botY = unitBotY(i);
+    const leftX = CX - RX;
+    const rightX = CX + RX;
+    return (
+      <g class="stack-unit">
+        {/* Hachuras */}
+        <rect
+          x={leftX} y={topY} width={RX * 2} height={unitH}
+          fill="url(#stack-hatch-b)" class="stack-body-fill"
+        />
+        <rect
+          x={leftX} y={topY} width={RX * 2} height={unitH}
+          fill="url(#stack-hatch-b-cross)" class="stack-body-fill" opacity="0.5"
+        />
+        {/* Laterais */}
+        <line x1={leftX} y1={topY} x2={leftX} y2={botY} class="stack-body" />
+        <line x1={rightX} y1={topY} x2={rightX} y2={botY} class="stack-body" />
+        {/* Tampa plastica topo */}
+        <rect
+          x={leftX} y={topY - TAMPA_H / 2}
+          width={RX * 2} height={TAMPA_H}
+          rx="2" class="stack-tampa"
+        />
+        {/* Elipse topo */}
+        <ellipse cx={CX} cy={topY} rx={RX} ry={RY} class="stack-body" />
+        {/* Fundo plastico base */}
+        <rect
+          x={leftX} y={botY - FUNDO_H / 2}
+          width={RX * 2} height={FUNDO_H}
+          rx="1" class="stack-fundo"
+        />
+        {/* Elipse fundo */}
+        <ellipse cx={CX} cy={botY} rx={RX} ry={RY} class="stack-body" />
+        {/* Juncoes */}
+        <line
+          x1={leftX + 2} y1={topY + TAMPA_H / 2 + 1}
+          x2={rightX - 2} y2={topY + TAMPA_H / 2 + 1}
+          class="stack-juncao"
+        />
+        <line
+          x1={leftX + 2} y1={botY - FUNDO_H / 2 - 1}
+          x2={rightX - 2} y2={botY - FUNDO_H / 2 - 1}
+          class="stack-juncao"
+        />
+        {/* Linhas de construcao nos cantos */}
+        <line x1={leftX - 2} y1={topY - 2} x2={leftX + 4} y2={topY + 4} class="stack-construcao" />
+        <line x1={rightX + 2} y1={topY - 2} x2={rightX - 4} y2={topY + 4} class="stack-construcao" />
+        <line x1={leftX - 2} y1={botY + 2} x2={leftX + 4} y2={botY - 4} class="stack-construcao" />
+        <line x1={rightX + 2} y1={botY + 2} x2={rightX - 4} y2={botY - 4} class="stack-construcao" />
+      </g>
+    );
+  })}
+
+  {/* === SETAS DE EMPILHAMENTO === */}
+  {/* Seta entre unidade 1 e 2 */}
+  <line
+    x1={CX + RX + 16} y1={unitBotY(0) + 2}
+    x2={CX + RX + 16} y2={unitTopY(1) - 2}
+    class="stack-arrow-line"
+  />
+  <polygon
+    points={`${CX + RX + 16},${unitTopY(1) - 2} ${CX + RX + 13},${unitTopY(1) - 8} ${CX + RX + 19},${unitTopY(1) - 8}`}
+    class="stack-arrow-head"
+  />
+
+  {/* Seta entre unidade 2 e 3 */}
+  <line
+    x1={CX + RX + 16} y1={unitBotY(1) + 2}
+    x2={CX + RX + 16} y2={unitTopY(2) - 2}
+    class="stack-arrow-line"
+  />
+  <polygon
+    points={`${CX + RX + 16},${unitTopY(2) - 2} ${CX + RX + 13},${unitTopY(2) - 8} ${CX + RX + 19},${unitTopY(2) - 8}`}
+    class="stack-arrow-head"
+  />
+
+  {/* === COTA LATERAL — ALTURA TOTAL === */}
+  {/* Extensao topo */}
+  <line
+    x1={COTA_X - 6} y1={totalTop}
+    x2={CX - RX - 4} y2={totalTop}
+    class="stack-cota-ext"
+  />
+  {/* Extensao fundo */}
+  <line
+    x1={COTA_X - 6} y1={totalBot}
+    x2={CX - RX - 4} y2={totalBot}
+    class="stack-cota-ext"
+  />
+  {/* Linha principal */}
+  <line
+    x1={COTA_X} y1={totalTop}
+    x2={COTA_X} y2={totalBot}
+    class="stack-cota-line"
+  />
+  {/* Setas */}
+  <polygon
+    points={`${COTA_X},${totalTop} ${COTA_X - 3},${totalTop + 6} ${COTA_X + 3},${totalTop + 6}`}
+    class="stack-cota-arrow"
+  />
+  <polygon
+    points={`${COTA_X},${totalBot} ${COTA_X - 3},${totalBot - 6} ${COTA_X + 3},${totalBot - 6}`}
+    class="stack-cota-arrow"
+  />
+  {/* Texto altura total */}
+  <text
+    x={COTA_X - 6}
+    y={(totalTop + totalBot) / 2}
+    text-anchor="middle"
+    class="stack-cota-texto"
+    transform={`rotate(-90, ${COTA_X - 6}, ${(totalTop + totalBot) / 2})`}
+  >
+    3 &times; {height} mm
+  </text>
+
+  {/* === TEXTO "MAX. 3 UNIDADES" === */}
+  <text
+    x={CX}
+    y={totalBot + 30}
+    text-anchor="middle"
+    class="stack-label"
+  >
+    max. 3 unidades (cheias)
+  </text>
+</svg>
+
+<style>
+  .barrica-stack-svg {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    max-height: 520px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .stack-body {
+    fill: none;
+    stroke: #f0f0f0;
+    stroke-width: 1.2;
+  }
+
+  .stack-body-fill {
+    opacity: 0.12;
+  }
+
+  .stack-hatch-line {
+    stroke: #2a2a2a;
+    stroke-width: 0.3;
+  }
+
+  .stack-tampa {
+    fill: #3a3a3a;
+    stroke: #f0f0f0;
+    stroke-width: 0.8;
+  }
+
+  .stack-fundo {
+    fill: #333;
+    stroke: #f0f0f0;
+    stroke-width: 0.8;
+  }
+
+  .stack-juncao {
+    stroke: #888;
+    stroke-width: 0.4;
+    stroke-dasharray: 2 2;
+  }
+
+  .stack-construcao {
+    stroke: #555;
+    stroke-width: 0.3;
+  }
+
+  .stack-arrow-line {
+    stroke: #888;
+    stroke-width: 0.8;
+  }
+
+  .stack-arrow-head {
+    fill: #888;
+  }
+
+  .stack-cota-line {
+    stroke: #4dabf7;
+    stroke-width: 0.8;
+  }
+
+  .stack-cota-ext {
+    stroke: #4dabf7;
+    stroke-width: 0.5;
+    stroke-dasharray: 2 2;
+    opacity: 0.6;
+  }
+
+  .stack-cota-arrow {
+    fill: #4dabf7;
+  }
+
+  .stack-cota-texto {
+    fill: #4dabf7;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .stack-label {
+    fill: #888;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+</style>

@@ -1,23 +1,25 @@
 ---
 import { Image } from "astro:assets";
 import SectionHeader from "../shared/SectionHeader.astro";
-import warehousePackagesImg from "../../assets/images/products/warehouse-packages.jpg";
-import chemicalWorkerImg from "../../assets/images/products/chemical-worker.jpg";
+import barricaBlueprintImg from "../../assets/images/products/barrica-blueprint.png";
+import baldeBlueprintImg from "../../assets/images/products/balde-blueprint.png";
 
 const products = [
   {
     href: "/barricas",
-    image: warehousePackagesImg,
-    imageAlt: "Pacotes industriais empilhados em galpão de distribuição",
+    image: barricaBlueprintImg,
+    imageAlt: "Desenho técnico de barrica de papelão industrial",
     name: "Barricas de Papelão",
     description: "14L a 20L. Empilhamento de até 3 barricas e zero vazamento no transporte. Para tintas à base de água, texturas e construção civil.",
+    imgClass: "max-h-[260px]",
   },
   {
     href: "/baldes",
-    image: chemicalWorkerImg,
-    imageAlt: "Operador industrial manuseando container químico com EPI",
+    image: baldeBlueprintImg,
+    imageAlt: "Desenho técnico de balde plástico industrial",
     name: "Baldes Plásticos",
     description: "3,6L a 20L. Vedação hermética, empilhamento seguro e resistência química comprovada. Para tintas, massas e produtos industriais.",
+    imgClass: "max-h-[300px]",
   },
 ];
 ---
@@ -32,7 +34,7 @@ const products = [
     <div class="mt-12 grid gap-8 md:grid-cols-2" data-stagger-parent>
       {products.map((product) => (
         <a href={product.href} class="card-lift group rounded-lg border border-border-subtle bg-bg p-8" data-fade-up>
-          <div class="mb-4 overflow-hidden rounded-lg bg-surface-2">
+          <div class="mb-4 flex h-[350px] items-center justify-center overflow-hidden rounded-lg bg-bg">
             <Image
               src={product.image}
               alt={product.imageAlt}
@@ -42,7 +44,7 @@ const products = [
               quality={80}
               loading="lazy"
               decoding="async"
-              class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              class:list={[product.imgClass, "w-auto object-contain invert mix-blend-screen transition-transform duration-300 group-hover:scale-105"]}
             />
           </div>
           <h3 class="font-heading text-xl font-semibold text-text-primary group-hover:text-accent">

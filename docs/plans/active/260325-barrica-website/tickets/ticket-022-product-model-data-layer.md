@@ -1,4 +1,4 @@
-<!-- Lock: | pending | -->
+<!-- Lock: Ornn-7f2a | done | 2026-03-25T00:00:00Z -->
 
 # Ticket 022 — Data Layer: ProductModel com Dimensões Numéricas
 
@@ -79,13 +79,13 @@ export type ProductModel = {
 
 ## Acceptance Criteria
 
-- [ ] Tipo `ProductModel` exportado de `products.ts`
-- [ ] `barricaModels: ProductModel[]` exportado com 4 modelos
-- [ ] `baldeModels: ProductModel[]` exportado com 5 modelos
-- [ ] Todos os modelos com `diameter` e `height` numéricos
-- [ ] Todos os modelos com `label` legível para o cliente
-- [ ] `astro check` sem erros
-- [ ] Build sem erros
+- [x] Tipo `ProductModel` exportado de `products.ts`
+- [x] `barricaModels: ProductModel[]` exportado com 4 modelos
+- [x] `baldeModels: ProductModel[]` exportado com 5 modelos
+- [x] Todos os modelos com `diameter` e `height` numéricos
+- [x] Todos os modelos com `label` legível para o cliente
+- [x] `astro check` sem erros
+- [x] Build sem erros
 
 ---
 

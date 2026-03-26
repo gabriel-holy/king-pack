@@ -28,7 +28,7 @@ const {
 
 <section class="relative overflow-hidden bg-bg-deep py-20 lg:py-24">
   <div class="mx-auto max-w-content px-6">
-    <div class:list={["grid items-center gap-12", image && "md:grid-cols-2"]}>
+    <div class:list={["grid items-start gap-12", image && "md:grid-cols-2"]}>
       <div>
         <p class="font-body text-xs font-medium uppercase tracking-widest text-accent" data-fade-up>
           {eyebrow}
@@ -50,7 +50,7 @@ const {
         </div>
       </div>
       {image && (
-        <div class="hidden overflow-hidden rounded-lg md:block" data-fade-up data-fade-delay="300">
+        <div class="hidden overflow-hidden rounded-lg bg-bg-deep md:block" data-fade-up data-fade-delay="300">
           <Image
             src={image}
             alt={imageAlt}
@@ -60,46 +60,10 @@ const {
             quality={80}
             fetchpriority="high"
             loading="eager"
-            class="product-hero-img h-auto w-full rounded-lg object-cover"
+            class="product-hero-img h-auto max-h-[500px] w-full rounded-lg object-contain invert mix-blend-screen"
           />
         </div>
       )}
     </div>
   </div>
 </section>
-
-<script>
-  function initProductHeroParallax(): void {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    if (prefersReducedMotion || isMobile) return;
-
-    const img = document.querySelector('.product-hero-img') as HTMLElement | null;
-    if (!img) return;
-
-    let ticking = false;
-    let scrollTimeout: ReturnType<typeof setTimeout>;
-
-    img.style.willChange = 'transform';
-
-    function onScroll(): void {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const scrollY = window.scrollY;
-        img!.style.transform = `translateY(${scrollY * 0.4}px)`;
-        ticking = false;
-
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          img!.style.willChange = '';
-        }, 150);
-      });
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  initProductHeroParallax();
-  document.addEventListener('astro:after-swap', initProductHeroParallax);
-</script>

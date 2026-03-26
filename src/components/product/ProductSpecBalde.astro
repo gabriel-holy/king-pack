@@ -1,0 +1,402 @@
+---
+interface Props {
+  diameter: number; // mm
+  height: number;   // mm
+}
+
+const { diameter, height } = Astro.props;
+
+// --- Cálculo de proporções ---
+const VIEW_W = 340;
+const VIEW_H = 460;
+const BODY_MAX_W = 230;
+const BODY_MAX_H = 280;
+
+const SCALE = BODY_MAX_W / diameter;
+const RX = (diameter * SCALE) / 2;
+const bodyH = Math.min(height * SCALE, BODY_MAX_H);
+const RY = RX * 0.25;
+
+// Centro horizontal
+const CX = VIEW_W / 2;
+
+// Corpo: topo e fundo (espaço para alça acima + cotas)
+const HANDLE_SPACE = 70;
+const COTA_TOP_SPACE = 40;
+const bodyTop = COTA_TOP_SPACE + HANDLE_SPACE;
+const bodyBot = bodyTop + bodyH;
+
+// Tampa / lip
+const LIP_H = 4;
+const LIP_EXTRA = 3; // aba saliente além do corpo
+
+// Alça metálica
+const HANDLE_PEAK = bodyTop - 55;
+const handleLeftX = CX - RX + 10;
+const handleRightX = CX + RX - 10;
+const handleAttachY = bodyTop + RY * 0.3;
+
+// Hachuras: linhas cruzadas dentro do corpo
+const hatchSpacing = 8;
+const hatchLines: Array<{ x1: number; y1: number; x2: number; y2: number }> = [];
+
+// Linhas diagonais (45°) no corpo
+for (let y = bodyTop + hatchSpacing; y < bodyBot; y += hatchSpacing) {
+  const t1 = Math.max(0, Math.min(1, (y - bodyTop) / bodyH));
+  const t2 = Math.max(0, Math.min(1, (y - bodyTop + hatchSpacing * 2) / bodyH));
+  const halfW1 = RX * 0.85;
+  const halfW2 = RX * 0.85;
+  const x1 = CX - halfW1 * (1 - t1 * 0.02);
+  const x2 = CX + halfW2 * (1 - t2 * 0.02);
+  const y2End = Math.min(y + hatchSpacing * 2, bodyBot);
+  hatchLines.push({ x1, y1: y, x2, y2: y2End });
+}
+
+// Cotas
+const COTA_DIAM_Y = bodyTop - HANDLE_SPACE + 10;
+const COTA_ALT_X = 42;
+---
+
+<svg
+  role="img"
+  aria-labelledby="balde-svg-title"
+  width="100%"
+  viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+  xmlns="http://www.w3.org/2000/svg"
+  class="product-spec-balde"
+>
+  <title id="balde-svg-title">
+    Desenho técnico do Balde Plástico — diâmetro {diameter}mm, altura {height}mm
+  </title>
+
+  <defs>
+    {/* Hachuras cruzadas */}
+    <pattern id="balde-hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#2a2a2a" stroke-width="0.3" />
+    </pattern>
+    <pattern id="balde-hatch-cross" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#2a2a2a" stroke-width="0.3" />
+    </pattern>
+
+    {/* Clip para limitar hachuras ao corpo */}
+    <clipPath id="balde-body-clip">
+      <rect x={CX - RX} y={bodyTop} width={RX * 2} height={bodyH} />
+    </clipPath>
+  </defs>
+
+  {/* ========== CORPO DO BALDE ========== */}
+
+  {/* Corpo: retângulo (laterais) */}
+  <rect
+    id="bucket-left"
+    x={CX - RX}
+    y={bodyTop}
+    width="1.5"
+    height={bodyH}
+    fill="none"
+    stroke="#f0f0f0"
+    stroke-width="1.5"
+  />
+  <rect
+    id="bucket-right"
+    x={CX + RX - 1.5}
+    y={bodyTop}
+    width="1.5"
+    height={bodyH}
+    fill="none"
+    stroke="#f0f0f0"
+    stroke-width="1.5"
+  />
+
+  {/* Corpo: preenchimento com hachuras */}
+  <g clip-path="url(#balde-body-clip)" data-draw-fade data-draw-delay="1.0">
+    <rect
+      x={CX - RX}
+      y={bodyTop}
+      width={RX * 2}
+      height={bodyH}
+      fill="url(#balde-hatch)"
+    />
+    <rect
+      x={CX - RX}
+      y={bodyTop}
+      width={RX * 2}
+      height={bodyH}
+      fill="url(#balde-hatch-cross)"
+      opacity="0.5"
+    />
+  </g>
+
+  {/* Laterais visíveis */}
+  <line
+    x1={CX - RX}
+    y1={bodyTop}
+    x2={CX - RX}
+    y2={bodyBot}
+    stroke="#f0f0f0"
+    stroke-width="1.5"
+    data-draw data-draw-delay="0.3"
+  />
+  <line
+    x1={CX + RX}
+    y1={bodyTop}
+    x2={CX + RX}
+    y2={bodyBot}
+    stroke="#f0f0f0"
+    stroke-width="1.5"
+    data-draw data-draw-delay="0.3"
+  />
+
+  {/* ========== FUNDO (elipse inferior) ========== */}
+  <ellipse
+    id="bucket-bot"
+    cx={CX}
+    cy={bodyBot}
+    rx={RX}
+    ry={RY}
+    fill="none"
+    stroke="#f0f0f0"
+    stroke-width="1.5"
+    data-draw data-draw-delay="0.6"
+  />
+
+  {/* ========== BORDA REFORÇADA / LIP ========== */}
+  <rect
+    id="bucket-lip"
+    x={CX - RX - LIP_EXTRA}
+    y={bodyTop - LIP_H / 2}
+    width={(RX + LIP_EXTRA) * 2}
+    height={LIP_H}
+    rx="2"
+    fill="none"
+    stroke="#f0f0f0"
+    stroke-width="1.5"
+  />
+
+  {/* ========== TAMPA (elipse topo com aba saliente) ========== */}
+  <ellipse
+    id="bucket-top"
+    cx={CX}
+    cy={bodyTop}
+    rx={RX + LIP_EXTRA}
+    ry={RY + 1}
+    fill="none"
+    stroke="#f0f0f0"
+    stroke-width="1.5"
+    data-draw data-draw-delay="0"
+  />
+
+  {/* Linha interna da tampa (borda interna) */}
+  <ellipse
+    cx={CX}
+    cy={bodyTop}
+    rx={RX - 2}
+    ry={RY - 1}
+    fill="none"
+    stroke="#f0f0f0"
+    stroke-width="0.5"
+    stroke-dasharray="3,3"
+    opacity="0.4"
+  />
+
+  {/* ========== ALÇA METÁLICA ========== */}
+  <path
+    id="bucket-handle"
+    d={`M ${handleLeftX} ${handleAttachY} Q ${CX} ${HANDLE_PEAK} ${handleRightX} ${handleAttachY}`}
+    fill="none"
+    stroke="#3a3a3a"
+    stroke-width="2"
+    stroke-linecap="round"
+    data-draw data-draw-delay="0.8"
+  />
+
+  {/* Pontos de fixação da alça */}
+  <circle cx={handleLeftX} cy={handleAttachY} r="2.5" fill="#3a3a3a" />
+  <circle cx={handleRightX} cy={handleAttachY} r="2.5" fill="#3a3a3a" />
+
+  {/* ========== LINHAS DE CONSTRUÇÃO ========== */}
+  {/* Cantos do corpo — traços finos decorativos */}
+  <line x1={CX - RX - 4} y1={bodyTop} x2={CX - RX + 6} y2={bodyTop} stroke="#f0f0f0" stroke-width="0.3" opacity="0.3" />
+  <line x1={CX + RX - 6} y1={bodyTop} x2={CX + RX + 4} y2={bodyTop} stroke="#f0f0f0" stroke-width="0.3" opacity="0.3" />
+  <line x1={CX - RX - 4} y1={bodyBot} x2={CX - RX + 6} y2={bodyBot} stroke="#f0f0f0" stroke-width="0.3" opacity="0.3" />
+  <line x1={CX + RX - 6} y1={bodyBot} x2={CX + RX + 4} y2={bodyBot} stroke="#f0f0f0" stroke-width="0.3" opacity="0.3" />
+
+  {/* ========== COTAS ========== */}
+
+  {/* Cota Diâmetro — acima do SVG (acima da alça) */}
+  <g class="cota-group">
+    {/* Linha principal */}
+    <line
+      id="cota-diametro-linha"
+      x1={CX - RX}
+      y1={COTA_DIAM_Y}
+      x2={CX + RX}
+      y2={COTA_DIAM_Y}
+      class="cota-linha"
+    />
+    {/* Extensão esquerda */}
+    <line
+      id="cota-diametro-ext-esq"
+      x1={CX - RX}
+      y1={COTA_DIAM_Y - 6}
+      x2={CX - RX}
+      y2={bodyTop - 2}
+      class="cota-tracejada"
+    />
+    {/* Extensão direita */}
+    <line
+      id="cota-diametro-ext-dir"
+      x1={CX + RX}
+      y1={COTA_DIAM_Y - 6}
+      x2={CX + RX}
+      y2={bodyTop - 2}
+      class="cota-tracejada"
+    />
+    {/* Setas */}
+    <polygon points={`${CX - RX},${COTA_DIAM_Y} ${CX - RX + 6},${COTA_DIAM_Y - 3} ${CX - RX + 6},${COTA_DIAM_Y + 3}`} class="cota-seta" />
+    <polygon points={`${CX + RX},${COTA_DIAM_Y} ${CX + RX - 6},${COTA_DIAM_Y - 3} ${CX + RX - 6},${COTA_DIAM_Y + 3}`} class="cota-seta" />
+    {/* Texto */}
+    <text
+      id="cota-diametro-texto"
+      x={CX}
+      y={COTA_DIAM_Y - 6}
+      text-anchor="middle"
+      class="cota-texto"
+    >
+      &#x2300; {diameter} mm
+    </text>
+  </g>
+
+  {/* Cota Altura — lado esquerdo, vertical (corpo sem alça) */}
+  <g class="cota-group">
+    {/* Linha principal */}
+    <line
+      id="cota-altura-linha"
+      x1={COTA_ALT_X}
+      y1={bodyTop}
+      x2={COTA_ALT_X}
+      y2={bodyBot}
+      class="cota-linha"
+    />
+    {/* Extensão topo */}
+    <line
+      id="cota-altura-ext-top"
+      x1={COTA_ALT_X - 6}
+      y1={bodyTop}
+      x2={CX - RX - 2}
+      y2={bodyTop}
+      class="cota-tracejada"
+    />
+    {/* Extensão fundo */}
+    <line
+      id="cota-altura-ext-bot"
+      x1={COTA_ALT_X - 6}
+      y1={bodyBot}
+      x2={CX - RX - 2}
+      y2={bodyBot}
+      class="cota-tracejada"
+    />
+    {/* Setas */}
+    <polygon points={`${COTA_ALT_X},${bodyTop} ${COTA_ALT_X - 3},${bodyTop + 6} ${COTA_ALT_X + 3},${bodyTop + 6}`} class="cota-seta" />
+    <polygon points={`${COTA_ALT_X},${bodyBot} ${COTA_ALT_X - 3},${bodyBot - 6} ${COTA_ALT_X + 3},${bodyBot - 6}`} class="cota-seta" />
+    {/* Texto */}
+    <text
+      id="cota-altura-texto"
+      x={COTA_ALT_X - 4}
+      y={(bodyTop + bodyBot) / 2}
+      text-anchor="middle"
+      class="cota-texto"
+      transform={`rotate(-90, ${COTA_ALT_X - 4}, ${(bodyTop + bodyBot) / 2})`}
+    >
+      {height} mm
+    </text>
+  </g>
+
+  {/* ========== ZONAS DE HOVER INVISÍVEIS ========== */}
+
+  {/* Zona topo/tampa — diâmetro */}
+  <ellipse
+    class="zona-hover"
+    data-spec="diametro"
+    cx={CX}
+    cy={bodyTop}
+    rx={RX + LIP_EXTRA + 5}
+    ry={RY + 10}
+    fill="transparent"
+    cursor="crosshair"
+  />
+
+  {/* Zona altura — faixa lateral */}
+  <rect
+    class="zona-hover"
+    data-spec="altura"
+    x={CX - RX - 15}
+    y={bodyTop + RY}
+    width={30}
+    height={bodyH - RY * 2}
+    fill="transparent"
+    cursor="crosshair"
+  />
+</svg>
+
+<style>
+  .product-spec-balde {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    max-height: 520px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .zona-hover {
+    pointer-events: all;
+    transition: opacity 0.2s ease;
+  }
+
+  .zona-hover:hover {
+    fill: rgba(77, 171, 247, 0.06);
+  }
+
+  .cota-group {
+    transition: opacity 0.3s ease;
+  }
+
+  .cota-linha {
+    stroke: #888;
+    stroke-width: 0.8;
+    fill: none;
+    transition: stroke 0.18s;
+  }
+
+  .cota-tracejada {
+    stroke: #666;
+    stroke-width: 0.5;
+    stroke-dasharray: 2 2;
+    fill: none;
+    opacity: 0.6;
+    transition: stroke 0.18s, opacity 0.18s;
+  }
+
+  .cota-texto {
+    fill: #888;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    transition: fill 0.18s;
+  }
+
+  .cota-seta {
+    fill: #888;
+    transition: fill 0.18s;
+  }
+
+  .cota-linha.hl,
+  .hl .cota-linha { stroke: #4dabf7; }
+  .cota-tracejada.hl,
+  .hl .cota-tracejada { stroke: rgba(77, 171, 247, 0.6); opacity: 1; }
+  .cota-texto.hl,
+  .hl .cota-texto { fill: #4dabf7; }
+  .cota-seta.hl,
+  .hl .cota-seta { fill: #4dabf7; }
+</style>

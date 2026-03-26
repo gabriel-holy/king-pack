@@ -1,4 +1,4 @@
-<!-- Lock: | pending | -->
+<!-- Lock: Teemo-9c4d | done | 2026-03-25T00:00:00Z -->
 
 # Ticket 024 — SVGs de Empilhamento (Barrica + Balde)
 
@@ -85,15 +85,15 @@ interface Props {
 
 ## Acceptance Criteria
 
-- [ ] SVG barrica renderiza 3 barricas empilhadas com proporções corretas
-- [ ] SVG balde renderiza 3 baldes empilhados com proporções corretas
-- [ ] Proporções calculadas a partir de `diameter` e `height` props
-- [ ] Estilo sketch com hachuras consistente com SVGs unitários
-- [ ] Indicação textual "máx. 3 unidades" presente
-- [ ] Acessibilidade: `role="img"` e `<title>` presentes
-- [ ] CSS scoped
-- [ ] `astro check` sem erros
-- [ ] Build sem erros
+- [x] SVG barrica renderiza 3 barricas empilhadas com proporções corretas
+- [x] SVG balde renderiza 3 baldes empilhados com proporções corretas
+- [x] Proporções calculadas a partir de `diameter` e `height` props
+- [x] Estilo sketch com hachuras consistente com SVGs unitários
+- [x] Indicação textual "máx. 3 unidades" presente
+- [x] Acessibilidade: `role="img"` e `<title>` presentes
+- [x] CSS scoped
+- [x] `astro check` sem erros
+- [x] Build sem erros
 
 ---
 

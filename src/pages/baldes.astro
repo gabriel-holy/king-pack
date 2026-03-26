@@ -1,13 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProductHero from "../components/product/ProductHero.astro";
+import ProductSpec from "../components/product/ProductSpec.astro";
 import SpecsTable from "../components/product/SpecsTable.astro";
 import ApplicationCards from "../components/product/ApplicationCards.astro";
 import ObjectionEliminator from "../components/product/ObjectionEliminator.astro";
 import WhatsAppCTA from "../components/shared/WhatsAppCTA.astro";
-import { products } from "../data/products";
+import { products, baldeModels as baldeProductModels } from "../data/products";
 import { company } from "../data/company";
-import productionLineImg from "../assets/images/products/production-line-bottles.jpg";
+import baldeBlueprintImg from "../assets/images/products/balde-blueprint.png";
 
 const product = products.find((p) => p.id === "baldes")!;
 
@@ -126,9 +127,11 @@ const productStructuredData = {
     description="PP e PEAD de 3,6L a 20L. Vedação hermética testada, empilhamento até 300kg e resistência química para tintas, agroquímicos e produtos de limpeza industrial. Usados por 500+ indústrias em SP."
     ctaMessage="Olá! Quero receber uma amostra grátis de balde plástico. Minha necessidade é [volume/produto]."
     ctaLabel="Receber amostra grátis"
-    image={productionLineImg}
+    image={baldeBlueprintImg}
     imageAlt="Linha de produção industrial com containers em série"
   />
+
+  <ProductSpec product={product} models={baldeProductModels} variant="balde" />
 
   <SpecsTable
     product={product}

@@ -1,0 +1,285 @@
+---
+interface Props {
+  diameter: number;
+  height: number;
+}
+
+const { diameter, height } = Astro.props;
+
+const VIEW_W = 340;
+const TARGET_VIEW_H = 420;
+const BODY_MAX_W = 140;
+const SCALE = BODY_MAX_W / diameter;
+const RX = (diameter * SCALE) / 2;
+const RY = RX * 0.18;
+
+const LIP_H = 3;
+const LIP_EXTRA = 2;
+const HANDLE_RECOIL_H = 6;
+const GAP = HANDLE_RECOIL_H + 2;
+const UNITS = 3;
+const MARGIN_TOP = 40;
+const MARGIN_BOT = 40;
+const COTA_LEFT_MARGIN = 40;
+
+const availableH = TARGET_VIEW_H - MARGIN_TOP - MARGIN_BOT - (UNITS - 1) * GAP;
+const unitH = Math.min(height * SCALE, availableH / UNITS);
+
+const totalStackH = UNITS * unitH + (UNITS - 1) * GAP;
+const VIEW_H = MARGIN_TOP + totalStackH + MARGIN_BOT;
+
+const CX = VIEW_W / 2;
+const stackStartY = MARGIN_TOP;
+
+function unitTopY(i: number): number {
+  return stackStartY + i * (unitH + GAP);
+}
+function unitBotY(i: number): number {
+  return unitTopY(i) + unitH;
+}
+
+const COTA_X = COTA_LEFT_MARGIN - 8;
+const totalTop = unitTopY(0);
+const totalBot = unitBotY(UNITS - 1);
+---
+
+<svg
+  role="img"
+  aria-labelledby="stack-balde-title"
+  width="100%"
+  viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+  xmlns="http://www.w3.org/2000/svg"
+  class="balde-stack-svg"
+>
+  <title id="stack-balde-title">
+    Empilhamento maximo de 3 baldes plasticos cheios
+  </title>
+
+  <defs>
+    <pattern id="stack-hatch-bl" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" class="stack-bl-hatch-line" />
+    </pattern>
+    <pattern id="stack-hatch-bl-cross" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(-45)">
+      <line x1="0" y1="0" x2="0" y2="10" class="stack-bl-hatch-line" />
+    </pattern>
+  </defs>
+
+  {/* === 3 BALDES EMPILHADOS === */}
+  {Array.from({ length: UNITS }).map((_, i) => {
+    const topY = unitTopY(i);
+    const botY = unitBotY(i);
+    const leftX = CX - RX;
+    const rightX = CX + RX;
+    const handleLeftX = leftX + 8;
+    const handleRightX = rightX - 8;
+
+    return (
+      <g class="stack-bl-unit">
+        {/* Hachuras */}
+        <rect
+          x={leftX} y={topY} width={RX * 2} height={unitH}
+          fill="url(#stack-hatch-bl)" opacity="0.15"
+        />
+        <rect
+          x={leftX} y={topY} width={RX * 2} height={unitH}
+          fill="url(#stack-hatch-bl-cross)" opacity="0.08"
+        />
+        {/* Laterais */}
+        <line x1={leftX} y1={topY} x2={leftX} y2={botY} class="stack-bl-body" />
+        <line x1={rightX} y1={topY} x2={rightX} y2={botY} class="stack-bl-body" />
+        {/* Elipse fundo */}
+        <ellipse cx={CX} cy={botY} rx={RX} ry={RY} class="stack-bl-body" />
+        {/* Lip / borda reforçada */}
+        <rect
+          x={leftX - LIP_EXTRA} y={topY - LIP_H / 2}
+          width={(RX + LIP_EXTRA) * 2} height={LIP_H}
+          rx="1.5" class="stack-bl-lip"
+        />
+        {/* Elipse topo (tampa) */}
+        <ellipse
+          cx={CX} cy={topY}
+          rx={RX + LIP_EXTRA} ry={RY + 1}
+          class="stack-bl-body"
+        />
+        {/* Linhas de construcao nos cantos */}
+        <line x1={leftX - 3} y1={topY} x2={leftX + 5} y2={topY} class="stack-bl-construcao" />
+        <line x1={rightX - 5} y1={topY} x2={rightX + 3} y2={topY} class="stack-bl-construcao" />
+        <line x1={leftX - 3} y1={botY} x2={leftX + 5} y2={botY} class="stack-bl-construcao" />
+        <line x1={rightX - 5} y1={botY} x2={rightX + 3} y2={botY} class="stack-bl-construcao" />
+
+        {/* Alca recolhida entre baldes (exceto o ultimo) */}
+        {i < UNITS - 1 && (
+          <g class="stack-bl-handle-recoil">
+            <line
+              x1={handleLeftX} y1={botY + 2}
+              x2={handleLeftX} y2={botY + HANDLE_RECOIL_H}
+              class="stack-bl-handle"
+            />
+            <line
+              x1={handleLeftX} y1={botY + HANDLE_RECOIL_H}
+              x2={handleRightX} y2={botY + HANDLE_RECOIL_H}
+              class="stack-bl-handle"
+            />
+            <line
+              x1={handleRightX} y1={botY + 2}
+              x2={handleRightX} y2={botY + HANDLE_RECOIL_H}
+              class="stack-bl-handle"
+            />
+            {/* Pontos de fixação */}
+            <circle cx={handleLeftX} cy={botY + 2} r="1.5" class="stack-bl-handle-dot" />
+            <circle cx={handleRightX} cy={botY + 2} r="1.5" class="stack-bl-handle-dot" />
+          </g>
+        )}
+      </g>
+    );
+  })}
+
+  {/* === SETAS DE EMPILHAMENTO === */}
+  <line
+    x1={CX + RX + 16} y1={unitBotY(0) + 2}
+    x2={CX + RX + 16} y2={unitTopY(1) - 2}
+    class="stack-bl-arrow-line"
+  />
+  <polygon
+    points={`${CX + RX + 16},${unitTopY(1) - 2} ${CX + RX + 13},${unitTopY(1) - 8} ${CX + RX + 19},${unitTopY(1) - 8}`}
+    class="stack-bl-arrow-head"
+  />
+
+  <line
+    x1={CX + RX + 16} y1={unitBotY(1) + 2}
+    x2={CX + RX + 16} y2={unitTopY(2) - 2}
+    class="stack-bl-arrow-line"
+  />
+  <polygon
+    points={`${CX + RX + 16},${unitTopY(2) - 2} ${CX + RX + 13},${unitTopY(2) - 8} ${CX + RX + 19},${unitTopY(2) - 8}`}
+    class="stack-bl-arrow-head"
+  />
+
+  {/* === COTA LATERAL — ALTURA TOTAL === */}
+  <line
+    x1={COTA_X - 6} y1={totalTop}
+    x2={CX - RX - 4} y2={totalTop}
+    class="stack-bl-cota-ext"
+  />
+  <line
+    x1={COTA_X - 6} y1={totalBot}
+    x2={CX - RX - 4} y2={totalBot}
+    class="stack-bl-cota-ext"
+  />
+  <line
+    x1={COTA_X} y1={totalTop}
+    x2={COTA_X} y2={totalBot}
+    class="stack-bl-cota-line"
+  />
+  <polygon
+    points={`${COTA_X},${totalTop} ${COTA_X - 3},${totalTop + 6} ${COTA_X + 3},${totalTop + 6}`}
+    class="stack-bl-cota-arrow"
+  />
+  <polygon
+    points={`${COTA_X},${totalBot} ${COTA_X - 3},${totalBot - 6} ${COTA_X + 3},${totalBot - 6}`}
+    class="stack-bl-cota-arrow"
+  />
+  <text
+    x={COTA_X - 6}
+    y={(totalTop + totalBot) / 2}
+    text-anchor="middle"
+    class="stack-bl-cota-texto"
+    transform={`rotate(-90, ${COTA_X - 6}, ${(totalTop + totalBot) / 2})`}
+  >
+    3 &times; {height} mm
+  </text>
+
+  {/* === TEXTO "MAX. 3 UNIDADES" === */}
+  <text
+    x={CX}
+    y={totalBot + 30}
+    text-anchor="middle"
+    class="stack-bl-label"
+  >
+    max. 3 unidades (cheias)
+  </text>
+</svg>
+
+<style>
+  .balde-stack-svg {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    max-height: 520px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .stack-bl-body {
+    fill: none;
+    stroke: #f0f0f0;
+    stroke-width: 1.2;
+  }
+
+  .stack-bl-hatch-line {
+    stroke: #2a2a2a;
+    stroke-width: 0.3;
+  }
+
+  .stack-bl-lip {
+    fill: none;
+    stroke: #f0f0f0;
+    stroke-width: 1;
+  }
+
+  .stack-bl-construcao {
+    stroke: #f0f0f0;
+    stroke-width: 0.3;
+    opacity: 0.3;
+  }
+
+  .stack-bl-handle {
+    stroke: #3a3a3a;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+
+  .stack-bl-handle-dot {
+    fill: #3a3a3a;
+  }
+
+  .stack-bl-arrow-line {
+    stroke: #888;
+    stroke-width: 0.8;
+  }
+
+  .stack-bl-arrow-head {
+    fill: #888;
+  }
+
+  .stack-bl-cota-line {
+    stroke: #4dabf7;
+    stroke-width: 0.8;
+  }
+
+  .stack-bl-cota-ext {
+    stroke: #4dabf7;
+    stroke-width: 0.5;
+    stroke-dasharray: 2 2;
+    opacity: 0.6;
+  }
+
+  .stack-bl-cota-arrow {
+    fill: #4dabf7;
+  }
+
+  .stack-bl-cota-texto {
+    fill: #4dabf7;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .stack-bl-label {
+    fill: #888;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+</style>

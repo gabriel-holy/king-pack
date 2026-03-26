@@ -1,13 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProductHero from "../components/product/ProductHero.astro";
+import ProductSpec from "../components/product/ProductSpec.astro";
 import SpecsTable from "../components/product/SpecsTable.astro";
 import ApplicationCards from "../components/product/ApplicationCards.astro";
 import ObjectionEliminator from "../components/product/ObjectionEliminator.astro";
 import WhatsAppCTA from "../components/shared/WhatsAppCTA.astro";
-import { products } from "../data/products";
+import { products, barricaModels as barricaProductModels } from "../data/products";
 import { company } from "../data/company";
-import warehousePalletsImg from "../assets/images/products/warehouse-pallets.jpg";
+import barricaBlueprintImg from "../assets/images/products/barrica-blueprint.png";
 
 const product = products.find((p) => p.id === "barricas")!;
 
@@ -125,9 +126,11 @@ const productStructuredData = {
     description="Papelão maculatura com capa semi kraft de 14L a 20L. Tampa e fundo plásticos com grampos industriais de alta resistência. Empilhamento de até 3 barricas, zero vazamento no transporte. Testada por 500+ indústrias de tintas, texturas e construção civil."
     ctaMessage="Olá! Quero receber uma amostra grátis de barrica de papelão. Minha necessidade é [volume/produto]."
     ctaLabel="Receber amostra grátis"
-    image={warehousePalletsImg}
+    image={barricaBlueprintImg}
     imageAlt="Produtos embalados em pallets dentro de galpão industrial"
   />
+
+  <ProductSpec product={product} models={barricaProductModels} variant="barrica" />
 
   <SpecsTable
     product={product}

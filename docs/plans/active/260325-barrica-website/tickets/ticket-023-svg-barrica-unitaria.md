@@ -1,4 +1,4 @@
-<!-- Lock: | pending | -->
+<!-- Lock: Zed-4b7e | done | 2026-03-25T23:50:00Z -->
 
 # Ticket 023 — SVG Barrica: Desenho Técnico Unitário com Cotas
 
@@ -153,16 +153,16 @@ Estilos do SVG em `<style>` scoped dentro do `.astro`:
 
 ## Acceptance Criteria
 
-- [ ] SVG renderiza cilindro reto com perspectiva isométrica leve
-- [ ] Proporções calculadas dinamicamente a partir de `diameter` e `height` props
-- [ ] Cotas de diâmetro e altura posicionadas corretamente
-- [ ] Estilo sketch com hachuras visível
-- [ ] Zonas de hover presentes com `data-spec` corretos
-- [ ] IDs dos elementos SVG seguem convenção para highlight
-- [ ] `role="img"` e `<title>` presentes
-- [ ] CSS scoped no componente (não global)
-- [ ] `astro check` sem erros
-- [ ] Build sem erros
+- [x] SVG renderiza cilindro reto com perspectiva isométrica leve
+- [x] Proporções calculadas dinamicamente a partir de `diameter` e `height` props
+- [x] Cotas de diâmetro e altura posicionadas corretamente
+- [x] Estilo sketch com hachuras visível
+- [x] Zonas de hover presentes com `data-spec` corretos
+- [x] IDs dos elementos SVG seguem convenção para highlight
+- [x] `role="img"` e `<title>` presentes
+- [x] CSS scoped no componente (não global)
+- [x] `astro check` sem erros
+- [x] Build sem erros
 
 ---
 

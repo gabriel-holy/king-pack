@@ -1,0 +1,330 @@
+---
+interface Props {
+  diameter: number;
+  height: number;
+}
+
+const { diameter, height } = Astro.props;
+
+const BODY_WIDTH = 230;
+const VIEWBOX_W = 340;
+const VIEWBOX_H = 420;
+
+const ESCALA = BODY_WIDTH / diameter;
+const RX = (diameter * ESCALA) / 2;
+const ALTURA_SVG = Math.min(height * ESCALA, 300);
+const RY = RX * 0.25;
+
+const CX = VIEWBOX_W / 2;
+const TOP_Y = (VIEWBOX_H - ALTURA_SVG) / 2;
+const BOT_Y = TOP_Y + ALTURA_SVG;
+
+const LEFT_X = CX - RX;
+const RIGHT_X = CX + RX;
+
+const TAMPA_H = 8;
+const FUNDO_H = 6;
+const BOCAL_RX = 12;
+const BOCAL_RY = 4;
+
+const COTA_GAP = 18;
+const COTA_DIAM_Y = TOP_Y - 30;
+const COTA_ALT_X = LEFT_X - 30;
+
+const SETA_EXT = 8;
+---
+
+<svg
+  role="img"
+  aria-labelledby="barrica-svg-title"
+  width="100%"
+  viewBox={`0 0 ${VIEWBOX_W} ${VIEWBOX_H}`}
+  xmlns="http://www.w3.org/2000/svg"
+  class="barrica-svg"
+>
+  <title id="barrica-svg-title">
+    Desenho tecnico da Barrica de Papelao — diametro {diameter}mm, altura {height}mm
+  </title>
+
+  <defs>
+    <marker id="seta-fim" viewBox="0 0 8 8" refX="7" refY="4"
+      markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M1 1L7 4L1 7" fill="none"
+        stroke="context-stroke" stroke-width="1.2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="seta-inicio" viewBox="0 0 8 8" refX="1" refY="4"
+      markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M7 1L1 4L7 7" fill="none"
+        stroke="context-stroke" stroke-width="1.2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+
+    <pattern id="hatch-barrica" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" class="barrel-hatch"/>
+    </pattern>
+    <pattern id="hatch-barrica-cross" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(-45)">
+      <line x1="0" y1="0" x2="0" y2="6" class="barrel-hatch"/>
+    </pattern>
+
+  </defs>
+
+  {/* === CORPO DA BARRICA === */}
+
+  {/* Corpo retangular (laterais) com hachuras */}
+  <rect
+    x={LEFT_X} y={TOP_Y} width={RX * 2} height={ALTURA_SVG}
+    fill="url(#hatch-barrica)" class="barrel-body-fill"
+    data-draw-fade data-draw-delay="0.9"
+  />
+  <rect
+    x={LEFT_X} y={TOP_Y} width={RX * 2} height={ALTURA_SVG}
+    fill="url(#hatch-barrica-cross)" class="barrel-body-fill" opacity="0.5"
+    data-draw-fade data-draw-delay="0.9"
+  />
+
+  {/* Lateral esquerda */}
+  <line
+    id="barrel-left"
+    x1={LEFT_X} y1={TOP_Y} x2={LEFT_X} y2={BOT_Y}
+    class="barrel-body"
+    data-draw data-draw-delay="0.3"
+  />
+  {/* Lateral direita */}
+  <line
+    id="barrel-right"
+    x1={RIGHT_X} y1={TOP_Y} x2={RIGHT_X} y2={BOT_Y}
+    class="barrel-body"
+    data-draw data-draw-delay="0.3"
+  />
+
+  {/* Tampa plastica topo */}
+  <rect
+    x={LEFT_X} y={TOP_Y - TAMPA_H / 2}
+    width={RX * 2} height={TAMPA_H}
+    rx="2" class="barrel-tampa"
+  />
+
+  {/* Elipse topo */}
+  <ellipse
+    id="barrel-top"
+    cx={CX} cy={TOP_Y}
+    rx={RX} ry={RY}
+    class="barrel-body"
+    data-draw data-draw-delay="0"
+  />
+
+  {/* Bocal central no topo */}
+  <ellipse
+    cx={CX} cy={TOP_Y - 2}
+    rx={BOCAL_RX} ry={BOCAL_RY}
+    class="barrel-bocal"
+  />
+
+  {/* Fundo plastico base */}
+  <rect
+    x={LEFT_X} y={BOT_Y - FUNDO_H / 2}
+    width={RX * 2} height={FUNDO_H}
+    rx="1" class="barrel-fundo"
+  />
+
+  {/* Elipse fundo */}
+  <ellipse
+    id="barrel-bot"
+    cx={CX} cy={BOT_Y}
+    rx={RX} ry={RY}
+    class="barrel-body"
+    data-draw data-draw-delay="0.6"
+  />
+
+  {/* Juncao tampa/corpo */}
+  <line
+    x1={LEFT_X + 2} y1={TOP_Y + TAMPA_H / 2 + 1}
+    x2={RIGHT_X - 2} y2={TOP_Y + TAMPA_H / 2 + 1}
+    class="barrel-juncao"
+  />
+  {/* Juncao fundo/corpo */}
+  <line
+    x1={LEFT_X + 2} y1={BOT_Y - FUNDO_H / 2 - 1}
+    x2={RIGHT_X - 2} y2={BOT_Y - FUNDO_H / 2 - 1}
+    class="barrel-juncao"
+  />
+
+  {/* Linhas de construcao nos cantos */}
+  <line x1={LEFT_X - 3} y1={TOP_Y - 3} x2={LEFT_X + 6} y2={TOP_Y + 6} class="barrel-construcao"/>
+  <line x1={RIGHT_X + 3} y1={TOP_Y - 3} x2={RIGHT_X - 6} y2={TOP_Y + 6} class="barrel-construcao"/>
+  <line x1={LEFT_X - 3} y1={BOT_Y + 3} x2={LEFT_X + 6} y2={BOT_Y - 6} class="barrel-construcao"/>
+  <line x1={RIGHT_X + 3} y1={BOT_Y + 3} x2={RIGHT_X - 6} y2={BOT_Y - 6} class="barrel-construcao"/>
+
+  {/* === COTAS === */}
+
+  {/* Cota diametro — acima */}
+  <line
+    id="cota-diametro-ext-esq"
+    x1={LEFT_X} y1={TOP_Y - SETA_EXT}
+    x2={LEFT_X} y2={COTA_DIAM_Y - 4}
+    class="cota-tracejada"
+  />
+  <line
+    id="cota-diametro-ext-dir"
+    x1={RIGHT_X} y1={TOP_Y - SETA_EXT}
+    x2={RIGHT_X} y2={COTA_DIAM_Y - 4}
+    class="cota-tracejada"
+  />
+  <line
+    id="cota-diametro-linha"
+    x1={LEFT_X} y1={COTA_DIAM_Y}
+    x2={RIGHT_X} y2={COTA_DIAM_Y}
+    class="cota-linha"
+    marker-start="url(#seta-inicio)"
+    marker-end="url(#seta-fim)"
+  />
+  <text
+    id="cota-diametro-texto"
+    x={CX} y={COTA_DIAM_Y - 6}
+    class="cota-texto"
+    text-anchor="middle"
+  >
+    &Oslash; {diameter} mm
+  </text>
+
+  {/* Cota altura — lado esquerdo */}
+  <line
+    id="cota-altura-ext-top"
+    x1={LEFT_X - SETA_EXT} y1={TOP_Y}
+    x2={COTA_ALT_X + 4} y2={TOP_Y}
+    class="cota-tracejada"
+  />
+  <line
+    id="cota-altura-ext-bot"
+    x1={LEFT_X - SETA_EXT} y1={BOT_Y}
+    x2={COTA_ALT_X + 4} y2={BOT_Y}
+    class="cota-tracejada"
+  />
+  <line
+    id="cota-altura-linha"
+    x1={COTA_ALT_X} y1={TOP_Y}
+    x2={COTA_ALT_X} y2={BOT_Y}
+    class="cota-linha"
+    marker-start="url(#seta-inicio)"
+    marker-end="url(#seta-fim)"
+  />
+  <text
+    id="cota-altura-texto"
+    x={COTA_ALT_X - 8}
+    y={(TOP_Y + BOT_Y) / 2}
+    class="cota-texto"
+    text-anchor="middle"
+    transform={`rotate(-90, ${COTA_ALT_X - 8}, ${(TOP_Y + BOT_Y) / 2})`}
+  >
+    {height} mm
+  </text>
+
+  {/* === ZONAS DE HOVER === */}
+  <ellipse
+    class="zona-hover" data-spec="diametro"
+    cx={CX} cy={TOP_Y}
+    rx={RX + 10} ry={RY + 10}
+    fill="transparent" cursor="crosshair"
+  />
+  <rect
+    class="zona-hover" data-spec="altura"
+    x={LEFT_X - 20} y={TOP_Y}
+    width="20" height={ALTURA_SVG}
+    fill="transparent" cursor="crosshair"
+  />
+</svg>
+
+<style>
+  .barrica-svg {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    max-height: 480px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .barrel-body {
+    fill: none;
+    stroke: #f0f0f0;
+    stroke-width: 1.5;
+  }
+
+  .barrel-body-fill {
+    opacity: 0.15;
+  }
+
+  .barrel-hatch {
+    stroke: #2a2a2a;
+    stroke-width: 0.3;
+  }
+
+  .barrel-tampa {
+    fill: #3a3a3a;
+    stroke: #f0f0f0;
+    stroke-width: 1;
+  }
+
+  .barrel-fundo {
+    fill: #333;
+    stroke: #f0f0f0;
+    stroke-width: 1;
+  }
+
+  .barrel-bocal {
+    fill: #2e2e2e;
+    stroke: #f0f0f0;
+    stroke-width: 1;
+  }
+
+  .barrel-juncao {
+    stroke: #888;
+    stroke-width: 0.5;
+    stroke-dasharray: 2 2;
+  }
+
+  .barrel-construcao {
+    stroke: #555;
+    stroke-width: 0.3;
+  }
+
+  .cota-linha {
+    stroke: #888;
+    stroke-width: 0.8;
+    transition: stroke 0.18s;
+  }
+
+  .cota-tracejada {
+    stroke: #666;
+    stroke-width: 0.5;
+    stroke-dasharray: 3 2;
+    opacity: 0.6;
+    transition: stroke 0.18s, opacity 0.18s;
+  }
+
+  .cota-texto {
+    fill: #888;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    transition: fill 0.18s;
+  }
+
+  .cota-linha.hl {
+    stroke: #4dabf7;
+  }
+
+  .cota-tracejada.hl {
+    stroke: rgba(77, 171, 247, 0.6);
+    opacity: 1;
+  }
+
+  .cota-texto.hl {
+    fill: #4dabf7;
+  }
+
+  .zona-hover {
+    pointer-events: all;
+  }
+</style>

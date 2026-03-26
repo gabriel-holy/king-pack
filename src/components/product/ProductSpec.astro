@@ -1,0 +1,596 @@
+---
+import type { ProductModel, ProductSpec as ProductSpecType } from "../../data/products";
+import ProductSpecBarrica from "./ProductSpecBarrica.astro";
+import ProductSpecBalde from "./ProductSpecBalde.astro";
+import BarricaStackSvg from "./BarricaStackSvg.astro";
+import BaldeStackSvg from "./BaldeStackSvg.astro";
+
+interface Props {
+  product: ProductSpecType;
+  models: ProductModel[];
+  variant: "barrica" | "balde";
+}
+
+const { product, models, variant } = Astro.props;
+const defaultModel = models[0];
+
+const specItems = [
+  {
+    key: "diametro",
+    label: "Diametro",
+    unit: "mm",
+    description:
+      variant === "barrica"
+        ? "Boca e fundo iguais — cilindro reto"
+        : "Boca e base iguais (simplificado)",
+  },
+  {
+    key: "altura",
+    label: "Altura total",
+    unit: "mm",
+    description:
+      variant === "barrica"
+        ? "Compativel com empilhamento em paletes padrao"
+        : "Sem alca; com alca recolhida",
+  },
+  {
+    key: "capacidade",
+    label: "Capacidade nominal",
+    unit: "",
+    description:
+      variant === "barrica"
+        ? "Volume util com tampa fechada"
+        : "Volume util",
+  },
+  {
+    key: "empilhamento",
+    label: "Empilhamento maximo",
+    unit: "",
+    description:
+      variant === "barrica"
+        ? "Com produto dentro. Recomendacao do fabricante."
+        : "Baldes cheios, tampa fechada",
+  },
+];
+---
+
+<section
+  class="product-spec-section py-16 md:py-24"
+  data-variant={variant}
+  data-models={JSON.stringify(models)}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[#4dabf7] mb-4 font-['Space_Grotesk',system-ui,sans-serif]">
+      Especificacoes Tecnicas
+    </p>
+
+    {/* Abas de modelo */}
+    <div class="product-spec-tabs flex gap-1 mb-8 overflow-x-auto pb-2" role="tablist">
+      {models.map((m, i) => (
+        <button
+          role="tab"
+          aria-selected={i === 0 ? "true" : "false"}
+          data-model-index={i}
+          class:list={[
+            "product-spec-tab px-4 py-2 text-sm font-medium whitespace-nowrap border-b-2 transition-colors duration-200",
+            "font-['Space_Grotesk',system-ui,sans-serif]",
+            i === 0
+              ? "text-[#f0f0f0] border-[#4dabf7]"
+              : "text-[#666] border-transparent hover:text-[#888] hover:border-[#3d3d3d]",
+          ]}
+        >
+          {m.label}
+        </button>
+      ))}
+    </div>
+
+    {/* Layout grid: SVG esquerda + specs direita */}
+    <div class="product-spec-grid grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+      {/* Coluna SVG */}
+      <div class="product-spec-svg-col flex flex-col">
+        <div class="product-spec-svg-wrap rounded-lg p-6 relative overflow-hidden flex-1 flex flex-col">
+          {/* Container de slide para os SVGs */}
+          <div class="product-spec-slider" style="overflow:hidden;position:relative;">
+            <div class="product-spec-slide-track flex transition-transform duration-400 ease-in-out">
+              {/* Slide 1: SVG unitario */}
+              <div class="product-spec-slide">
+                {variant === "barrica" ? (
+                  <ProductSpecBarrica diameter={defaultModel.diameter} height={defaultModel.height} />
+                ) : (
+                  <ProductSpecBalde diameter={defaultModel.diameter} height={defaultModel.height} />
+                )}
+              </div>
+              {/* Slide 2: SVG empilhamento */}
+              <div class="product-spec-slide">
+                {variant === "barrica" ? (
+                  <BarricaStackSvg diameter={defaultModel.diameter} height={defaultModel.height} />
+                ) : (
+                  <BaldeStackSvg diameter={defaultModel.diameter} height={defaultModel.height} />
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Botoes toggle */}
+          <div class="product-spec-toggle flex justify-center gap-2 mt-4">
+            <button
+              class="product-spec-toggle-btn active px-3 py-1.5 text-xs font-medium rounded transition-colors duration-200"
+              data-view="dimensoes"
+            >
+              Dimensoes
+            </button>
+            <button
+              class="product-spec-toggle-btn px-3 py-1.5 text-xs font-medium rounded transition-colors duration-200"
+              data-view="empilhamento"
+            >
+              Empilhamento
+            </button>
+          </div>
+
+          {/* Hint */}
+          <p class="text-center text-xs text-[#555] mt-2 font-['Inter',system-ui,sans-serif]">
+            <span class="hint-desktop">Passe o mouse nas dimensoes ou na ilustracao</span>
+            <span class="hint-mobile hidden">Toque nas dimensoes ou na ilustracao</span>
+          </p>
+        </div>
+      </div>
+
+      {/* Coluna painel de specs */}
+      <div class="product-spec-panel flex flex-col gap-3">
+        {specItems.map((item) => {
+          let value = "";
+          if (item.key === "diametro") value = `${defaultModel.diameter}`;
+          else if (item.key === "altura") value = `${defaultModel.height}`;
+          else if (item.key === "capacidade") value = defaultModel.capacity;
+          else if (item.key === "empilhamento") value = `${defaultModel.stackingMax} unidades`;
+
+          const unit = item.key === "diametro" || item.key === "altura" ? item.unit : "";
+
+          return (
+            <div
+              class="spec-item p-4 rounded-lg border border-[#3d3d3d] bg-[#2e2e2e] transition-all duration-200 cursor-default"
+              data-spec={item.key}
+            >
+              <div class="spec-label text-xs font-medium text-[#888] uppercase tracking-wider mb-1 font-['Inter',system-ui,sans-serif]">
+                {item.label}
+              </div>
+              <div class="spec-value flex items-baseline gap-1">
+                <span class="spec-number text-2xl font-semibold text-[#f0f0f0] font-['Space_Grotesk',system-ui,sans-serif] transition-colors duration-200">
+                  {value}
+                </span>
+                {unit && (
+                  <span class="spec-unit text-sm text-[#888] font-['Inter',system-ui,sans-serif]">
+                    {unit}
+                  </span>
+                )}
+              </div>
+              <div class="spec-desc text-xs text-[#666] mt-1 font-['Inter',system-ui,sans-serif]">
+                {item.description}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-spec-section {
+    background: #242424;
+  }
+
+  /* Grid: ambas colunas com mesma altura */
+  @media (min-width: 768px) {
+    .product-spec-grid {
+      align-items: stretch;
+    }
+  }
+
+  .product-spec-svg-wrap {
+    background: radial-gradient(ellipse at center, #3a3a3a 0%, #2e2e2e 50%, #242424 100%);
+    border: 0.5px solid #3d3d3d;
+  }
+
+  .product-spec-slider {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .product-spec-slide-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .product-spec-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    transition: opacity 0.3s ease, transform 0.4s ease;
+  }
+
+  .product-spec-slide:first-child {
+    position: relative;
+  }
+
+  .product-spec-slide:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(30px);
+    pointer-events: none;
+  }
+
+  .product-spec-slide-track.show-stack .product-spec-slide:first-child {
+    opacity: 0;
+    transform: translateX(-30px);
+    pointer-events: none;
+  }
+
+  .product-spec-slide-track.show-stack .product-spec-slide:last-child {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  /* Toggle buttons */
+  .product-spec-toggle-btn {
+    background: #3a3a3a;
+    color: #888;
+    border: 1px solid #3d3d3d;
+  }
+
+  .product-spec-toggle-btn.active {
+    background: rgba(77, 171, 247, 0.10);
+    color: #4dabf7;
+    border-color: rgba(77, 171, 247, 0.30);
+  }
+
+  .product-spec-toggle-btn:hover:not(.active) {
+    color: #f0f0f0;
+    border-color: #555;
+  }
+
+  /* Spec item highlight */
+  .spec-item.active {
+    background: rgba(77, 171, 247, 0.08);
+    border-color: rgba(77, 171, 247, 0.20);
+  }
+
+  .spec-item.active .spec-number {
+    color: #4dabf7;
+  }
+
+  /* Mobile hint swap */
+  @media (hover: none) {
+    .hint-desktop { display: none; }
+    .hint-mobile { display: inline; }
+  }
+
+  /* === DRAW-ON ANIMATION === */
+  @keyframes draw-line {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes draw-fade {
+    to { opacity: 1; }
+  }
+
+  /* Stroke elements: hidden until triggered */
+  [data-draw] {
+    stroke-dasharray: var(--dash-length, 1000);
+    stroke-dashoffset: var(--dash-length, 1000);
+    opacity: 1;
+  }
+
+  [data-draw].draw-on {
+    animation: draw-line 0.8s ease forwards;
+    animation-delay: var(--draw-delay, 0s);
+  }
+
+  /* Fill elements (hachuras): hidden until triggered */
+  [data-draw-fade] {
+    opacity: 0;
+  }
+
+  [data-draw-fade].draw-on {
+    animation: draw-fade 0.5s ease forwards;
+    animation-delay: var(--draw-delay, 0s);
+  }
+
+  /* Reduced motion: no stroke animation, simple fade-in */
+  @media (prefers-reduced-motion: reduce) {
+    [data-draw] {
+      stroke-dasharray: none;
+      stroke-dashoffset: 0;
+      opacity: 1;
+      animation: none;
+    }
+
+    [data-draw].draw-on {
+      animation: none;
+    }
+
+    [data-draw-fade] {
+      opacity: 1;
+      animation: none;
+    }
+
+    [data-draw-fade].draw-on {
+      animation: none;
+    }
+
+    .product-spec-svg-wrap svg {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .product-spec-svg-wrap svg.visible {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll<HTMLElement>(".product-spec-section").forEach(initProductSpec);
+  });
+
+  // Also init on first load (non-ViewTransitions)
+  document.querySelectorAll<HTMLElement>(".product-spec-section").forEach(initProductSpec);
+
+  function initProductSpec(section: HTMLElement): void {
+    const models: Array<{
+      model: string;
+      label: string;
+      capacity: string;
+      diameter: number;
+      height: number;
+      wall: string;
+      lining: string;
+      stackingMax: number;
+    }> = JSON.parse(section.dataset.models || "[]");
+
+    const variant = section.dataset.variant || "barrica";
+    let activeModelIndex = 0;
+    let activeHighlight: string | null = null;
+
+    // Elements
+    const tabs = section.querySelectorAll<HTMLButtonElement>(".product-spec-tab");
+    const slideTrack = section.querySelector<HTMLElement>(".product-spec-slide-track");
+    const toggleBtns = section.querySelectorAll<HTMLButtonElement>(".product-spec-toggle-btn");
+    const specItems = section.querySelectorAll<HTMLElement>(".spec-item");
+    const svgContainer = section.querySelector<HTMLElement>(".product-spec-slide:first-child");
+
+    // Highlight map — SVG element IDs per spec key
+    const HIGHLIGHT_MAP: Record<string, string[]> = {
+      diametro: [
+        "barrel-top", "barrel-bot", "bucket-top", "bucket-bot",
+        "cota-diametro-linha", "cota-diametro-ext-esq",
+        "cota-diametro-ext-dir", "cota-diametro-texto",
+      ],
+      altura: [
+        "cota-altura-linha", "cota-altura-ext-top",
+        "cota-altura-ext-bot", "cota-altura-texto",
+      ],
+      capacidade: [],
+      empilhamento: [],
+    };
+
+    // ===== TAB SWITCHING =====
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const idx = parseInt(tab.dataset.modelIndex || "0", 10);
+        switchModel(idx);
+      });
+    });
+
+    function switchModel(idx: number): void {
+      activeModelIndex = idx;
+      const model = models[idx];
+
+      // Update tab styles
+      tabs.forEach((t, i) => {
+        const isActive = i === idx;
+        t.setAttribute("aria-selected", isActive ? "true" : "false");
+        t.classList.toggle("text-[#f0f0f0]", isActive);
+        t.classList.toggle("border-[#4dabf7]", isActive);
+        t.classList.toggle("text-[#666]", !isActive);
+        t.classList.toggle("border-transparent", !isActive);
+      });
+
+      // Update spec panel values
+      updateSpecValues(model);
+
+      // Note: SVG re-rendering requires server-side — for static site,
+      // we update the dimension text values in the SVG via DOM
+      updateSvgDimensions(model);
+    }
+
+    function updateSpecValues(model: typeof models[0]): void {
+      specItems.forEach((item) => {
+        const key = item.dataset.spec;
+        const numberEl = item.querySelector<HTMLElement>(".spec-number");
+        if (!numberEl || !key) return;
+
+        switch (key) {
+          case "diametro":
+            numberEl.textContent = `${model.diameter}`;
+            break;
+          case "altura":
+            numberEl.textContent = `${model.height}`;
+            break;
+          case "capacidade":
+            numberEl.textContent = model.capacity;
+            break;
+          case "empilhamento":
+            numberEl.textContent = `${model.stackingMax} unidades`;
+            break;
+        }
+      });
+    }
+
+    function updateSvgDimensions(model: typeof models[0]): void {
+      // Update dimension text in the SVG (cota texts)
+      const diamText = section.querySelector("#cota-diametro-texto");
+      const altText = section.querySelector("#cota-altura-texto");
+      if (diamText) diamText.textContent = `\u2300 ${model.diameter} mm`;
+      if (altText) altText.textContent = `${model.height} mm`;
+    }
+
+    // ===== TOGGLE DIMENSOES / EMPILHAMENTO =====
+    toggleBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const view = btn.dataset.view;
+        toggleBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        if (slideTrack) {
+          if (view === "empilhamento") {
+            slideTrack.classList.add("show-stack");
+          } else {
+            slideTrack.classList.remove("show-stack");
+          }
+        }
+      });
+    });
+
+    // ===== BIDIRECTIONAL HIGHLIGHT =====
+    const isTouch =
+      window.matchMedia("(hover: none)").matches ||
+      "ontouchstart" in window;
+
+    // Panel → SVG
+    specItems.forEach((item) => {
+      const key = item.dataset.spec || "";
+
+      if (isTouch) {
+        item.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (activeHighlight === key) {
+            clearHighlight();
+          } else {
+            highlight(key);
+          }
+        });
+      } else {
+        item.addEventListener("mouseenter", () => highlight(key));
+        item.addEventListener("mouseleave", () => clearHighlight());
+      }
+    });
+
+    // SVG zones → Panel
+    if (svgContainer) {
+      const zones = svgContainer.querySelectorAll<HTMLElement>(".zona-hover");
+      zones.forEach((zone) => {
+        const key = zone.dataset.spec || "";
+
+        if (isTouch) {
+          zone.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (activeHighlight === key) {
+              clearHighlight();
+            } else {
+              highlight(key);
+            }
+          });
+        } else {
+          zone.addEventListener("mouseenter", () => highlight(key));
+          zone.addEventListener("mouseleave", () => clearHighlight());
+        }
+      });
+    }
+
+    // Tap outside clears highlight (mobile)
+    if (isTouch) {
+      document.addEventListener("click", (e) => {
+        if (!section.contains(e.target as Node)) {
+          clearHighlight();
+        }
+      });
+    }
+
+    // ===== DRAW-ON ANIMATION (IntersectionObserver) =====
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let drawOnTriggered = false;
+
+    const svgWrap = section.querySelector<HTMLElement>(".product-spec-svg-wrap");
+    if (svgWrap) {
+      const drawObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && !drawOnTriggered) {
+            drawOnTriggered = true;
+            triggerDrawOn();
+            drawObserver.disconnect();
+          }
+        },
+        { threshold: 0.3 }
+      );
+      drawObserver.observe(svgWrap);
+    }
+
+    function triggerDrawOn(): void {
+      if (!svgContainer) return;
+
+      if (prefersReducedMotion) {
+        // Reduced motion: simple fade-in on the SVG element
+        const svg = svgContainer.querySelector("svg");
+        if (svg) svg.classList.add("visible");
+        return;
+      }
+
+      // Stroke-based draw-on elements
+      const drawElements = svgContainer.querySelectorAll<SVGElement>("[data-draw]");
+      drawElements.forEach((el) => {
+        // Calculate real dash-length via getTotalLength()
+        if (el instanceof SVGGeometryElement) {
+          const len = el.getTotalLength();
+          el.style.setProperty("--dash-length", String(len));
+        }
+        // Set delay from data attribute
+        const delay = el.getAttribute("data-draw-delay") || "0";
+        el.style.setProperty("--draw-delay", `${delay}s`);
+        el.classList.add("draw-on");
+      });
+
+      // Fade-based elements (hachuras)
+      const fadeElements = svgContainer.querySelectorAll<SVGElement>("[data-draw-fade]");
+      fadeElements.forEach((el) => {
+        const delay = el.getAttribute("data-draw-delay") || "0";
+        el.style.setProperty("--draw-delay", `${delay}s`);
+        el.classList.add("draw-on");
+      });
+    }
+
+    function highlight(key: string): void {
+      clearHighlight();
+      activeHighlight = key;
+
+      // Highlight panel item
+      specItems.forEach((item) => {
+        if (item.dataset.spec === key) {
+          item.classList.add("active");
+        }
+      });
+
+      // Highlight SVG elements
+      const svgIds = HIGHLIGHT_MAP[key] || [];
+      svgIds.forEach((id) => {
+        const el = section.querySelector(`#${id}`);
+        if (el) el.classList.add("hl");
+      });
+    }
+
+    function clearHighlight(): void {
+      activeHighlight = null;
+      specItems.forEach((item) => item.classList.remove("active"));
+      // Clear all hl classes in SVG
+      section.querySelectorAll(".hl").forEach((el) => el.classList.remove("hl"));
+    }
+  }
+</script>

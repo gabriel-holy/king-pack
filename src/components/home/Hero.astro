@@ -2,7 +2,8 @@
 import { Image } from "astro:assets";
 import WhatsAppCTA from "../shared/WhatsAppCTA.astro";
 import MagneticButton from "../shared/MagneticButton.astro";
-import factoryImg from "../../assets/images/factory/factory-interior.jpg";
+import baldeImg from "../../assets/images/products/balde-blueprint.png";
+import barricaImg from "../../assets/images/products/barrica-blueprint.png";
 ---
 
 <section class="relative overflow-hidden bg-bg-deep py-20 lg:py-24">
@@ -21,10 +22,13 @@ import factoryImg from "../../assets/images/factory/factory-interior.jpg";
         <p class="mt-6 font-body text-lg text-text-muted" data-fade-up data-fade-delay="200">
           Barricas de papelão e baldes plásticos que 500+ indústrias de tintas, texturas e construção civil já confiam. Fabricação própria em Americana-SP.
         </p>
-        <div class="mt-8 flex flex-wrap gap-4" data-fade-up data-fade-delay="400">
-          <MagneticButton>
-            <WhatsAppCTA label="Pedir minha amostra grátis" size="md" microcopy="Resposta em até 2h em horário comercial" />
-          </MagneticButton>
+        <div class="mt-8 flex flex-wrap items-start gap-4" data-fade-up data-fade-delay="400">
+          <div>
+            <MagneticButton>
+              <WhatsAppCTA label="Pedir minha amostra grátis" size="md" />
+            </MagneticButton>
+            <p class="mt-1.5 font-body text-xs text-text-muted">Resposta em até 2h em horário comercial</p>
+          </div>
           <a
             href="/barricas"
             class="inline-flex min-h-[44px] items-center rounded-md border border-border-subtle px-6 py-3 font-heading text-sm font-semibold text-text-primary transition-colors hover:bg-surface"
@@ -33,60 +37,104 @@ import factoryImg from "../../assets/images/factory/factory-interior.jpg";
           </a>
         </div>
       </div>
-      <div class="hidden overflow-hidden rounded-lg md:block" data-fade-up data-fade-delay="300">
-        <Image
-          src={factoryImg}
-          alt="Chão de fábrica industrial com operador em maquinário pesado de produção"
-          width={1200}
-          height={800}
-          format="webp"
-          quality={80}
-          fetchpriority="high"
-          loading="eager"
-          class="h-auto w-full rounded-lg object-cover"
-          id="hero-parallax-img"
-        />
+      <div class="hidden md:flex items-center justify-center bg-bg-deep" data-fade-up data-fade-delay="300">
+        <div id="orbit-container" class="relative h-[400px] w-[400px] lg:h-[500px] lg:w-[500px]">
+          <!-- Balde orbita na posição oposta à barrica -->
+          <div id="orbit-balde" class="absolute left-1/2 top-1/2 h-[220px] w-[220px] mix-blend-screen lg:h-[280px] lg:w-[280px]">
+            <Image
+              src={baldeImg}
+              alt="Balde plástico industrial"
+              width={400}
+              height={400}
+              format="webp"
+              quality={80}
+              fetchpriority="high"
+              loading="eager"
+              class="h-full w-full object-contain invert"
+            />
+          </div>
+          <!-- Barrica orbita na posição oposta ao balde -->
+          <div id="orbit-barrica" class="absolute left-1/2 top-1/2 h-[190px] w-[190px] mix-blend-screen lg:h-[240px] lg:w-[240px]">
+            <Image
+              src={barricaImg}
+              alt="Barrica de papelão industrial"
+              width={400}
+              height={400}
+              format="webp"
+              quality={80}
+              fetchpriority="high"
+              loading="eager"
+              class="h-full w-full object-contain invert"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <script>
-  function initHeroParallax(): void {
+  function initOrbit(): void {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    if (prefersReducedMotion || isMobile) return;
+    if (prefersReducedMotion) return;
 
-    const img = document.getElementById('hero-parallax-img') as HTMLElement | null;
-    if (!img) return;
+    const balde = document.getElementById('orbit-balde') as HTMLElement | null;
+    const barrica = document.getElementById('orbit-barrica') as HTMLElement | null;
+    if (!balde || !barrica) return;
+
+    // Raio da órbita (distância do centro)
+    const radius = 110;
+
+    // 2 voltas completas ao longo de toda a página
+    const totalRotations = 4;
+    const totalRadians = totalRotations * Math.PI * 2;
 
     let ticking = false;
-    let scrollTimeout: ReturnType<typeof setTimeout>;
 
-    img.style.willChange = 'transform';
-
-    function onScroll(): void {
+    function updateOrbit(): void {
       if (ticking) return;
       ticking = true;
+
       requestAnimationFrame(() => {
         const scrollY = window.scrollY;
-        img!.style.transform = `translateY(${scrollY * 0.4}px)`;
-        ticking = false;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollProgress = Math.min(scrollY / docHeight, 1);
 
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          img!.style.willChange = '';
-        }, 150);
+        // Ângulo baseado no progresso do scroll
+        const angle = scrollProgress * totalRadians;
+
+        // Balde: posição na órbita
+        const baldeX = Math.cos(angle) * radius;
+        const baldeY = Math.sin(angle) * radius;
+
+        // Barrica: posição oposta (180°)
+        const barricaX = Math.cos(angle + Math.PI) * radius;
+        const barricaY = Math.sin(angle + Math.PI) * radius;
+
+        // Escala sutil pra simular profundidade (quem tá "atrás" fica menor)
+        const baldeScale = 0.85 + 0.15 * ((Math.sin(angle) + 1) / 2);
+        const barricaScale = 0.85 + 0.15 * ((Math.sin(angle + Math.PI) + 1) / 2);
+
+        // Z-index: quem tá "na frente" (Y maior) fica por cima
+        const baldeZ = baldeY > barricaY ? 2 : 1;
+        const barricaZ = barricaY > baldeY ? 2 : 1;
+
+        balde!.style.transform = `translate(calc(-50% + ${baldeX}px), calc(-50% + ${baldeY}px)) scale(${baldeScale})`;
+        balde!.style.zIndex = String(baldeZ);
+
+        barrica!.style.transform = `translate(calc(-50% + ${barricaX}px), calc(-50% + ${barricaY}px)) scale(${barricaScale})`;
+        barrica!.style.zIndex = String(barricaZ);
+
+        ticking = false;
       });
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
+    // Posição inicial
+    updateOrbit();
 
-    window.addEventListener('scroll', () => {
-      img!.style.willChange = 'transform';
-    }, { passive: true, once: true });
+    window.addEventListener('scroll', updateOrbit, { passive: true });
   }
 
-  initHeroParallax();
-  document.addEventListener('astro:after-swap', initHeroParallax);
+  initOrbit();
+  document.addEventListener('astro:after-swap', initOrbit);
 </script>
